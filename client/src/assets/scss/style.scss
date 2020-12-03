@@ -1,0 +1,21 @@
+/*=============================
+	general reset & settings for input, form and buttons
+=============================*/
+
+// look here ./src/styles/Global.jsx
+
+/*=============================
+	fonts
+=============================*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;900&display=swap');
+
+body {
+	font-family: 'nunito sans';
+}
+
+.main_header {
+	box-shadow: 0px 6px 10px #00000019;
+}
+#test {
+	color: red;
+}
