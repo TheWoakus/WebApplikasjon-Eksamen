@@ -4,8 +4,6 @@ import 'dotenv/config.js';
 import morgan from 'morgan';
 import cors from 'cors';
 import { PORT } from './constants/index.js';
-import pollsRoutes from './routes/poll.js';
-import usersRoutes from './routes/user.js';
 
 // Constants
 const app = express();
@@ -13,8 +11,9 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({ origin: '*' }));
-app.use(`${process.env.BASEURL}/polls`, pollsRoutes);
-app.use(`${process.env.BASEURL}/users`, usersRoutes);
+
+//TODO: Create routers
+//app.use(`${process.env.BASEURL}/DESTINATION`, ROUTER);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
