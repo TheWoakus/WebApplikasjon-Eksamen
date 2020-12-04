@@ -7,11 +7,11 @@ M.E.R.N
   
   MongoDB : https://docs.mongodb.com/manual/installation/
   
-  Express
+  Express 
   
   React
   
-  Node
+  Node    : https://nodejs.org/en/
 
   -------
   
