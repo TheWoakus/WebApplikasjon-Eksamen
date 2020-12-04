@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import PageHeader from '../components/PageHeader';
 
 class Kontakt extends React.Component {
 	render() {
 		return (
 			<>
-				<h2>Contact us!</h2>
+				<PageHeader title="Kontakt oss" />
 			</>
 		)
 	}

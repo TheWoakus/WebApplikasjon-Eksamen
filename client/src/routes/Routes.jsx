@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NoMatch from '../components/NoMatch';
 
-import Fagartikler from '../pages/fagartikler';
+import Fagartikler from '../pages/Fagartikler';
 import Hjem from '../pages/Hjem';
-import Kontakt from '../pages/kontakt';
-import Kontorer from '../pages/kontorer';
+import Kontakt from '../pages/Kontakt';
+import Kontorer from '../pages/Kontorer';
 import Logginn from '../pages/Logginn';
 
 
