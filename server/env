@@ -1,0 +1,6 @@
+BASEURL=/api/v1
+NODE_ENV=development
+SERVER_PORT=7777
+DATABASE=mongodb://localhost:27017/eksamen_2020_webapp
+CLIENT_PORT=3000
+SECRET=PeepTheLittleBird
