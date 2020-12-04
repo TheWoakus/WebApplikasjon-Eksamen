@@ -8,10 +8,7 @@ import Kontakt from '../pages/Kontakt';
 import Kontorer from '../pages/Kontorer';
 import Logginn from '../pages/Logginn';
 
-
 import Header from '../components/Header'
-import Nav from '../components/Nav'
-
 
 const Routes = () => (
   
