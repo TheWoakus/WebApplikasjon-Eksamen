@@ -12,3 +12,52 @@
 body {
 	font-family: 'nunito sans';
 }
+
+#container {
+	position: relative;
+	min-height: 100vh;;
+}
+
+#page_content {
+	max-width: 1200px;
+	margin: 40px auto;
+	display: grid;
+	grid-template-columns: 275px 275px 275px 275px;
+	grid-gap: 40px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"kontorer kontakt kontakt kontakt"
+		"fagartikler fagartikler fagartikler fagartikler"
+		"footer footer footer footer";
+	
+	padding-bottom: 60px;
+}
+
+#kontorer, #kontakt, #fagartikler {
+	display: grid;
+	background-color: #dbdbdb;
+	height: 300px;
+}
+
+#kontorer {
+	grid-area: kontorer;
+}
+
+.title {
+	display:block;
+	width: 100%;
+	font-size: 30px;
+	text-decoration: none;
+	align-self: center;
+	text-align: center;
+	line-height: 300px;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+#kontakt {
+	grid-area: kontakt;
+}
+
+#fagartikler {
+	grid-area: fagartikler;
+}

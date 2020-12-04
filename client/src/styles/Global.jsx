@@ -16,13 +16,14 @@ html {
 	font-family: "Nunito Sans";
 }
 
-h1 {
-	font-size: 18px;
-	margin: 50px;
-}
 h2 {
-	text-align: center;
-	text-transform: uppercase;
+	font-size: 30px;
+	/* text-align: center; */
+	/* text-transform: uppercase; */
+}
+
+.mail, .phone {
+	margin: 14px 0;
 }
 
 fieldset {

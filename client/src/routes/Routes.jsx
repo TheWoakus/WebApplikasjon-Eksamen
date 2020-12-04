@@ -8,12 +8,12 @@ import Kontakt from '../pages/Kontakt';
 import Kontorer from '../pages/Kontorer';
 import Logginn from '../pages/Logginn';
 
-import Header from '../components/Header'
+import MainHeader from '../components/MainHeader'
 
 const Routes = () => (
   
   <Router>
-	  <Header />
+	  <MainHeader />
       <Switch>
         <Route exact path="/">
           <Hjem />
