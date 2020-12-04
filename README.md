@@ -14,11 +14,13 @@ M.E.R.N
   Node
 
   -------
-  npm install
+  
+  Kjør en kjapp npm install for å få med deg alle pakkene vi trenger.
 
   Etter at mongodb er satt opp, må det lages en database som heter "eksamen_2020_webapp" (all lowercase)
 
 Dette gjøres ved å: 
+    
     - fyre opp mongo (last ned MongoDB Compass om du vil) 
     - skriv: use eksamen_2020_webapp
     - du skal nå få en bekreftelse på at du bruker databasen eksamen_2020_webapp
@@ -29,6 +31,7 @@ Dette gjøres ved å:
 ## SERVER
 
   cd server
+  
   run npm start
 
   Kjører på http://localhost:7777
@@ -37,6 +40,7 @@ Dette gjøres ved å:
 ## CLIENT
 
   cd client
+  
   run npm start
 
   Kjører på http://localhost:3000
