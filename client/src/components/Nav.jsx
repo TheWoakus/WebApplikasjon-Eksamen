@@ -20,6 +20,7 @@ const NavMenuItem = styled.li`
 	padding: 0;
 	list-style: none;
 	align-items: center;
+	font-variant: small-caps;
 	&:first-child {
 		padding-left: 0;
 	}
@@ -39,6 +40,7 @@ const NavMenuItem = styled.li`
 		&.logginn {
 			color: #fff;
 			background-color: #499eb8;
+			text-transform: uppercase;
 		}
 	}
 `;
@@ -60,7 +62,7 @@ const Nav = () => (
 					Kontakt
 				</NavLink>
 				<NavLink exact to="/logginn/" activeClassName="active" className="logginn">
-					Logg&nbsp;inn
+					Logg inn
 				</NavLink>
 			</NavMenuItem>
 		</NavMenu>
