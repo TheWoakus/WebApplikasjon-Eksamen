@@ -19,11 +19,13 @@ M.E.R.N
 
   Etter at mongodb er satt opp, må det lages en database som heter "eksamen_2020_webapp" (all lowercase)
 
-Dette gjøres ved å: 
-    
-    - fyre opp mongo (last ned MongoDB Compass om du vil) 
-    - skriv: use eksamen_2020_webapp
-    - du skal nå få en bekreftelse på at du bruker databasen eksamen_2020_webapp
+  Dette gjøres ved å: 
+
+  Fyre opp mongo (last ned MongoDB Compass om du vil) 
+  
+  Skriv: use eksamen_2020_webapp
+  
+  Du skal nå få en bekreftelse på at du bruker databasen eksamen_2020_webapp
   
   Dessverre får du ikke se databasen før vi legger til en collection.. Fyr opp server og app, så fikser vi dette.
 
