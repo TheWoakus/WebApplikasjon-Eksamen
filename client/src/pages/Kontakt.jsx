@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-class Enter extends React.Component {
+class Kontakt extends React.Component {
 	render() {
 		return (
 			<>
@@ -12,4 +12,4 @@ class Enter extends React.Component {
 	}
 }
 
-export default Enter;
+export default Kontakt;

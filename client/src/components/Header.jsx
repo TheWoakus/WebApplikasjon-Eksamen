@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
 	grid-gap: 20px;
 
 	height: 70px;
+	box-shadow: 0px 6px 10px rgba(0,0,0,.4);
 `;
 const StyledH1 = styled.h1`
 	margin-left: 40px;
