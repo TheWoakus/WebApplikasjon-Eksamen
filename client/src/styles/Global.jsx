@@ -60,7 +60,7 @@ p:first-letter, span:first-letter, .complete, .delete {
 
 .button, .link {
 	color: #fff;
-	background-color: #333;
+	background-color: #499eb8; 
 	border-radius: 5px;
 	padding: 4px 20px;
 	border: none;
@@ -78,15 +78,10 @@ p:first-letter, span:first-letter, .complete, .delete {
 .button:hover, .link:hover, .button:focus, .link:focus {
 	color: #333;
 	cursor: pointer;
-	background-color: #499eb8;
 }
 
 .button:disabled {
 	opacity: .2;
-}
-.button:disabled:hover {
 	cursor: not-allowed;
-	background-color: #333;
-	color: #fff;
 }
 `;
