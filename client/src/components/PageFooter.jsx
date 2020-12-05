@@ -18,8 +18,8 @@ const PageFooter = () => (
 	<Footer>
 		<p>Orgnr: 007 007 007</p>
 		{/* <p><a href="mailto:lg@lgror.no">lg@lgror.no</a></p> */}
-		<a href="mailto:lg@lgror.no" class="mail">lg@lgror.no</a>
-		<a href="callto:99000000" class="phone">99 00 00 00</a>
+		<a href="mailto:lg@lgror.no" className="mail">lg@lgror.no</a>
+		<a href="callto:99000000" className="phone">99 00 00 00</a>
 	</Footer>
 );
 
