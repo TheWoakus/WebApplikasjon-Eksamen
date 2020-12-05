@@ -42,6 +42,12 @@ const NavMenuItem = styled.li`
 			background-color: #499eb8;
 			text-transform: uppercase;
 		}
+		&:hover {
+			color: #499eb8;
+		}
+		&.logginn:hover {
+			color: #333;
+		}
 	}
 `;
 

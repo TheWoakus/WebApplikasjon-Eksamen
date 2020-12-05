@@ -56,94 +56,94 @@ export const allLocations = {
 		location: 'fredrikstad'
 	},
 	sarpsborg1: {
-		id: "9",
+		id: "1",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
-		location: 'sarpborg'
+		phone: '69 99 01 0',
+		location: 'sarpsborg'
 	},
 	sarpsborg2: {
-		id: "10",
+		id: "2",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
-		location: 'sarpborg'
+		phone: '69 99 01 0',
+		location: 'sarpsborg'
 	},
 	sarpsborg3: {
-		id: "11",
+		id: "3",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
-		location: 'sarpborg'
+		phone: '69 99 01 0',
+		location: 'sarpsborg'
 	},
 	sarpsborg4: {
-		id: "12",
+		id: "4",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
-		location: 'sarpborg'
+		phone: '69 99 01 0',
+		location: 'sarpsborg'
 	},
 	sarpsborg5: {
-		id: "13",
+		id: "5",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
-		location: 'sarpborg'
+		phone: '69 99 01 0',
+		location: 'sarpsborg'
 	},
 	moss1: {
-		id: "14",
+		id: "1",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 02 0',
 		location: 'moss'
 	},
 	moss2: {
-		id: "15",
+		id: "2",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 02 0',
 		location: 'moss'
 	},
 	moss3: {
-		id: "16",
+		id: "3",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 02 0',
 		location: 'moss'
 	},
 	moss4: {
-		id: "17",
+		id: "4",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 02 0',
 		location: 'moss'
 	},
 	oslo1: {
-		id: "18",
+		id: "1",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 04 0',
 		location: 'oslo'
 	},
 	oslo2: {
-		id: "19",
+		id: "2",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 04 0',
 		location: 'oslo'
 	},
 	oslo3: {
-		id: "20",
+		id: "3",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 04 0',
 		location: 'oslo'
 	},
 	oslo4: {
-		id: "21",
+		id: "4",
 		title: 'Rørlegger',
 		address: 'Rørleggerveien',
-		phone: '69 99 00 0',
+		phone: '69 99 04 0',
 		location: 'oslo'
 	},
 };

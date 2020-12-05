@@ -19,7 +19,7 @@ app.use(
 	})
 );
 app.use(express.json());
-
+app.use(`${process.env.BASEURL}/kontakt`, kontakt)
 
 
 connectDatabase();

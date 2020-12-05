@@ -78,6 +78,15 @@ p:first-letter, span:first-letter, .complete, .delete {
 .button:hover, .link:hover, .button:focus, .link:focus {
 	color: #333;
 	cursor: pointer;
-	background-color: #ffc600;
+	background-color: #499eb8;
+}
+
+.button:disabled {
+	opacity: .2;
+}
+.button:disabled:hover {
+	cursor: not-allowed;
+	background-color: #333;
+	color: #fff;
 }
 `;

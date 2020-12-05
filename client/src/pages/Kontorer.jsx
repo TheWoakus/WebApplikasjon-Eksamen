@@ -43,19 +43,20 @@ class Kontorer extends React.Component {
 			theOffices: {},
 			allLocations: {},
 			search: null,
+			viewtype: false,
 		};
-	}
+	};
 
 	componentDidMount() {
 		this.loadSamples();
-	}
+	};
 
 	loadSamples() {
 		this.setState({
 			allLocations: allLocations,
 
 		});
-	}
+	};
 
 	generateOffices() {
 		const offices = Object.keys(this.state.theOffices);
@@ -71,11 +72,15 @@ class Kontorer extends React.Component {
 			return office;
 		}
 		return <h2>Her var det tomt..</h2>
-	}
+	};
 
 	search(keyword) {
 		this.setState({ search: keyword });
-	}
+	};
+
+	toggleClass(listType) {
+		// TODO: Enter some code here to change className and how the list is viewed.. grid-view or list-view
+	};
 
 	render() {
 
@@ -108,12 +113,6 @@ class Kontorer extends React.Component {
 					<Phone>{data.phone}{data.id}</Phone>
 					<Mail href={`mailto:${data.location}${data.id}@epost.no`}>{data.location}{data.id}@epost.no</Mail>
 				</Section>
-				// <Office 
-				// 	title={data.title}
-				// 	address={data.address}
-				// 	phone={data.phone}
-				// 	location={data.location}
-				// />
 			))
 
 		return (
@@ -121,9 +120,14 @@ class Kontorer extends React.Component {
 				<PageHeader title="Våre kontorer" />
 				
 				<section className="officeContent">
-					<Search search={this.search} />
+					<section className="viewOptions">
+						<Search search={this.search} />
+						<button type="button" className="listview" onClick={this.toggleClass()} ></button>
+						<button type="button" className="gridview" onClick={this.toggleClass()}></button>
+					</section>
+					
 					<section className="branch">
-						<section className="listOfOffices">
+						<section id="officeLocations" className="gridOffices">
 							{allOfficeLocations}
 						</section>
 					</section>

@@ -9,7 +9,7 @@
 =============================*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;900&display=swap');
 
-body {
+body, input, textarea {
 	font-family: 'nunito sans';
 }
 
@@ -62,18 +62,10 @@ body {
 	grid-area: fagartikler;
 }
 
-.officeContent {
-	margin: 120px auto;
-}
-.branch {
-	margin-bottom: 60px;
-}
-.listOfOffices {
+.viewOptions {
 	display: grid;
-	grid-template-columns: 225px 225px 225px 225px;
-	grid-template-rows: auto;
-	grid-gap: 40px;
-	justify-content: space-between;
+	grid-template-columns: auto 43px 43px;
+	grid-gap: 20px;
 }
 
 .searchbox {
@@ -88,4 +80,40 @@ body {
   background-size: 20px;
   background-position-x: 10px;
   background-position-y: center;
+}
+
+.listview, .gridview {
+	width: 43px;
+	height: 43px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	margin-top: 5px;
+	padding: 0;
+}
+
+.listview {
+	background: url(../svg/list.svg) no-repeat;
+}
+
+.gridview {
+	background: url(../svg/grid.svg) no-repeat;
+}
+
+.officeContent {
+	margin: 0px auto;
+}
+.branch {
+	margin-bottom: 60px;
+}
+.gridOffices {
+	display: grid;
+	grid-template-columns: 225px 225px 225px 225px;
+	grid-template-rows: auto;
+	grid-gap: 40px;
+	justify-content: space-between;
+}
+
+.listOffices {
+	border: 1px solid red;
 }
