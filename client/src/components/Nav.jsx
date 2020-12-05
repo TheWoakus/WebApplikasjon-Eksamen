@@ -49,6 +49,10 @@ const NavMenuItem = styled.li`
 			color: #333;
 		}
 	}
+
+	@media(max-width: 1000px) {
+		grid-template-columns: 1fr;
+	}
 `;
 
 const Nav = () => (

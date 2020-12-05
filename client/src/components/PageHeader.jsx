@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = styled.header`
+	display: grid;
 	background-color: #dbdbdb;
 	height: 300px;
 	margin-bottom: 100px;
@@ -10,7 +11,7 @@ const Header = styled.header`
 const Title = styled.h1`
 	font-size: 30px;
 	text-align: center;
-	line-height: 280px;
+	place-self: center;
 	margin: 5px;
 `;
 

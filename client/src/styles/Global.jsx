@@ -18,8 +18,6 @@ html {
 
 h2 {
 	font-size: 30px;
-	/* text-align: center; */
-	/* text-transform: uppercase; */
 }
 
 .mail, .phone {

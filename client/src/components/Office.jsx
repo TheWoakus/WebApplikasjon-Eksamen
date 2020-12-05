@@ -30,12 +30,6 @@ class Office extends React.Component {
 		
 		return (
 			<>
-				{/* <Section>
-					<Title>{this.props.details.title} {this.props.details.id}</Title>
-					<Address>{this.props.details.address} {this.props.details.id}</Address>
-					<Phone>{this.props.details.phone}{this.props.details.id}</Phone>
-					<Mail href={`mailto:${this.props.details.location}${this.props.details.id}@epost.no`}>{this.props.details.location}{this.props.details.id}@epost.no</Mail>
-				</Section> */}
 				<Section>
 					<Title>{this.props.data.title} </Title>
 					<Address>{this.props.data.address} </Address>
