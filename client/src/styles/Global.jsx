@@ -26,6 +26,8 @@ h2 {
 
 fieldset {
 	border: none;
+	margin: 0;
+	padding: 20px 0;
 }
 
 form {

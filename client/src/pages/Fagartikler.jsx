@@ -7,6 +7,9 @@ class Fagartikler extends React.Component {
 		return (
 			<>
 				<PageHeader title="Fagartikler" />
+				<section id="page_wrapper">
+
+				</section>
 				<PageFooter />
 			</>
 		)

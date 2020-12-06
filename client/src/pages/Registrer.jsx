@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import PageHeader from '../components/PageHeader';
-import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 import PageFooter from '../components/PageFooter';
 
 class Logginn extends React.Component {
@@ -10,16 +10,10 @@ class Logginn extends React.Component {
 		return (
 			<>
 				<PageHeader title="Logg inn" />
+
 				<section id="page_wrapper">
-					<LoginForm />
-					<div>
-						<NavLink exact to="/registrer/" className="title">
-						<button
-							type="submit"
-							className="button link"
-						>Register</button>
-						</NavLink>
-					</div>
+					<h2 className="callout">Come join the dark side, we have cookies!</h2>
+					<SignupForm />
 				</section>
 				<PageFooter />
 			</>

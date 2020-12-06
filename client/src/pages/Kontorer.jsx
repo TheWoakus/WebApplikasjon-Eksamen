@@ -65,13 +65,13 @@ class Kontorer extends React.Component {
 		const offices = Object.keys(this.state.theOffices);
 		if (offices.length > 0) {
 			const office = Object.keys(this.state.theOffices)
-			.map((key) => (
-				<Office 
-					key={key}
-					keyID={key}
-					details={this.state.theOffices[key]}
-				/>
-			));
+				.map((key) => (
+					<Office
+						key={key}
+						keyID={key}
+						details={this.state.theOffices[key]}
+					/>
+				));
 			return office;
 		}
 		return <h2>Her var det tomt..</h2>
@@ -87,8 +87,7 @@ class Kontorer extends React.Component {
 
 	render() {
 
-		// let viewtype = this.state.viewType ? "gridOffices" : "listOffices";
-		let viewtype = this.state.viewType ? "listOffices" : "gridOffices";
+		let viewtype = this.state.viewType ? "gridOffices" : "listOffices";
 
 		const allOfficeLocations = Object.values(this.state.allLocations)
 			.filter((data) => {
@@ -113,7 +112,7 @@ class Kontorer extends React.Component {
 				}
 			})
 			.map((data) => (
-				<Section className="oneOffice">
+				<Section className="oneOffice" key={`${data.location}${data.id}`}>
 					<Title className="list_title">{data.title}</Title>
 					<Address className="list_address">{data.address} {data.id}</Address>
 					<Phone className="list_phone">{data.phone}{data.id}</Phone>
@@ -124,17 +123,17 @@ class Kontorer extends React.Component {
 		return (
 			<>
 				<PageHeader title="Våre kontorer" />
-				
-				<section className="officeContent">
-					<section className="viewOptions">
-						<Search search={this.search} />
-						<button type="button" className={`${this.state.viewType}_mode`} onClick={this.toggleViewType.bind(this)} ></button>
-						{/* <button type="button" className="gridview" onClick={this.toggleViewType.bind(this)}></button> */}
-					</section>
-					
-					<section className="branch">
-						<section id="officeLocations" className={viewtype}>
-							{allOfficeLocations}
+				<section id="page_wrapper">
+					<section className="officeContent">
+						<section className="viewOptions">
+							<Search search={this.search} />
+							<button type="button" className={`${this.state.viewType}_mode`} onClick={this.toggleViewType.bind(this)} ></button>
+						</section>
+
+						<section className="branch">
+							<section id="officeLocations" className={viewtype}>
+								{allOfficeLocations}
+							</section>
 						</section>
 					</section>
 				</section>

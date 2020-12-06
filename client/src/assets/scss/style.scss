@@ -17,8 +17,16 @@ body, input, textarea {
 	position: relative;
 	min-height: 100vh;;
 }
-#page_content, .officeContent {
+#page_wrapper {
 	max-width: 80%;
+	margin: 0 auto;
+}
+
+.callout {
+	text-align: center;
+}
+
+#page_content, .officeContent {
 	padding-bottom: 60px;	
 }
 #page_content {
@@ -128,14 +136,14 @@ body, input, textarea {
 	justify-content: space-between;
 }
 
-.listOffices {
-	// border: 1px solid red;
-}
+// .listOffices {
+// 	border: 1px solid red;
+// }
 
-.listOffices > .oneOffice {
-	// display: grid;
+// .listOffices > .oneOffice {
+	
 
-}
+// }
 
 .secondary {
 	width: 25px;
@@ -224,7 +232,7 @@ body, input, textarea {
 		grid-template-areas: 
 		"search";
 	}
-	.listview, .gridview {
+	.true_mode, .false_mode {
 		display: none;
 	}
 }

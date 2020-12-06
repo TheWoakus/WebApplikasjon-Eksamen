@@ -7,6 +7,7 @@ import Hjem from '../pages/Hjem';
 import Kontakt from '../pages/Kontakt';
 import Kontorer from '../pages/Kontorer';
 import Logginn from '../pages/Logginn';
+import Registrer from '../pages/Registrer';
 
 import MainHeader from '../components/MainHeader'
 
@@ -30,6 +31,9 @@ const Routes = () => (
         <Route exact path="/logginn/">
           <Logginn />
         </Route>
+		<Route exact path="/registrer/">
+			<Registrer />
+		</Route>
         <Route path="*">
           <NoMatch />
         </Route>

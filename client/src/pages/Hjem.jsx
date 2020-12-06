@@ -9,21 +9,23 @@ class Hjem extends React.Component {
 		return (
 			<>
 				<PageHeader title="Velkommen til LG Rørleggerservice AS" />
-				<section id="page_content">
-					<section id="kontorer">
-						<NavLink exact to="/kontorer/" className="title">
-							Kontorer
-						</NavLink>
-					</section>
-					<section id="kontakt">
-						<NavLink exact to="/kontakt/" className="title">
-							Kontakt
-						</NavLink>
-					</section>
-					<section id="fagartikler">
-						<NavLink exact to="/fagartikler/" className="title">
-							Se våre fagartikler om oppussing av bad (todo: fiks link)
-						</NavLink>
+				<section id="page_wrapper">
+					<section id="page_content">
+						<section id="kontorer">
+							<NavLink exact to="/kontorer/" className="title">
+								Kontorer
+							</NavLink>
+						</section>
+						<section id="kontakt">
+							<NavLink exact to="/kontakt/" className="title">
+								Kontakt
+							</NavLink>
+						</section>
+						<section id="fagartikler">
+							<NavLink exact to="/fagartikler/" className="title">
+								Se våre fagartikler om oppussing av bad (todo: fiks link)
+							</NavLink>
+						</section>
 					</section>
 				</section>
 				<PageFooter />

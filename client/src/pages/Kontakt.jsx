@@ -9,7 +9,10 @@ class Kontakt extends React.Component {
 		return (
 			<>
 				<PageHeader title="Kontakt oss" />
-				<ContactForm />
+				<section id="page_wrapper">
+					<h2 className="callout">Si hei, send en hilsen eller gi oss ris/ros!</h2>
+					<ContactForm />
+				</section>
 				<PageFooter />
 			</>
 		)
