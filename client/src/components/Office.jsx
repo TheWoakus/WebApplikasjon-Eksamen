@@ -11,18 +11,23 @@ const Title = styled.p`
 	font-weight: bold;
 	margin-top: 0;
 	margin-bottom: 5px;
+	grid-area: title;
 `;
 
 const Address = styled.p`
 	margin: 0;
+	grid-area: address;
+
 `;
 
 const Phone = styled.p`
 	margin: 0;
+	grid-area: phone;
 `;
 
 const Mail = styled.a`
 	margin: 0;
+	grid-area: mail;
 `;
 
 class Office extends React.Component {

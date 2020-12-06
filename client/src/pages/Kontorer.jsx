@@ -6,7 +6,7 @@ import PageFooter from '../components/PageFooter';
 import Office from '../components/Office';
 import Search from '../components/Search';
 
-import { allLocations} from '../assets/js/allLocations';
+import { allLocations } from '../assets/js/allLocations';
 
 const Section = styled.section`
 	border: 1px solid black;
@@ -18,18 +18,22 @@ const Title = styled.p`
 	font-weight: bold;
 	margin-top: 0;
 	margin-bottom: 5px;
+	grid-area: list_title;
 `;
 
 const Address = styled.p`
 	margin: 0;
+	grid-area: list_address;
 `;
 
 const Phone = styled.p`
 	margin: 0;
+	grid-area: list_phone;
 `;
 
 const Mail = styled.a`
 	margin: 0;
+	grid-area: list_mail;
 `;
 
 class Kontorer extends React.Component {
@@ -43,7 +47,7 @@ class Kontorer extends React.Component {
 			theOffices: {},
 			allLocations: {},
 			search: null,
-			viewtype: false,
+			viewType: true,
 		};
 	};
 
@@ -53,8 +57,7 @@ class Kontorer extends React.Component {
 
 	loadSamples() {
 		this.setState({
-			allLocations: allLocations,
-
+			allLocations: allLocations
 		});
 	};
 
@@ -78,11 +81,14 @@ class Kontorer extends React.Component {
 		this.setState({ search: keyword });
 	};
 
-	toggleClass(listType) {
-		// TODO: Enter some code here to change className and how the list is viewed.. grid-view or list-view
-	};
+	toggleViewType() {
+		this.setState({ viewType: !this.state.viewType });
+	}
 
 	render() {
+
+		// let viewtype = this.state.viewType ? "gridOffices" : "listOffices";
+		let viewtype = this.state.viewType ? "listOffices" : "gridOffices";
 
 		const allOfficeLocations = Object.values(this.state.allLocations)
 			.filter((data) => {
@@ -107,11 +113,11 @@ class Kontorer extends React.Component {
 				}
 			})
 			.map((data) => (
-				<Section>
-					<Title>{data.title}</Title>
-					<Address>{data.address} {data.id}</Address>
-					<Phone>{data.phone}{data.id}</Phone>
-					<Mail href={`mailto:${data.location}${data.id}@epost.no`}>{data.location}{data.id}@epost.no</Mail>
+				<Section className="oneOffice">
+					<Title className="list_title">{data.title}</Title>
+					<Address className="list_address">{data.address} {data.id}</Address>
+					<Phone className="list_phone">{data.phone}{data.id}</Phone>
+					<Mail className="list_mail" href={`mailto:${data.location}${data.id}@epost.no`}>{data.location}{data.id}@epost.no</Mail>
 				</Section>
 			))
 
@@ -122,12 +128,12 @@ class Kontorer extends React.Component {
 				<section className="officeContent">
 					<section className="viewOptions">
 						<Search search={this.search} />
-						<button type="button" className="listview" onClick={this.toggleClass()} ></button>
-						<button type="button" className="gridview" onClick={this.toggleClass()}></button>
+						<button type="button" className={`${this.state.viewType}_mode`} onClick={this.toggleViewType.bind(this)} ></button>
+						{/* <button type="button" className="gridview" onClick={this.toggleViewType.bind(this)}></button> */}
 					</section>
 					
 					<section className="branch">
-						<section id="officeLocations" className="gridOffices">
+						<section id="officeLocations" className={viewtype}>
 							{allOfficeLocations}
 						</section>
 					</section>

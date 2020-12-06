@@ -1,1 +1,11 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><style>.cls-1{fill:#499eb8;}.cls-2{fill:none;}</style></defs><path class="cls-1" d="M8,28h8V20H8ZM8,38h8V30H8ZM8,18h8V10H8ZM18,28H42V20H18Zm0,10H42V30H18Zm0-28v8H42V10Z"/><path class="cls-2" d="M0,0H48V48H0Z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 34 28" style="enable-background:new 0 0 34 28;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#499EB8;}
+	.st1{fill:none;}
+</style>
+<path class="st0" d="M0,18h8v-8H0V18z M0,28h8v-8H0V28z M0,8h8V0H0V8z M10,18h24v-8H10V18z M10,28h24v-8H10V28z M10,0v8h24V0H10z"/>
+<path class="st1" d="M-8-10h48v48H-8V-10z"/>
+</svg>

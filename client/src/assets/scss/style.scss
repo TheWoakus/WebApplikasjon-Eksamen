@@ -64,10 +64,10 @@ body, input, textarea {
 
 .viewOptions {
 	display: grid;
-	grid-template-columns: auto 43px 43px;
+	grid-template-columns: auto 60px;
 	grid-gap: 20px;
 	grid-template-areas: 
-	"search list grid"
+	"search mode"
 }
 
 .searchbox {
@@ -85,24 +85,33 @@ body, input, textarea {
   grid-area: search;
 }
 
-.listview, .gridview {
-	width: 43px;
-	height: 43px;
+.true_mode, .false_mode {
+	width: 40px;
+	height: 40px;
+	background-position: center;
 	border: none;
 	outline: none;
 	cursor: pointer;
-	margin-top: 5px;
+	margin-top: 14px;
 	padding: 0;
+	grid-area: mode;
+	justify-self: end;
 }
 
-.listview {
-	background: url(../svg/list.svg) no-repeat;
-	grid-area: list
-}
-
-.gridview {
+.true_mode {
 	background: url(../svg/grid.svg) no-repeat;
-	grid-area: grid;
+}
+
+.true_mode:hover {
+	background: url(../svg/grid_hover.svg) no-repeat;
+}
+
+.false_mode {
+	background: url(../svg/list.svg) no-repeat;
+}
+
+.false_mode:hover {
+	background: url(../svg/list_hover.svg) no-repeat;
 }
 
 .officeContent {
@@ -120,9 +129,13 @@ body, input, textarea {
 }
 
 .listOffices {
-	border: 1px solid red;
+	// border: 1px solid red;
 }
 
+.listOffices > .oneOffice {
+	// display: grid;
+
+}
 
 .secondary {
 	width: 25px;
@@ -133,35 +146,35 @@ body, input, textarea {
 	display: none;
 }
 
-.hjem {
+.hjem_svg {
 	background-image: url(../svg/home.svg);
 	content: "hello";
 }
-.hjem:hover {
+.hjem_svg:hover {
 	background-image: url(../svg/home_hover.svg);
 }
-.kontorer {
+.kontorer_svg {
 	background-image: url(../svg/office.svg);
 }
-.kontorer:hover {
+.kontorer_svg:hover {
 	background-image: url(../svg/office_hover.svg);
 }
-.fagartikler {
+.fagartikler_svg {
 	background-image: url(../svg/article.svg);
 }
-.fagartikler:hover {
+.fagartikler_svg:hover {
 	background-image: url(../svg/article_hover.svg);
 }
-.kontakt {
+.kontakt_svg {
 	background-image: url(../svg/contact.svg);
 }
-.kontakt:hover {
+.kontakt_svg:hover {
 	background-image: url(../svg/contact_hover.svg);
 }
-.login {
+.login_svg {
 	background-image: url(../svg/login.svg);
 }
-.login:hover {
+.login_svg:hover {
 	background-image: url(../svg/login_hover.svg);
 }
 
