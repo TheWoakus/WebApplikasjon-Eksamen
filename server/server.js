@@ -5,6 +5,8 @@ import cors from 'cors';
 import 'dotenv/config.js';
 import { SERVER_PORT, CLIENT_PORT } from './constants/index.js';
 import connectDatabase from './config/db.js';
+import user from './routes/user.js';
+
 
 
 const app = express();
@@ -19,7 +21,7 @@ app.use(
 	})
 );
 app.use(express.json());
-// app.use(`${process.env.BASEURL}/kontakt`, kontakt)
+app.use(`${process.env.BASEURL}/register`, user);
 
 
 connectDatabase();

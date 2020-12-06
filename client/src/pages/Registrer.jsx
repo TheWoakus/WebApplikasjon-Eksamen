@@ -9,7 +9,7 @@ class Logginn extends React.Component {
 	render() {
 		return (
 			<>
-				<PageHeader title="Logg inn" />
+				<PageHeader title="Registrer deg" />
 
 				<section id="page_wrapper">
 					<h2 className="callout">Come join the dark side, we have cookies!</h2>

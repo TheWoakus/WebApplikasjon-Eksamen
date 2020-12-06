@@ -22,10 +22,6 @@ body, input, textarea {
 	margin: 0 auto;
 }
 
-.callout {
-	text-align: center;
-}
-
 #page_content, .officeContent {
 	padding-bottom: 60px;	
 }
@@ -58,7 +54,6 @@ body, input, textarea {
 	text-decoration: none;
 	align-self: center;
 	text-align: center;
-	// line-height: 300px;
 	font-variant: small-caps;
 	font-weight: bold;
 }
@@ -68,6 +63,10 @@ body, input, textarea {
 
 #fagartikler {
 	grid-area: fagartikler;
+}
+
+.callout {
+	text-align: center;
 }
 
 .viewOptions {
@@ -184,6 +183,22 @@ body, input, textarea {
 }
 .login_svg:hover {
 	background-image: url(../svg/login_hover.svg);
+}
+
+/*=============================
+	register
+=============================*/
+
+.registerLabel {
+	display: grid;
+	grid-template-columns: 150px auto;
+	grid-gap: 20px;
+}
+
+#name_error, #mail_error, #username_error, #password_error, #verifypassword_error {
+	justify-self: end;
+	color: red;
+	display: none;
 }
 
 /*=============================
