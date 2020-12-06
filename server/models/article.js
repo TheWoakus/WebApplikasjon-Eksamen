@@ -19,6 +19,7 @@ const ArticleSchema = new Schema(
       required: [true, 'Gi oss noen hint da..'],
       unique: false,
       min: [1, 'Én bokstav bør vi klare her også'],
+      max: [150, 'Dette er bare en forhåndsvisning. Maks 150 karakterer'],
     },
     content: {
       type: String,
@@ -34,7 +35,7 @@ const ArticleSchema = new Schema(
     },
     author: {
       type: String,
-      required: [true, ''],
+      required: [true, 'Noen har vell lagd denne artikkelen?'],
       unique: false,
     },
   },

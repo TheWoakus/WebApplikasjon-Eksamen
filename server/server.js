@@ -7,38 +7,37 @@ import { SERVER_PORT, CLIENT_PORT } from './constants/index.js';
 import connectDatabase from './config/db.js';
 import user from './routes/user.js';
 import article from './routes/article.js';
-
+import office from './routes/office.js';
 
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
-	app.use(morgan('dev'));
+  app.use(morgan('dev'));
 }
 app.use(
-	cors({
-		origin: `http://localhost:${CLIENT_PORT}`,
-		allowedHeaders: ['Content-Type'],
-	})
+  cors({
+    origin: `http://localhost:${CLIENT_PORT}`,
+    allowedHeaders: ['Content-Type'],
+  })
 );
 app.use(express.json());
 app.use(`${process.env.BASEURL}/register`, user);
 app.use(`${process.env.BASEURL}/nyartikel`, article);
 app.use(`${process.env.BASEURL}/fagartikler`, article);
-
-
+app.use(`${process.env.BASEURL}/kontorer`, office);
 
 connectDatabase();
 const server = app.listen(
-	SERVER_PORT,
-	console.log(
-		`Server running in ${process.env.NODE_ENV} mode on port ${SERVER_PORT}`
-	)
+  SERVER_PORT,
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port ${SERVER_PORT}`
+  )
 );
 
 process.on('unhandledRejection', (err) => {
-	console.log(`Error: ${err.message}`);
-	console.log('Shutting down server due to Unhandled Promise Rejection');
-	server.close(() => {
-		process.exit(1);
-	});
+  console.log(`Error: ${err.message}`);
+  console.log('Shutting down server due to Unhandled Promise Rejection');
+  server.close(() => {
+    process.exit(1);
+  });
 });
