@@ -30,6 +30,15 @@ const UserSchema = new Schema(
       minlength: [8, 'Du klarer å skrive inn 8 tegn gjør du ikke?'],
       select: false,
     },
+    userType: {
+      type: Number,
+      required: [
+        true,
+        'Trenger en brukertype, 0 er super, 1 er admin, 2 er vanlig',
+      ],
+      unique: false,
+      min: [1, 'Du trenger nesten en brukertype altså'],
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

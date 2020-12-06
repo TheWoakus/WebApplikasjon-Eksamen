@@ -8,6 +8,8 @@ import connectDatabase from './config/db.js';
 import user from './routes/user.js';
 import article from './routes/article.js';
 import office from './routes/office.js';
+import category from './routes/category.js';
+import request from './routes/request.js';
 
 const app = express();
 
@@ -25,6 +27,8 @@ app.use(`${process.env.BASEURL}/register`, user);
 app.use(`${process.env.BASEURL}/nyartikel`, article);
 app.use(`${process.env.BASEURL}/fagartikler`, article);
 app.use(`${process.env.BASEURL}/kontorer`, office);
+app.use(`${process.env.BASEURL}/hendvendelser`, request);
+app.use(`${process.env.BASEURL}/kategorier`, category);
 
 connectDatabase();
 const server = app.listen(
