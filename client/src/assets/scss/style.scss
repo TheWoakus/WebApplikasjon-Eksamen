@@ -184,7 +184,54 @@ body, input, textarea {
 .login_svg:hover {
 	background-image: url(../svg/login_hover.svg);
 }
+/*=============================
+	fagartikler
+=============================*/
+#articles {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-gap: 20px;
+}
 
+#articles > a {
+	text-decoration: none;
+}
+.article_container {
+	display: grid;
+	grid-template-columns: 150px auto;
+	grid-gap: 20px;
+}
+
+.article_thumbnail {
+	width: 150px;
+	height: 150px;
+	background: #dbdbdb;
+}
+
+.article_container > section {
+	display: grid;
+	grid-template-rows: 50px auto;
+	grid-template-areas:
+	"title category"
+	"ingress ingress"
+}
+
+.articleTitle {
+	grid-area: title;
+	height: 50px;
+	margin: 0;
+}
+
+.articleCategory {
+	grid-area: category;
+	justify-self: end;
+	font-weight: bold;
+}
+
+.articleIngress {
+	grid-area: ingress;
+	margin: 0;
+}
 /*=============================
 	register
 =============================*/
@@ -195,7 +242,8 @@ body, input, textarea {
 	grid-gap: 20px;
 }
 
-#name_error, #mail_error, #username_error, #password_error, #verifypassword_error {
+#name_error, #mail_error, #username_error, #password_error, #verifypassword_error, #title_error, #ingress_error,
+#title_error, #ingress_error, #content_error, #category_error, #author_error {
 	justify-self: end;
 	color: red;
 	display: none;
@@ -251,9 +299,30 @@ body, input, textarea {
 		display: none;
 	}
 }
+@media(max-width: 600px) {
+	.article_container {
+	grid-template-columns: auto;
+	grid-gap: 20px;
+	}
+
+	.article_thumbnail {
+		display: none;
+	}
+	
+}
 @media(max-width: 500px) {
 	.title {
 		font-size: 18px;
 		// line-height: 150px;
 	}
+
+	.article_container > section {
+	grid-template-rows: auto;
+	grid-gap: 20px;
+	grid-template-areas:
+	"title"
+	"ingress"
+	"category"
+	}
+
 }

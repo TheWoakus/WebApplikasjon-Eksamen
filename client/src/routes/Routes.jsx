@@ -8,6 +8,7 @@ import Kontakt from '../pages/Kontakt';
 import Kontorer from '../pages/Kontorer';
 import Logginn from '../pages/Logginn';
 import Registrer from '../pages/Registrer';
+import NyArtikel from '../pages/NyArtikel';
 
 import MainHeader from '../components/MainHeader'
 
@@ -33,6 +34,9 @@ const Routes = () => (
         </Route>
 		<Route exact path="/registrer/">
 			<Registrer />
+		</Route>
+		<Route exact path="/nyartikel/">
+			<NyArtikel />
 		</Route>
         <Route path="*">
           <NoMatch />

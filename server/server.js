@@ -6,7 +6,7 @@ import 'dotenv/config.js';
 import { SERVER_PORT, CLIENT_PORT } from './constants/index.js';
 import connectDatabase from './config/db.js';
 import user from './routes/user.js';
-
+import article from './routes/article.js';
 
 
 const app = express();
@@ -22,6 +22,9 @@ app.use(
 );
 app.use(express.json());
 app.use(`${process.env.BASEURL}/register`, user);
+app.use(`${process.env.BASEURL}/nyartikel`, article);
+app.use(`${process.env.BASEURL}/fagartikler`, article);
+
 
 
 connectDatabase();

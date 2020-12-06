@@ -49,7 +49,7 @@ class Form extends React.Component {
 				.then((res) => {
 					console.log(res.data)
 					this.signupForm.reset();
-					this.props.history.push('/user'); // where do we want to send the user after registration??
+					this.props.history.push('/'); // where do we want to send the user after registration??
 				}).catch((error) => {
 					console.log(error)
 				});
