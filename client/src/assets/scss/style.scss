@@ -50,7 +50,7 @@ body, input, textarea {
 	text-decoration: none;
 	align-self: center;
 	text-align: center;
-	line-height: 300px;
+	// line-height: 300px;
 	font-variant: small-caps;
 	font-weight: bold;
 }
@@ -123,6 +123,48 @@ body, input, textarea {
 	border: 1px solid red;
 }
 
+
+.secondary {
+	width: 25px;
+	height: 70px;
+	background-repeat: no-repeat;
+	background-size: 25px;
+	background-position: center;
+	display: none;
+}
+
+.hjem {
+	background-image: url(../svg/home.svg);
+	content: "hello";
+}
+.hjem:hover {
+	background-image: url(../svg/home_hover.svg);
+}
+.kontorer {
+	background-image: url(../svg/office.svg);
+}
+.kontorer:hover {
+	background-image: url(../svg/office_hover.svg);
+}
+.fagartikler {
+	background-image: url(../svg/article.svg);
+}
+.fagartikler:hover {
+	background-image: url(../svg/article_hover.svg);
+}
+.kontakt {
+	background-image: url(../svg/contact.svg);
+}
+.kontakt:hover {
+	background-image: url(../svg/contact_hover.svg);
+}
+.login {
+	background-image: url(../svg/login.svg);
+}
+.login:hover {
+	background-image: url(../svg/login_hover.svg);
+}
+
 /*=============================
 	@media
 =============================*/
@@ -144,7 +186,13 @@ body, input, textarea {
 	}
 }
 @media(max-width: 1000px) {
-	
+	.primary {
+		display: none;
+	}
+	.secondary {
+		display: block;
+	}
+
 }
 @media(max-width: 800px) {
 	#page_content {
@@ -170,6 +218,6 @@ body, input, textarea {
 @media(max-width: 500px) {
 	.title {
 		font-size: 18px;
-		line-height: 150px;
+		// line-height: 150px;
 	}
 }

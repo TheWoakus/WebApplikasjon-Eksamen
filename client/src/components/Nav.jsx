@@ -51,7 +51,7 @@ const NavMenuItem = styled.li`
 	}
 
 	@media(max-width: 1000px) {
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(5, 50px);
 	}
 `;
 
@@ -59,19 +59,34 @@ const Nav = () => (
 	<StyledNav>
 		<NavMenu>
 			<NavMenuItem>
-				<NavLink exact to="/" activeClassName="active">
+				<NavLink exact to="/" activeClassName="active" className="secondary hjem">
+
+				</NavLink>
+				<NavLink exact to="/kontorer" activeClassName="active" className="secondary kontorer">
+
+				</NavLink>
+				<NavLink exact to="/fagartikler" activeClassName="active" className="secondary fagartikler">
+
+				</NavLink>
+				<NavLink exact to="/kontakt" activeClassName="active" className="secondary kontakt">
+
+				</NavLink>
+				<NavLink exact to="/logginn" activeClassName="active" className="secondary login">
+
+				</NavLink>
+				<NavLink exact to="/" activeClassName="active" className="primary"> 
 					Hjem
 				</NavLink>
-				<NavLink exact to="/kontorer/" activeClassName="active">
+				<NavLink exact to="/kontorer/" activeClassName="active" className="primary"> 
 					Kontorer
 				</NavLink>
-				<NavLink exact to="/fagartikler/" activeClassName="active">
+				<NavLink exact to="/fagartikler/" activeClassName="active" className="primary"> 
 					Fagartikler
 				</NavLink>
-				<NavLink exact to="/kontakt/" activeClassName="active">
+				<NavLink exact to="/kontakt/" activeClassName="active" className="primary"> 
 					Kontakt
 				</NavLink>
-				<NavLink exact to="/logginn/" activeClassName="active" className="logginn">
+				<NavLink exact to="/logginn/" activeClassName="active" className="primary logginn">
 					Logg inn
 				</NavLink>
 			</NavMenuItem>

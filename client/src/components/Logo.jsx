@@ -35,6 +35,9 @@ const NavMenuItem = styled.li`
 		&.active {
 			color: #333;
 		}
+		&:hover {
+			color: #499eb8;
+		}
 	}
 `;
 

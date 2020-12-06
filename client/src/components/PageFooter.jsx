@@ -12,12 +12,15 @@ const Footer = styled.footer`
 	bottom: 0;
 	width: 100%;
 	height: 60px;
+
+	@media(max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
 `;
 
 const PageFooter = () => (
 	<Footer>
 		<p>Orgnr: 007 007 007</p>
-		{/* <p><a href="mailto:lg@lgror.no">lg@lgror.no</a></p> */}
 		<a href="mailto:lg@lgror.no" className="mail">lg@lgror.no</a>
 		<a href="callto:99000000" className="phone">99 00 00 00</a>
 	</Footer>

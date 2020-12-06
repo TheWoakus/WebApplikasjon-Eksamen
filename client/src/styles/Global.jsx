@@ -30,7 +30,7 @@ fieldset {
 
 form {
 	margin: 0 auto;
-	width: 500px;
+	max-width: 600px;
 	font-size: 18px;
 }
 
