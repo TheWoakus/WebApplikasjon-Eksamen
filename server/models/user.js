@@ -37,7 +37,7 @@ const UserSchema = new Schema(
         'Trenger en brukertype, 0 er super, 1 er admin, 2 er vanlig',
       ],
       unique: false,
-      min: [1, 'Du trenger nesten en brukertype altså'],
+      min: [0, 'Du trenger nesten en brukertype altså'],
     },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
