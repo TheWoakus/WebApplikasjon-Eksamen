@@ -361,14 +361,14 @@ body, input, textarea {
 	page - registrer
 =============================*/
 
-.registerLabel {
+.formLabel {
 	display: grid;
 	grid-template-columns: 150px auto;
 	grid-gap: 20px;
 }
 
 #name_error, #mail_error, #username_error, #password_error, #verifypassword_error, #title_error, #ingress_error,
-#title_error, #ingress_error, #content_error, #category_error, #author_error {
+#title_error, #ingress_error, #content_error, #category_error, #paygrade_error, #author_error {
 	justify-self: end;
 	color: red;
 	display: none;

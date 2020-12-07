@@ -33,6 +33,14 @@ const ArticleSchema = new Schema(
       unique: false,
       min: [1, 'Skal den her eller der mon tro??'],
     },
+    paygrade: {
+      type: String,
+      enum: {
+        values: ['Standard', 'Registrert', 'Admin', 'SuperAdmin'],
+        message: 'Rolle ikke fylt ut',
+      },
+      default: 'Standard',
+    },
     author: {
       type: String,
       required: [true, 'Noen har vell lagd denne artikkelen?'],

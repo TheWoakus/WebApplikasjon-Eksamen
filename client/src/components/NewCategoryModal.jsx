@@ -61,7 +61,7 @@ class NewCategoryModal extends React.Component {
 							<fieldset>
 								<section id="fieldset">
 									<section className="field">
-										<label htmlFor="newTodoTitle">Title</label>
+										<label className="formLabel" htmlFor="newTodoTitle">Title<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
 										<input
 											ref={(input) => (this.title = input)}
 											type="text"

@@ -66,7 +66,7 @@ class Form extends React.Component {
 					onSubmit={(event) => this.onSubmit(event)}
 				>
 					<fieldset>
-						<label htmlFor="email">E-post&#58;</label>
+						<label className="formLabel" htmlFor="email">E-post&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
 							ref={(input) => (this.email = input)}
 							type="text"
@@ -76,7 +76,7 @@ class Form extends React.Component {
 							onChange={this.onChangeUsername}
 						/>
 
-						<label htmlFor="password">Passord&#58;</label>
+						<label className="formLabel" htmlFor="password">Passord&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
 							ref={(input) => (this.password = input)}
 							type="password"
