@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
 import { withRouter } from 'react-router-dom';
+import { login } from '../utils/authService';
+import { useAuthContext } from '../context/AuthProvider';
 
 const StyledForm = styled.form`
 	max-width: 300px;
 `;
-
 
 class Form extends React.Component {
 
@@ -16,6 +17,8 @@ class Form extends React.Component {
 
 		this.onChangeUsername = this.onChangeUsername.bind(this);
 		this.onChangePassword = this.onChangePassword.bind(this);
+		this.setSuccess = this.setSuccess.bind(this);
+		this.setError = this.setError.bind(this);
 	}
 
 	onChangeUsername(event) {
@@ -26,23 +29,35 @@ class Form extends React.Component {
 		this.setState({ password: event.target.value })
 	}
 
-	onSubmit(event) {
+	setSuccess(property) {
+		this.setState({success: property})
+	}
+
+	setError(property) {
+		this.setState({error: property})
+	}
+
+	async onSubmit(event) {
 		event.preventDefault()
 
-		const userDetails = {
+		const credentials = {
 			email: this.email.value,
 			password: this.password.value
 		};
 
-		axios.post(`${process.env.BASE_URL}${process.env.API_VERSION}/login`, userDetails)
-			.then((res) => {
-				console.log(res.data)
-				this.signupForm.reset();
-				this.props.history.push('/');
-			}).catch((error) => {
-				console.log(error)
-			});
+		const {data} = await login(credentials);
+
+		if(!data.success) {
+			this.setError(data.message);
+		} else {
+			const user = data.user;
+			const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
+			// TODO: Update AuthContext
+			this.setSuccess(true);
+			this.props.history.push('/');
+		}
 	}
+
 	render() {
 		return (
 			<>

@@ -13,7 +13,7 @@ export const sendToken = (user, res) => {
     .status(200)
     .cookie('token', token, options)
     .json({
-      sucess: true,
+      success: true,
       token,
       user: {
         email: user.email,
