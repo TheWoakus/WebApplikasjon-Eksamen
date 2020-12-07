@@ -21,7 +21,7 @@ const RequestSchema = new Schema(
       unique: false,
       min: [1, 'Én bokstav bør vi klare her også'],
     },
-    mail: {
+    email: {
       type: String,
       required: [true, 'Vi trenger en måte å kontakte deg på'],
       unique: false,

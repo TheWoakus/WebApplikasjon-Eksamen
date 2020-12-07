@@ -26,7 +26,7 @@ const OfficeSchema = new Schema(
       unique: false,
       min: ['1', 'Et kontor må ha et telefonnr'],
     },
-    mail: {
+    email: {
       type: String,
       required: true,
       unique: false,
