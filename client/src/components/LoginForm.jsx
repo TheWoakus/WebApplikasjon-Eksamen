@@ -30,11 +30,11 @@ class Form extends React.Component {
 		event.preventDefault()
 
 		const userDetails = {
-			username: this.username.value,
+			email: this.email.value,
 			password: this.password.value
 		};
 
-		axios.post(`${process.env.BASE_URL}${process.env.API_VERSION}/logginn`, userDetails)
+		axios.post(`${process.env.BASE_URL}${process.env.API_VERSION}/login`, userDetails)
 			.then((res) => {
 				console.log(res.data)
 				this.signupForm.reset();
@@ -51,13 +51,13 @@ class Form extends React.Component {
 					onSubmit={(event) => this.onSubmit(event)}
 				>
 					<fieldset>
-						<label htmlFor="username">Brukernavn&#58;</label>
+						<label htmlFor="email">E-post&#58;</label>
 						<input
-							ref={(input) => (this.username = input)}
+							ref={(input) => (this.email = input)}
 							type="text"
-							name="username"
+							name="email"
 							className="input"
-							placeholder="Skriv inn ditt brukernavn"
+							placeholder="Skriv inn din e-post"
 							onChange={this.onChangeUsername}
 						/>
 

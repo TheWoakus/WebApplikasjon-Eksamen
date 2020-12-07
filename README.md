@@ -45,8 +45,8 @@ M.E.R.N
   Role er default til user, men om man spesifiserer dette så kan man også sette til admin eller super
 
   Dersom man skal være admin så skriver man inn "admin"
-  Dersom man skal være super så skriver man inn "super"
 
+  Dersom man skal være super så skriver man inn "super"
 
 ## SERVER
 
