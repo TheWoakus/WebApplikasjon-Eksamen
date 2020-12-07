@@ -29,6 +29,24 @@ M.E.R.N
   
   Dessverre får du ikke se databasen før vi legger til en collection.. Fyr opp server og app, så fikser vi dette.
 
+## Super og admin
+
+  For å kunne lage en super eller admin bruker så må dette gjøres igjennom postman
+ 
+  Dette blir en POST forespørsel til adresse: http://localhost:7777/api/v1/register
+
+  Det tar imot formatet json og krever: 
+  - name
+  - email
+  - username
+  - password
+  - role
+
+  Role er default til user, men om man spesifiserer dette så kan man også sette til admin eller super
+
+  Dersom man skal være admin så skriver man inn "admin"
+  Dersom man skal være super så skriver man inn "super"
+
 
 ## SERVER
 
