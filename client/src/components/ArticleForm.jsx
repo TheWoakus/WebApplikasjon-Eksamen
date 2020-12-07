@@ -21,6 +21,7 @@ class Form extends React.Component {
 
 		this.state = {
 			categories: {},
+			authors: ["Lars Larsen", "Gunn Gundersen", "Simen Simensen"],
 		}
 	}
 
@@ -84,7 +85,13 @@ class Form extends React.Component {
 				>{data.title}
 			</option>
 			))
-		
+		const allAuthors = this.state.authors.map((data) => (
+			<option
+				ref={(input) => (this.author = input)}
+				name="author"
+				>{data}
+			</option>
+		))
 		return (
 			<>
 				<NewCategoryModal addCategory={this.addCategory}/>
@@ -131,14 +138,18 @@ class Form extends React.Component {
 						<NewCategoryButton/>
 
 						<label className="registerLabel" htmlFor="author">Forfatter&#58;<span id="author_error">OBS!! Sjekk at denne er riktig</span></label>
-						<input
+						{/* <input
 							ref={(input) => (this.author = input)}
 							type="text"
 							name="author"
 							className="input"
 							placeholder="Hvem skrev disse vise ord?"
 							onChange={this.onChangeAuthor}
-						/>
+						/> */}
+						<select>
+							{allAuthors}
+						</select>
+							
 						<button
 							type="submit"
 							className="button centered big"

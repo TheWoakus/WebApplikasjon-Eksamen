@@ -19,7 +19,7 @@ const Footer = styled.footer`
 `;
 
 const PageFooter = () => (
-	<Footer>
+	<Footer className="footer">
 		<p>Orgnr: 007 007 007</p>
 		<a href="mailto:lg@lgror.no" className="mail">lg@lgror.no</a>
 		<a href="callto:99000000" className="phone">99 00 00 00</a>

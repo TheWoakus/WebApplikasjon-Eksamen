@@ -20,6 +20,9 @@ h2 {
 	font-size: 30px;
 }
 
+a {
+	text-decoration: none;
+}
 .mail, .phone {
 	margin: 14px 0;
 }
@@ -63,7 +66,7 @@ span {
 	display: inline-block;
 }
 
-p:first-letter, span:first-letter, .complete, .delete {
+p:first-letter, span:first-letter, .complete {
 	text-transform: capitalize;
 }
 

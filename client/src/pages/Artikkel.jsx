@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { get } from '../utils/articleService';
 
 import PageHeader from '../components/PageHeader';
-
+import PageFooter from '../components/PageFooter';
 
 const Artikkel = () => {
 	const [article, setArticle] = useState(null);
@@ -53,8 +54,23 @@ const Artikkel = () => {
 								<p className="article_category">Kategori: {result.category}</p>
 								<p className="article_slug">Slug: {result.slug}</p>
 							</section>
+							<section id="admin_buttons">
+								<NavLink exact to="/registrer/">
+									<button
+										type="submit"
+										className="delete block"
+									>Slett</button>
+								</NavLink>
+								<NavLink exact to="/registrer/">
+									<button
+										type="submit"
+										className="edit block"
+									>Rediger</button>
+								</NavLink>
+							</section>
 						</section>
 					</section>
+					<PageFooter />
 				</>
 			return output;
 		}
