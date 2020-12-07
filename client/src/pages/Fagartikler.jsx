@@ -25,7 +25,9 @@ const Fagartikler = () => {
 		<>
 			<PageHeader title="Fagartikler" />
 			<section id="page_wrapper">
-				<Link exact to="/nyartikel/" className="button big bigspace block">Ny artikkel</Link>
+				<section>
+					<Link to="/nyartikel/" className="button big bigspace block">Ny artikkel</Link>
+				</section>
 				<section id="articles">
 					{articles && articles.map((article) => (
 						<Link className="" to={`/article/${article._id}`} key={article.id}>

@@ -17,12 +17,15 @@ class Form extends React.Component {
 		this.onChangeIngress = this.onChangeIngress.bind(this);
 		this.onChangeContent = this.onChangeContent.bind(this);
 		this.onChangeCategory = this.onChangeCategory.bind(this);
+		this.onChangePaygrade = this.onChangePaygrade.bind(this);
 		this.onChangeAuthor = this.onChangeAuthor.bind(this);
 
 		this.state = {
 			categories: {},
-			authors: ["Lars Larsen", "Gunn Gundersen", "Simen Simensen"],
+			author: 'Lars Larsen',
+			paygrade: 'Standard',
 		}
+
 	}
 
 	addCategory(categoryDetails) {
@@ -48,6 +51,10 @@ class Form extends React.Component {
 		this.setState({ category: event.target.value })
 	}
 
+	onChangePaygrade(event) {
+		this.setState({ paygrade: event.target.value })
+	}
+
 	onChangeAuthor(event) {
 		this.setState({ author: event.target.value })
 	}
@@ -60,7 +67,8 @@ class Form extends React.Component {
 			ingress: this.ingress.value,
 			content: this.content.value,
 			category: this.category.value,
-			author: this.author.value,
+			paygrade: this.state.paygrade,
+			author: this.state.author
 		}
 
 		axios.post(`${process.env.BASE_URL}${process.env.API_VERSION}/nyartikel`, articleDetails)
@@ -80,18 +88,13 @@ class Form extends React.Component {
 		const allChoices = Object.values(this.state.categories)
 			.map((data) => (
 			<option 
+				key={new Date()}
 				ref={(input) => (this.category = input)}
 				name="category"
 				>{data.title}
 			</option>
 			))
-		const allAuthors = this.state.authors.map((data) => (
-			<option
-				ref={(input) => (this.author = input)}
-				name="author"
-				>{data}
-			</option>
-		))
+
 		return (
 			<>
 				<NewCategoryModal addCategory={this.addCategory}/>
@@ -100,7 +103,7 @@ class Form extends React.Component {
 					onSubmit={(event) => this.onSubmit(event)}
 				>
 					<fieldset>
-						<label className="registerLabel" htmlFor="name">Navn&#58;<span id="title_error">OBS!! Sjekk at denne er riktig</span></label>
+						<label className="formLabel" htmlFor="title">Tittel&#58;<span id="title_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
 							ref={(input) => (this.title = input)}
 							type="text"
@@ -110,7 +113,7 @@ class Form extends React.Component {
 							onChange={this.onChangeTitle}
 						/>
 
-						<label className="registerLabel" htmlFor="ingress">Ingress&#58;<span id="ingress_error">OBS!! Sjekk at denne er riktig</span></label>
+						<label className="formLabel" htmlFor="ingress">Ingress&#58;<span id="ingress_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
 							ref={(input) => (this.ingress = input)}
 							type="text"
@@ -120,7 +123,7 @@ class Form extends React.Component {
 							onChange={this.onChangeIngress}
 						/>
 
-						<label className="registerLabel" htmlFor="content">Innhold&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
+						<label className="formLabel" htmlFor="content">Innhold&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
 						<textarea
 							ref={(input) => (this.content = input)}
 							name="content"
@@ -131,23 +134,28 @@ class Form extends React.Component {
 							onChange={this.onChangeContent}
 						></textarea>
 
-						<label className="registerLabel" htmlFor="category">Kategori&#58;<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
+						<label className="formLabel" htmlFor="category">Kategori&#58;<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
 						<select>
 							{allChoices}
 						</select>
 						<NewCategoryButton/>
 
-						<label className="registerLabel" htmlFor="author">Forfatter&#58;<span id="author_error">OBS!! Sjekk at denne er riktig</span></label>
-						{/* <input
-							ref={(input) => (this.author = input)}
-							type="text"
-							name="author"
-							className="input"
-							placeholder="Hvem skrev disse vise ord?"
+						<label className="formLabel" htmlFor="paygrade">Klarering&#58;<span id="paygrade_error">OBS!! Sjekk at denne er riktig</span></label>
+						<select
+							onChange={this.onChangePaygrade}
+							defaultValue={this.state.paygrade}>
+								<option value="Standard">Standard</option>
+								<option value="Registrert">Registrert</option>
+								<option value="Admin">Admin</option>
+								<option value="SuperAdmin">SuperAdmin</option>
+						</select>
+						<label className="formLabel" htmlFor="author">Forfatter&#58;<span id="author_error">OBS!! Sjekk at denne er riktig</span></label>
+						<select
 							onChange={this.onChangeAuthor}
-						/> */}
-						<select>
-							{allAuthors}
+							defaultValue={this.state.author}>
+								<option value="Lars Larsen">Lars Larsen</option>
+								<option value="Gunn Gundersen">Gunn Gundersen</option>
+								<option value="Simen Simensen">Simen Simensen</option>
 						</select>
 							
 						<button

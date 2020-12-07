@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 import PageHeader from '../components/PageHeader';
 import PageFooter from '../components/PageFooter';
-import Office from '../components/Office';
 import Search from '../components/Search';
 
 import { allLocations } from '../assets/js/allLocations';

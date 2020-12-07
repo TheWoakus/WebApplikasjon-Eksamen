@@ -57,7 +57,7 @@ class Form extends React.Component {
 					onSubmit={(event) => this.onSubmit(event)}
 				>
 					<fieldset>
-						<label htmlFor="name">Navn&#58;</label>
+						<label className="formLabel" htmlFor="name">Navn&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
 							ref={(input) => (this.name = input)}
 							type="text"
@@ -68,7 +68,7 @@ class Form extends React.Component {
 							// required
 						/>
 
-						<label htmlFor="mail">Epost&#58;</label>
+						<label className="formLabel" htmlFor="mail">Epost&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
 							ref={(input) => (this.mail = input)}
 							type="text"
@@ -79,7 +79,7 @@ class Form extends React.Component {
 							// required
 						/>
 
-						<label htmlFor="title">Emne&#58;</label>
+						<label className="formLabel" htmlFor="title">Emne&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
 							ref={(input) => (this.subject = input)}
 							type="text"
@@ -90,7 +90,7 @@ class Form extends React.Component {
 							// required
 						/>
 
-						<label htmlFor="message">Melding&#58;</label>
+						<label className="formLabel" htmlFor="message">Melding&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
 						<textarea
 							ref={(input) => (this.message = input)}
 							name="message"
