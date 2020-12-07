@@ -46,6 +46,15 @@ form {
 	margin-bottom: 20px;
 }
 
+select {
+	padding: 10px 10px;
+	width: calc(100% - 70px);
+	border-radius: 5px;
+	border: 1px solid grey;
+	box-sizing: border-box;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
 label, input {
 	display: block;
 }
@@ -67,14 +76,34 @@ p:first-letter, span:first-letter, .complete, .delete {
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
-	display: block;
 	text-decoration: none;
 	line-height: 40px;
-	margin: 0 auto;
 	height: 50px;
+}
+
+.block {
+	display: block;
+}
+
+.left {
+	margin-left: 0;
+	margin-bottom: 20px
+}
+.centered {
+	margin: 0 auto;
+}
+
+.big {
 	width: 300px;
 }
 
+.space {
+	margin-left: 10px;
+}
+
+.bigspace {
+	margin-bottom: 60px;
+}
 .button:hover, .link:hover, .button:focus, .link:focus {
 	color: #333;
 	cursor: pointer;

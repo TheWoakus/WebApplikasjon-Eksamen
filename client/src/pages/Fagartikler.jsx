@@ -6,7 +6,7 @@ import PageHeader from '../components/PageHeader';
 import PageFooter from '../components/PageFooter';
 
 const Fagartikler = () => {
-	const [article, setArticless] = useState(null);
+	const [articles, setArticles] = useState(null);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -15,7 +15,7 @@ const Fagartikler = () => {
 			if (error) {
 				setError(error);
 			} else {
-				setArticless(data);
+				setArticles(data);
 			}
 		};
 		fetchData();
@@ -25,21 +25,22 @@ const Fagartikler = () => {
 		<>
 			<PageHeader title="Fagartikler" />
 			<section id="page_wrapper">
+				<Link exact to="/nyartikel/" className="button big bigspace block">Ny artikkel</Link>
 				<section id="articles">
-					{article && article.map((article) => (
+					{articles && articles.map((article) => (
 						<Link className="" to={`/article/${article._id}`} key={article.id}>
-						<section className="article_container">
-							<img className="article_thumbnail" src="" alt="" />
-							<section>
-								<h2 className="articleTitle">{article.title}</h2>
-								<p className="articleCategory">{article.category}</p>
-								<p className="articleIngress">{article.ingress}</p>
+							<section className="article_container">
+								<img className="article_thumbnail" src="" alt="" />
+								<section>
+									<h2 className="articleTitle">{article.title}</h2>
+									<p className="articleCategory">{article.category}</p>
+									<p className="articleIngress">{article.ingress}</p>
+								</section>
 							</section>
-						</section>
 						</Link>
 					))}
 				</section>
-				</section>
+			</section>
 			<PageFooter />
 		</>
 	);

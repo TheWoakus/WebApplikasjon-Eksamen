@@ -44,7 +44,7 @@ class Kontorer extends React.Component {
 		this.search = this.search.bind(this);
 
 		this.state = {
-			theOffices: {},
+
 			allLocations: {},
 			search: null,
 			viewType: true,
@@ -57,25 +57,10 @@ class Kontorer extends React.Component {
 
 	loadSamples() {
 		this.setState({
-			allLocations: allLocations
+			allLocations: allLocations,
 		});
 	};
 
-	generateOffices() {
-		const offices = Object.keys(this.state.theOffices);
-		if (offices.length > 0) {
-			const office = Object.keys(this.state.theOffices)
-				.map((key) => (
-					<Office
-						key={key}
-						keyID={key}
-						details={this.state.theOffices[key]}
-					/>
-				));
-			return office;
-		}
-		return <h2>Her var det tomt..</h2>
-	};
 
 	search(keyword) {
 		this.setState({ search: keyword });
@@ -88,6 +73,8 @@ class Kontorer extends React.Component {
 	render() {
 
 		let viewtype = this.state.viewType ? "gridOffices" : "listOffices";
+		let currentlocation = "start";
+		let counter = 1;
 
 		const allOfficeLocations = Object.values(this.state.allLocations)
 			.filter((data) => {
@@ -120,6 +107,7 @@ class Kontorer extends React.Component {
 				</Section>
 			))
 
+
 		return (
 			<>
 				<PageHeader title="Våre kontorer" />
@@ -129,12 +117,12 @@ class Kontorer extends React.Component {
 							<Search search={this.search} />
 							<button type="button" className={`${this.state.viewType}_mode`} onClick={this.toggleViewType.bind(this)} ></button>
 						</section>
-
 						<section className="branch">
 							<section id="officeLocations" className={viewtype}>
 								{allOfficeLocations}
 							</section>
 						</section>
+
 					</section>
 				</section>
 				<PageFooter />

@@ -118,7 +118,7 @@ class Form extends React.Component {
 						/>
 						<button
 							type="submit"
-							className="button link"
+							className="button centered big"
 						>Register</button>
 					</fieldset>
 				</form>

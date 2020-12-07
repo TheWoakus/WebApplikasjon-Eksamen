@@ -1,17 +1,34 @@
 import React from 'react';
 import axios from 'axios';
+
 import { withRouter } from 'react-router-dom';
+
+import NewCategoryButton from './NewCategoryButton';
+import NewCategoryModal from './NewCategoryModal';
+
 
 class Form extends React.Component {
 
 	constructor() {
 		super();
 
+		this.addCategory = this.addCategory.bind(this);
 		this.onChangeTitle = this.onChangeTitle.bind(this);
 		this.onChangeIngress = this.onChangeIngress.bind(this);
 		this.onChangeContent = this.onChangeContent.bind(this);
 		this.onChangeCategory = this.onChangeCategory.bind(this);
 		this.onChangeAuthor = this.onChangeAuthor.bind(this);
+
+		this.state = {
+			categories: {},
+		}
+	}
+
+	addCategory(categoryDetails) {
+		const categories = { ...this.state.categories };
+		const timestamp = Date.now();
+		categories[`cat-${timestamp}`] = categoryDetails;
+		this.setState({ categories });
 	}
 
 	onChangeTitle(event) {
@@ -55,9 +72,22 @@ class Form extends React.Component {
 		});
 
 	}
+
+	
 	render() {
+
+		const allChoices = Object.values(this.state.categories)
+			.map((data) => (
+			<option 
+				ref={(input) => (this.category = input)}
+				name="category"
+				>{data.title}
+			</option>
+			))
+		
 		return (
 			<>
+				<NewCategoryModal addCategory={this.addCategory}/>
 				<form
 					ref={(input) => (this.articleForm = input)}
 					onSubmit={(event) => this.onSubmit(event)}
@@ -95,14 +125,10 @@ class Form extends React.Component {
 						></textarea>
 
 						<label className="registerLabel" htmlFor="category">Kategori&#58;<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
-						<input
-							ref={(input) => (this.category = input)}
-							type="text"
-							name="category"
-							className="input"
-							placeholder="Legg denne i en kategori"
-							onChange={this.onChangeCategory}
-						/>
+						<select>
+							{allChoices}
+						</select>
+						<NewCategoryButton/>
 
 						<label className="registerLabel" htmlFor="author">Forfatter&#58;<span id="author_error">OBS!! Sjekk at denne er riktig</span></label>
 						<input
@@ -115,7 +141,7 @@ class Form extends React.Component {
 						/>
 						<button
 							type="submit"
-							className="button link"
+							className="button centered big"
 						>Publiser</button>
 					</fieldset>
 				</form>

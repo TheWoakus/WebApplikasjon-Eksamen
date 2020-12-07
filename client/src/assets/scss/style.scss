@@ -5,7 +5,7 @@
 // look here ./src/styles/Global.jsx
 
 /*=============================
-	fonts
+	general
 =============================*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;900&display=swap');
 
@@ -13,6 +13,9 @@ body, input, textarea {
 	font-family: 'nunito sans';
 }
 
+/*=============================
+	page default
+=============================*/
 #container {
 	position: relative;
 	min-height: 100vh;;
@@ -37,14 +40,75 @@ body, input, textarea {
 		"footer footer footer footer";
 }
 
+.callout {
+	text-align: center;
+}
+
+/*=============================
+	nav
+=============================*/
+.secondary {
+	width: 25px;
+	height: 70px;
+	background-repeat: no-repeat;
+	background-size: 25px;
+	background-position: center;
+	display: none;
+}
+
+.hjem_svg {
+	background-image: url(../svg/home.svg);
+	content: "hello";
+}
+.hjem_svg:hover {
+	background-image: url(../svg/home_hover.svg);
+}
+.kontorer_svg {
+	background-image: url(../svg/office.svg);
+}
+.kontorer_svg:hover {
+	background-image: url(../svg/office_hover.svg);
+}
+.fagartikler_svg {
+	background-image: url(../svg/article.svg);
+}
+.fagartikler_svg:hover {
+	background-image: url(../svg/article_hover.svg);
+}
+.kontakt_svg {
+	background-image: url(../svg/contact.svg);
+}
+.kontakt_svg:hover {
+	background-image: url(../svg/contact_hover.svg);
+}
+.login_svg {
+	background-image: url(../svg/login.svg);
+}
+.login_svg:hover {
+	background-image: url(../svg/login_hover.svg);
+}
+
+/*=============================
+	page - hjem
+=============================*/
+
 #kontorer, #kontakt, #fagartikler {
 	display: grid;
 	background-color: #dbdbdb;
 	height: 300px;
+	text-decoration: none;
+}
+
+#kontorer:hover > .title > h2, #kontakt:hover > .title > h2, #fagartikler:hover > .title > h2 {
+	color: #499eb8;
 }
 
 #kontorer {
 	grid-area: kontorer;
+}
+
+#fagartikler {
+	grid-area: fagartikler;
 }
 
 .title {
@@ -57,16 +121,24 @@ body, input, textarea {
 	font-variant: small-caps;
 	font-weight: bold;
 }
-#kontakt {
-	grid-area: kontakt;
+
+/*=============================
+	page - kontorer
+=============================*/
+.officeContent {
+	margin: 0px auto;
 }
 
-#fagartikler {
-	grid-area: fagartikler;
+.branch {
+	margin-bottom: 60px;
 }
 
-.callout {
-	text-align: center;
+.gridOffices {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	grid-gap: 40px;
+	justify-content: space-between;
 }
 
 .viewOptions {
@@ -121,71 +193,8 @@ body, input, textarea {
 	background: url(../svg/list_hover.svg) no-repeat;
 }
 
-.officeContent {
-	margin: 0px auto;
-}
-.branch {
-	margin-bottom: 60px;
-}
-.gridOffices {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto;
-	grid-gap: 40px;
-	justify-content: space-between;
-}
-
-// .listOffices {
-// 	border: 1px solid red;
-// }
-
-// .listOffices > .oneOffice {
-	
-
-// }
-
-.secondary {
-	width: 25px;
-	height: 70px;
-	background-repeat: no-repeat;
-	background-size: 25px;
-	background-position: center;
-	display: none;
-}
-
-.hjem_svg {
-	background-image: url(../svg/home.svg);
-	content: "hello";
-}
-.hjem_svg:hover {
-	background-image: url(../svg/home_hover.svg);
-}
-.kontorer_svg {
-	background-image: url(../svg/office.svg);
-}
-.kontorer_svg:hover {
-	background-image: url(../svg/office_hover.svg);
-}
-.fagartikler_svg {
-	background-image: url(../svg/article.svg);
-}
-.fagartikler_svg:hover {
-	background-image: url(../svg/article_hover.svg);
-}
-.kontakt_svg {
-	background-image: url(../svg/contact.svg);
-}
-.kontakt_svg:hover {
-	background-image: url(../svg/contact_hover.svg);
-}
-.login_svg {
-	background-image: url(../svg/login.svg);
-}
-.login_svg:hover {
-	background-image: url(../svg/login_hover.svg);
-}
 /*=============================
-	fagartikler
+	page - fagartikler
 =============================*/
 #articles {
 	display: grid;
@@ -232,8 +241,85 @@ body, input, textarea {
 	grid-area: ingress;
 	margin: 0;
 }
+
 /*=============================
-	register
+	page - fagartikler - modal
+=============================*/
+#modal {
+	display: none;
+	margin: 0;
+	background: rgba(51,51,51, .8);
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+#modalContent {
+	background: #fff;
+	margin-top: 15%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 600px;
+	box-shadow: 0px 1px 8px #00000029;
+	border-radius: 8px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+}
+#close {
+	float: right;
+	font-size: 28px;
+	line-height: 17px;
+	color: #B6B6B6;
+	cursor: pointer;
+}
+
+#close:hover, #close:focus {
+	color: #333;
+	text-decoration: none;
+	cursor: pointer;
+}
+#fieldset {
+	margin: 0 auto 40px auto;
+}
+/*=============================
+	page - Artikkel
+=============================*/
+#article_page {
+	display: grid;
+	grid-template-rows: 20px auto 20px;
+	grid-gap: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#article_meta_header, #article_meta_footer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+	font-size: 12px;
+	font-weight: bold;
+}
+.article_createdAt, .article_slug {
+	justify-self: end;
+}
+
+
+/*=============================
+	page - kontakt
+=============================*/
+
+#kontakt {
+	grid-area: kontakt;
+}
+
+
+/*=============================
+	page - registrer
 =============================*/
 
 .registerLabel {
@@ -301,8 +387,8 @@ body, input, textarea {
 }
 @media(max-width: 600px) {
 	.article_container {
-	grid-template-columns: auto;
-	grid-gap: 20px;
+		grid-template-columns: auto;
+		grid-gap: 20px;
 	}
 
 	.article_thumbnail {
@@ -313,16 +399,15 @@ body, input, textarea {
 @media(max-width: 500px) {
 	.title {
 		font-size: 18px;
-		// line-height: 150px;
 	}
 
 	.article_container > section {
-	grid-template-rows: auto;
-	grid-gap: 20px;
-	grid-template-areas:
-	"title"
-	"ingress"
-	"category"
+		grid-template-rows: auto;
+		grid-gap: 20px;
+		grid-template-areas:
+		"title"
+		"ingress"
+		"category"
 	}
 
 }

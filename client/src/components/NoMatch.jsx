@@ -1,10 +1,6 @@
 import React from 'react';
-import { Heading } from '@chakra-ui/core';
 
 const NoMatch = () => (
-  <Heading as="h2" size="lg">
-    404
-  </Heading>
+	<h2 className="callout">404</h2>
 );
-
 export default NoMatch;

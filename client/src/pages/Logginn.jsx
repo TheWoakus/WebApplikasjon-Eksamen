@@ -12,14 +12,12 @@ class Logginn extends React.Component {
 				<PageHeader title="Logg inn" />
 				<section id="page_wrapper">
 					<LoginForm />
-					<div>
-						<NavLink exact to="/registrer/" className="title">
+					<NavLink exact to="/registrer/" className="title">
 						<button
 							type="submit"
-							className="button link"
+							className="button big centered"
 						>Register</button>
-						</NavLink>
-					</div>
+					</NavLink>
 				</section>
 				<PageFooter />
 			</>
