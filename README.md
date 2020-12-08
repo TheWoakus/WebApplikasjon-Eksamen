@@ -42,7 +42,7 @@ M.E.R.N
   - password
   - role
 
-  Role er default til user, men om man spesifiserer dette så kan man også sette til admin eller super
+  Role er default til user, men om man spesifiserer dette så kan man også sette til admin eller super.
 
   Dersom man skal være admin så skriver man inn "admin"
 
