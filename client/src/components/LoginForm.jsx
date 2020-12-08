@@ -19,6 +19,7 @@ const LoginForm = () => {
   const alert = useAlert();
 
   const onSubmit = async () => {
+    // eslint-disable-next-line no-restricted-globals, no-undef
     event.preventDefault();
 
     const credentials = {
