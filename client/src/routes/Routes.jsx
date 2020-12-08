@@ -8,7 +8,7 @@ import Kontakt from '../pages/Kontakt.jsx';
 import Kontorer from '../pages/Kontorer.jsx';
 import Logginn from '../pages/Logginn.jsx';
 import Registrer from '../pages/Registrer.jsx';
-import NyArtikel from '../pages/NyArtikel.jsx';
+import NyArtikkel from '../pages/NyArtikkel.jsx';
 import Artikkel from '../pages/Artikkel.jsx';
 
 import MainHeader from '../components/MainHeader.jsx';
@@ -38,8 +38,8 @@ const Routes = () => (
       <Route exact path="/registrer/">
         <Registrer />
       </Route>
-      <Route exact path="/nyartikel/">
-        <NyArtikel />
+      <Route exact path="/nyartikkel/">
+        <NyArtikkel />
       </Route>
       <Route path="*">
         <NoMatch />

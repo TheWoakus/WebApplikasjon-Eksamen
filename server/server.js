@@ -31,7 +31,7 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-app.use(`${process.env.BASEURL}/nyartikel`, article);
+app.use(`${process.env.BASEURL}/nyartikkel`, article);
 app.use(`${process.env.BASEURL}/fagartikler`, article);
 app.use(`${process.env.BASEURL}/kontorer`, office);
 app.use(`${process.env.BASEURL}/hendvendelser`, request);

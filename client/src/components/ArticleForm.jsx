@@ -16,14 +16,15 @@ class Form extends React.Component {
 		this.onChangeTitle = this.onChangeTitle.bind(this);
 		this.onChangeIngress = this.onChangeIngress.bind(this);
 		this.onChangeContent = this.onChangeContent.bind(this);
+		this.onChangePicture = this.onChangePicture.bind(this);
 		this.onChangeCategory = this.onChangeCategory.bind(this);
-		this.onChangePaygrade = this.onChangePaygrade.bind(this);
+		this.onChangeRole = this.onChangeRole.bind(this);
 		this.onChangeAuthor = this.onChangeAuthor.bind(this);
 
 		this.state = {
 			categories: {},
 			author: 'Lars Larsen',
-			paygrade: 'Standard',
+			role: 'user',
 		}
 
 	}
@@ -47,12 +48,16 @@ class Form extends React.Component {
 		this.setState({ content: event.target.value })
 	}
 
+	onChangePicture(event) {
+		this.setState({ picture: event.target.value })
+	}
+
 	onChangeCategory(event) {
 		this.setState({ category: event.target.value })
 	}
 
-	onChangePaygrade(event) {
-		this.setState({ paygrade: event.target.value })
+	onChangeRole(event) {
+		this.setState({ role: event.target.value })
 	}
 
 	onChangeAuthor(event) {
@@ -66,8 +71,9 @@ class Form extends React.Component {
 			title: this.title.value,
 			ingress: this.ingress.value,
 			content: this.content.value,
+			picture: this.picture.value,
 			category: this.category.value,
-			paygrade: this.state.paygrade,
+			role: this.state.role,
 			author: this.state.author
 		}
 
@@ -134,20 +140,28 @@ class Form extends React.Component {
 							onChange={this.onChangeContent}
 						></textarea>
 
+						<label className="formLabel" htmlFor="category">Bilde&#58;<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
+						<input
+							ref={(input) => (this.picture = input)}
+							type="file"
+							name="picture"
+							className="input"
+							onChange={this.onChangePicture}
+						/>
+
 						<label className="formLabel" htmlFor="category">Kategori&#58;<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
 						<select>
 							{allChoices}
 						</select>
 						<NewCategoryButton/>
 
-						<label className="formLabel" htmlFor="paygrade">Klarering&#58;<span id="paygrade_error">OBS!! Sjekk at denne er riktig</span></label>
+						<label className="formLabel" htmlFor="role">Klarering&#58;<span id="role_error">OBS!! Sjekk at denne er riktig</span></label>
 						<select
-							onChange={this.onChangePaygrade}
-							defaultValue={this.state.paygrade}>
-								<option value="Standard">Standard</option>
-								<option value="Registrert">Registrert</option>
-								<option value="Admin">Admin</option>
-								<option value="SuperAdmin">SuperAdmin</option>
+							onChange={this.onChangeRole}
+							defaultValue={this.state.role}>
+								<option value="user">User</option>
+								<option value="admin">Admin</option>
+								<option value="super">Super</option>
 						</select>
 						<label className="formLabel" htmlFor="author">Forfatter&#58;<span id="author_error">OBS!! Sjekk at denne er riktig</span></label>
 						<select
