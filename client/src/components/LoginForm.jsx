@@ -1,99 +1,82 @@
-import React, {useState} from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-
-import { withRouter } from 'react-router-dom';
-import { login } from '../utils/authService';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthProvider';
+import { login } from '../utils/authService';
+import styled from 'styled-components';
+import { useAlert } from 'react-alert'
 
 const StyledForm = styled.form`
 	max-width: 300px;
 `;
 
-class Form extends React.Component {
+const LoginForm = () => {
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const history = useHistory();
+  const { setUser } = useAuthContext();
+  const alert = useAlert();
 
-	constructor() {
-		super();
+  const onSubmit = async () => {
+    event.preventDefault()
 
-		this.onChangeUsername = this.onChangeUsername.bind(this);
-		this.onChangePassword = this.onChangePassword.bind(this);
-		this.setSuccess = this.setSuccess.bind(this);
-		this.setError = this.setError.bind(this);
-	}
 
-	onChangeUsername(event) {
-		this.setState({ username: event.target.value })
-	}
+    const credentials = {
+      email: email,
+      password: password
+    }
 
-	onChangePassword(event) {
-		this.setState({ password: event.target.value })
-	}
+  
+    const { data } = await login(credentials);
 
-	setSuccess(property) {
-		this.setState({success: property})
-	}
+    if (!data.success) {
+      setError(data.message);
+      alert.show('Feil brukernavn eller passord', {type: 'error'});
+    } else {
+      const { user } = data;
+      setUser({...user});
 
-	setError(property) {
-		this.setState({error: property})
-	}
+      setSuccess(true);
+      alert.show('Du har nå logget på!', {type: 'success'});
+      
+      history.push('/');
+    }
+  };
 
-	async onSubmit(event) {
-		event.preventDefault()
 
-		const credentials = {
-			email: this.email.value,
-			password: this.password.value
-		};
 
-		const {data} = await login(credentials);
 
-		if(!data.success) {
-			this.setError(data.message);
-		} else {
-			const user = data.user;
-			const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
-			// TODO: Update AuthContext
-			this.setSuccess(true);
-			this.props.history.push('/');
-		}
-	}
+  return (
+    <>
+        <StyledForm
+            onSubmit={onSubmit}>
+            <fieldset>
+                <label className="formLabel" htmlFor="email">E-post&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
+                <input
+                    type="text"
+                    name="email"
+                    className="input"
+                    placeholder="Skriv inn din e-post"
+                    onChange={e => setEmail(e.target.value)}
+                />
 
-	render() {
-		return (
-			<>
-				<StyledForm
-					ref={(input) => (this.signupForm = input)}
-					onSubmit={(event) => this.onSubmit(event)}
-				>
-					<fieldset>
-						<label className="formLabel" htmlFor="email">E-post&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
-						<input
-							ref={(input) => (this.email = input)}
-							type="text"
-							name="email"
-							className="input"
-							placeholder="Skriv inn din e-post"
-							onChange={this.onChangeUsername}
-						/>
+                <label className="formLabel" htmlFor="password">Passord&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
+                <input
+                    type="password"
+                    name="password"
+                    className="input"
+                    placeholder="Skriv inn ditt passord"
+                    onChange={e => setPassword(e.target.value)}
+                />
+                <button
+                    type="submit"
+                    className="button centered big"
+                >Logg inn</button>
+            </fieldset>
+        </StyledForm>
+    </>
+)
+};
 
-						<label className="formLabel" htmlFor="password">Passord&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
-						<input
-							ref={(input) => (this.password = input)}
-							type="password"
-							name="password"
-							className="input"
-							placeholder="Skriv inn ditt passord"
-							onChange={this.onChangePassword}
-						/>
-						<button
-							type="submit"
-							className="button centered big"
-						>Logg inn</button>
-					</fieldset>
-				</StyledForm>
-			</>
-		)
-	}
-}
-
-export default withRouter(Form);
+export default LoginForm;

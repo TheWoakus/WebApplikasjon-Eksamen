@@ -64,6 +64,7 @@ label, input {
 
 span {
 	display: inline-block;
+	color: white;
 }
 
 p:first-letter, span:first-letter, .complete {

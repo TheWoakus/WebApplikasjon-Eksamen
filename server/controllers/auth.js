@@ -36,7 +36,7 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
   });
 
   res.status(200).json({
-    sucess: true,
+    success: true,
     data: 'Logged ut',
   });
 });
@@ -48,5 +48,5 @@ export const currentUser = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler('Finner ikke bruker', 404));
   }
 
-  res.status(200).json({ sucess: true, data: user });
+  res.status(200).json({ success: true, data: user });
 });

@@ -5,6 +5,7 @@
 	"sourceType": "module"
 	},
 	"extends": ["airbnb-base", "prettier"],
+	"parser": "babel-eslint",
 	"plugins": ["prettier"],
 	"rules": {
 	"import/no-extraneous-dependencies": [

@@ -86,7 +86,7 @@ const Nav = () => (
 				<NavLink exact to="/kontakt/" activeClassName="active" className="primary"> 
 					Kontakt
 				</NavLink>
-				<NavLink exact to="/logginn/" activeClassName="active" className="primary logginn">
+				<NavLink exact to="/login/" activeClassName="active" className="primary logginn">
 					Logg inn
 				</NavLink>
 			</NavMenuItem>

@@ -55,6 +55,8 @@
 		"react-dom": "17.0.1",
 		"react-router-dom": "^5.2.0",
 		"styled-components": "^5.2.0",
-		"styled-normalize": "^8.0.7"
+		"styled-normalize": "^8.0.7",
+		"react-alert": "7.0.2",
+		"react-alert-template-basic": "1.0.0"
 	}
 }
