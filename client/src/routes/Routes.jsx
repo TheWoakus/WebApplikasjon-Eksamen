@@ -6,6 +6,7 @@ import Fagartikler from '../pages/Fagartikler.jsx';
 import Hjem from '../pages/Hjem.jsx';
 import Kontakt from '../pages/Kontakt.jsx';
 import Kontorer from '../pages/Kontorer.jsx';
+import NyttKontor from '../pages/NyttKontor.jsx';
 import Logginn from '../pages/Logginn.jsx';
 import Registrer from '../pages/Registrer.jsx';
 import NyArtikkel from '../pages/NyArtikkel.jsx';
@@ -22,6 +23,9 @@ const Routes = () => (
       </Route>
       <Route exact path="/kontorer/">
         <Kontorer />
+      </Route>
+      <Route exact path="/nyttkontor/">
+        <NyttKontor />
       </Route>
       <Route exact path="/fagartikler/">
         <Fagartikler />

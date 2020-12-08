@@ -6,181 +6,198 @@ import { withRouter } from 'react-router-dom';
 import NewCategoryButton from './NewCategoryButton';
 import NewCategoryModal from './NewCategoryModal';
 
-
 class Form extends React.Component {
+  constructor() {
+    super();
 
-	constructor() {
-		super();
+    this.addCategory = this.addCategory.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeIngress = this.onChangeIngress.bind(this);
+    this.onChangeContent = this.onChangeContent.bind(this);
+    this.onChangePicture = this.onChangePicture.bind(this);
+    this.onChangeCategory = this.onChangeCategory.bind(this);
+    this.onChangeRole = this.onChangeRole.bind(this);
+    this.onChangeAuthor = this.onChangeAuthor.bind(this);
 
-		this.addCategory = this.addCategory.bind(this);
-		this.onChangeTitle = this.onChangeTitle.bind(this);
-		this.onChangeIngress = this.onChangeIngress.bind(this);
-		this.onChangeContent = this.onChangeContent.bind(this);
-		this.onChangePicture = this.onChangePicture.bind(this);
-		this.onChangeCategory = this.onChangeCategory.bind(this);
-		this.onChangeRole = this.onChangeRole.bind(this);
-		this.onChangeAuthor = this.onChangeAuthor.bind(this);
+    this.state = {
+      categories: {},
+      author: 'Lars Larsen',
+      role: 'user',
+    };
+  }
 
-		this.state = {
-			categories: {},
-			author: 'Lars Larsen',
-			role: 'user',
-		}
+  addCategory(categoryDetails) {
+    const categories = { ...this.state.categories };
+    const timestamp = Date.now();
+    categories[`cat-${timestamp}`] = categoryDetails;
+    this.setState({ categories });
+  }
 
-	}
+  onChangeTitle(event) {
+    this.setState({ title: event.target.value });
+  }
 
-	addCategory(categoryDetails) {
-		const categories = { ...this.state.categories };
-		const timestamp = Date.now();
-		categories[`cat-${timestamp}`] = categoryDetails;
-		this.setState({ categories });
-	}
+  onChangeIngress(event) {
+    this.setState({ ingress: event.target.value });
+  }
 
-	onChangeTitle(event) {
-		this.setState({ title: event.target.value })
-	}
+  onChangeContent(event) {
+    this.setState({ content: event.target.value });
+  }
 
-	onChangeIngress(event) {
-		this.setState({ ingress: event.target.value })
-	}
+  onChangePicture(event) {
+    this.setState({ picture: event.target.value });
+  }
 
-	onChangeContent(event) {
-		this.setState({ content: event.target.value })
-	}
+  onChangeCategory(event) {
+    this.setState({ category: event.target.value });
+  }
 
-	onChangePicture(event) {
-		this.setState({ picture: event.target.value })
-	}
+  onChangeRole(event) {
+    this.setState({ role: event.target.value });
+  }
 
-	onChangeCategory(event) {
-		this.setState({ category: event.target.value })
-	}
+  onChangeAuthor(event) {
+    this.setState({ author: event.target.value });
+  }
 
-	onChangeRole(event) {
-		this.setState({ role: event.target.value })
-	}
+  onSubmit(event) {
+    event.preventDefault();
 
-	onChangeAuthor(event) {
-		this.setState({ author: event.target.value })
-	}
+    const articleDetails = {
+      title: this.title.value,
+      ingress: this.ingress.value,
+      content: this.content.value,
+      picture: this.picture.value,
+      category: this.category.value,
+      role: this.state.role,
+      author: this.state.author,
+    };
 
-	onSubmit(event) {
-		event.preventDefault()
+    axios
+      .post(
+        `${process.env.BASE_URL}${process.env.API_VERSION}/nyartikel`,
+        articleDetails
+      )
+      .then((res) => {
+        console.log(res.data);
+        this.articleForm.reset();
+        this.props.history.push('/fagartikler');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-		const articleDetails = {
-			title: this.title.value,
-			ingress: this.ingress.value,
-			content: this.content.value,
-			picture: this.picture.value,
-			category: this.category.value,
-			role: this.state.role,
-			author: this.state.author
-		}
+  render() {
+    const allChoices = Object.values(this.state.categories).map((data) => (
+      <option
+        key={new Date()}
+        ref={(input) => (this.category = input)}
+        name="category"
+      >
+        {data.title}
+      </option>
+    ));
 
-		axios.post(`${process.env.BASE_URL}${process.env.API_VERSION}/nyartikel`, articleDetails)
-			.then((res) => {
-				console.log(res.data)
-				this.articleForm.reset();
-				this.props.history.push('/fagartikler');
-			}).catch((error) => {
-				console.log(error)
-		});
+    return (
+      <>
+        <NewCategoryModal addCategory={this.addCategory} />
+        <form
+          ref={(input) => (this.articleForm = input)}
+          onSubmit={(event) => this.onSubmit(event)}
+        >
+          <fieldset>
+            <label className="formLabel" htmlFor="title">
+              Tittel&#58;
+              <span id="title_error">OBS!! Sjekk at denne er riktig</span>
+            </label>
+            <input
+              ref={(input) => (this.title = input)}
+              type="text"
+              name="title"
+              className="input"
+              placeholder="Skriv en passende tittel"
+              onChange={this.onChangeTitle}
+            />
 
-	}
+            <label className="formLabel" htmlFor="ingress">
+              Ingress&#58;
+              <span id="ingress_error">OBS!! Sjekk at denne er riktig</span>
+            </label>
+            <textarea
+              ref={(input) => (this.ingress = input)}
+              name="ingress"
+              cols="30"
+              rows="5"
+              className="input"
+              placeholder="En liten ingress"
+              onChange={this.onChangeIngress}
+            ></textarea>
 
-	
-	render() {
+            <label className="formLabel" htmlFor="content">
+              Innhold&#58;
+              <span id="content_error">OBS!! Sjekk at denne er riktig</span>
+            </label>
+            <textarea
+              ref={(input) => (this.content = input)}
+              name="content"
+              cols="30"
+              rows="5"
+              className="input"
+              placeholder="Fortell en historie"
+              onChange={this.onChangeContent}
+            ></textarea>
 
-		const allChoices = Object.values(this.state.categories)
-			.map((data) => (
-			<option 
-				key={new Date()}
-				ref={(input) => (this.category = input)}
-				name="category"
-				>{data.title}
-			</option>
-			))
+            <label className="formLabel" htmlFor="category">
+              Bilde&#58;
+              <span id="category_error">OBS!! Sjekk at denne er riktig</span>
+            </label>
+            <input
+              ref={(input) => (this.picture = input)}
+              type="file"
+              name="picture"
+              className="input"
+              onChange={this.onChangePicture}
+            />
 
-		return (
-			<>
-				<NewCategoryModal addCategory={this.addCategory}/>
-				<form
-					ref={(input) => (this.articleForm = input)}
-					onSubmit={(event) => this.onSubmit(event)}
-				>
-					<fieldset>
-						<label className="formLabel" htmlFor="title">Tittel&#58;<span id="title_error">OBS!! Sjekk at denne er riktig</span></label>
-						<input
-							ref={(input) => (this.title = input)}
-							type="text"
-							name="title"
-							className="input"
-							placeholder="Skriv en passende tittel"
-							onChange={this.onChangeTitle}
-						/>
+            <label className="formLabel" htmlFor="category">
+              Kategori&#58;
+              <span id="category_error">OBS!! Sjekk at denne er riktig</span>
+            </label>
+            <select>{allChoices}</select>
+            <NewCategoryButton />
 
-						<label className="formLabel" htmlFor="ingress">Ingress&#58;<span id="ingress_error">OBS!! Sjekk at denne er riktig</span></label>
-						<input
-							ref={(input) => (this.ingress = input)}
-							type="text"
-							name="ingress"
-							className="input"
-							placeholder="En liten ingress"
-							onChange={this.onChangeIngress}
-						/>
+            <label className="formLabel" htmlFor="role">
+              Klarering&#58;
+              <span id="role_error">OBS!! Sjekk at denne er riktig</span>
+            </label>
+            <select onChange={this.onChangeRole} defaultValue={this.state.role}>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+              <option value="super">Super</option>
+            </select>
+            <label className="formLabel" htmlFor="author">
+              Forfatter&#58;
+              <span id="author_error">OBS!! Sjekk at denne er riktig</span>
+            </label>
+            <select
+              onChange={this.onChangeAuthor}
+              defaultValue={this.state.author}
+            >
+              <option value="Lars Larsen">Lars Larsen</option>
+              <option value="Gunn Gundersen">Gunn Gundersen</option>
+              <option value="Simen Simensen">Simen Simensen</option>
+            </select>
 
-						<label className="formLabel" htmlFor="content">Innhold&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
-						<textarea
-							ref={(input) => (this.content = input)}
-							name="content"
-							cols="30"
-							rows="5"
-							className="input"
-							placeholder="Fortell en historie"
-							onChange={this.onChangeContent}
-						></textarea>
-
-						<label className="formLabel" htmlFor="category">Bilde&#58;<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
-						<input
-							ref={(input) => (this.picture = input)}
-							type="file"
-							name="picture"
-							className="input"
-							onChange={this.onChangePicture}
-						/>
-
-						<label className="formLabel" htmlFor="category">Kategori&#58;<span id="category_error">OBS!! Sjekk at denne er riktig</span></label>
-						<select>
-							{allChoices}
-						</select>
-						<NewCategoryButton/>
-
-						<label className="formLabel" htmlFor="role">Klarering&#58;<span id="role_error">OBS!! Sjekk at denne er riktig</span></label>
-						<select
-							onChange={this.onChangeRole}
-							defaultValue={this.state.role}>
-								<option value="user">User</option>
-								<option value="admin">Admin</option>
-								<option value="super">Super</option>
-						</select>
-						<label className="formLabel" htmlFor="author">Forfatter&#58;<span id="author_error">OBS!! Sjekk at denne er riktig</span></label>
-						<select
-							onChange={this.onChangeAuthor}
-							defaultValue={this.state.author}>
-								<option value="Lars Larsen">Lars Larsen</option>
-								<option value="Gunn Gundersen">Gunn Gundersen</option>
-								<option value="Simen Simensen">Simen Simensen</option>
-						</select>
-							
-						<button
-							type="submit"
-							className="button centered big"
-						>Publiser</button>
-					</fieldset>
-				</form>
-			</>
-		)
-	}
+            <button type="submit" className="button centered big">
+              Publiser
+            </button>
+          </fieldset>
+        </form>
+      </>
+    );
+  }
 }
 
 export default withRouter(Form);

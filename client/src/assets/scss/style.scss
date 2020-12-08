@@ -194,6 +194,12 @@ body, input, textarea {
 	background: url(../svg/list_hover.svg) no-repeat;
 }
 
+#ansattliste {
+	width: calc(100% - 100px);
+	display: inline-block;
+	margin-bottom: 50px;
+
+}
 /*=============================
 	page - fagartikler
 =============================*/

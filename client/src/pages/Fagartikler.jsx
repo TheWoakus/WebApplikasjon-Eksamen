@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { list } from '../utils/articleService';
 
-import PageHeader from '../components/PageHeader';
-import PageFooter from '../components/PageFooter';
-import { useAuthContext } from '../context/AuthProvider';
+import PageHeader from '../components/PageHeader.jsx';
+import PageFooter from '../components/PageFooter.jsx';
+import { useAuthContext } from '../context/AuthProvider.jsx';
 
 const Fagartikler = () => {
   const [articles, setArticles] = useState(null);

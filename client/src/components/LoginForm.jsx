@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useAuthContext } from '../context/AuthProvider';
-import { login } from '../utils/authService';
 import styled from 'styled-components';
-import { useAlert } from 'react-alert'
+import { useAlert } from 'react-alert';
+import { useAuthContext } from '../context/AuthProvider.jsx';
+import { login } from '../utils/authService';
 
 const StyledForm = styled.form`
-	max-width: 300px;
+  max-width: 300px;
 `;
 
 const LoginForm = () => {
@@ -19,64 +19,63 @@ const LoginForm = () => {
   const alert = useAlert();
 
   const onSubmit = async () => {
-    event.preventDefault()
-
+    event.preventDefault();
 
     const credentials = {
-      email: email,
-      password: password
-    }
+      email,
+      password,
+    };
 
-  
     const { data } = await login(credentials);
 
     if (!data.success) {
       setError(data.message);
-      alert.show('Feil brukernavn eller passord', {type: 'error'});
+      alert.show('Feil brukernavn eller passord', { type: 'error' });
     } else {
       const { user } = data;
-      setUser({...user});
+      setUser({ ...user });
 
       setSuccess(true);
-      alert.show('Du har nå logget på!', {type: 'success'});
-      
+      alert.show('Du har nå logget på!', { type: 'success' });
+
       history.push('/');
     }
   };
 
-
-
-
   return (
     <>
-        <StyledForm
-            onSubmit={onSubmit}>
-            <fieldset>
-                <label className="formLabel" htmlFor="email">E-post&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
-                <input
-                    type="text"
-                    name="email"
-                    className="input"
-                    placeholder="Skriv inn din e-post"
-                    onChange={e => setEmail(e.target.value)}
-                />
+      <StyledForm onSubmit={onSubmit}>
+        <fieldset>
+          <label className="formLabel" htmlFor="email">
+            E-post&#58;
+            <span id="content_error">OBS!! Sjekk at denne er riktig</span>
+          </label>
+          <input
+            type="text"
+            name="email"
+            className="input"
+            placeholder="Skriv inn din e-post"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-                <label className="formLabel" htmlFor="password">Passord&#58;<span id="content_error">OBS!! Sjekk at denne er riktig</span></label>
-                <input
-                    type="password"
-                    name="password"
-                    className="input"
-                    placeholder="Skriv inn ditt passord"
-                    onChange={e => setPassword(e.target.value)}
-                />
-                <button
-                    type="submit"
-                    className="button centered big"
-                >Logg inn</button>
-            </fieldset>
-        </StyledForm>
+          <label className="formLabel" htmlFor="password">
+            Passord&#58;
+            <span id="content_error">OBS!! Sjekk at denne er riktig</span>
+          </label>
+          <input
+            type="password"
+            name="password"
+            className="input"
+            placeholder="Skriv inn ditt passord"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit" className="button centered big">
+            Logg inn
+          </button>
+        </fieldset>
+      </StyledForm>
     </>
-)
+  );
 };
 
 export default LoginForm;

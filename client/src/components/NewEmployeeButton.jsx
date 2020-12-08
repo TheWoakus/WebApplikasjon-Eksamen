@@ -1,7 +1,7 @@
 import React from 'react';
 
-class NewCategoryButton extends React.Component {
-  showCategoryModal() {
+class NewEmployeeButton extends React.Component {
+  showEmployeeModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'block';
   }
@@ -9,10 +9,10 @@ class NewCategoryButton extends React.Component {
   render() {
     return (
       <button
-        id="newCategory"
+        id="newEmployee"
         className="button space"
         type="button"
-        onClick={this.showCategoryModal}
+        onClick={this.showEmployeeModal}
       >
         Ny
       </button>
@@ -20,4 +20,4 @@ class NewCategoryButton extends React.Component {
   }
 }
 
-export default NewCategoryButton;
+export default NewEmployeeButton;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/core';
 import styled from 'styled-components';
-import Nav from '../components/Nav';
+import Nav from '../components/Nav.jsx';
 
 const StyledHeader = styled.header`
   background: #fff;

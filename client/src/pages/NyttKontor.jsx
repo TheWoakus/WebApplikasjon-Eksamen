@@ -2,17 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import PageHeader from '../components/PageHeader.jsx';
-import ArticleForm from '../components/ArticleForm.jsx';
+import OfficeForm from '../components/OfficeForm.jsx';
 import PageFooter from '../components/PageFooter.jsx';
 
-class NyArtikkel extends React.Component {
+class NyttKontor extends React.Component {
   render() {
     return (
       <>
-        <PageHeader title="Skriv en ny artikkel" />
+        <PageHeader title="Opprett et nytt kontor" />
         <section id="page_wrapper">
-          <h2 className="callout">Story time, bro!</h2>
-          <ArticleForm />
+          <h2 className="callout">Hvor vil du ekspandere?</h2>
+          <OfficeForm />
         </section>
         <PageFooter />
       </>
@@ -20,4 +20,4 @@ class NyArtikkel extends React.Component {
   }
 }
 
-export default NyArtikkel;
+export default NyttKontor;
