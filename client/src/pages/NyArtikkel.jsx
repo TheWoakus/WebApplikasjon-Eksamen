@@ -9,7 +9,7 @@ class Logginn extends React.Component {
 	render() {
 		return (
 			<>
-				<PageHeader title="Skriv en ny artikel" />
+				<PageHeader title="Skriv en ny artikkel" />
 				<section id="page_wrapper">
 					<h2 className="callout">Story time, bro!</h2>
 					<ArticleForm />
