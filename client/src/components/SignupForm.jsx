@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAlert } from 'react-alert';
+// import { register } from '../utils/authService.jsx';
 
 const SignupForm = () => {
   const [name, setName] = useState(null);
@@ -25,6 +26,8 @@ const SignupForm = () => {
       username,
       password,
     };
+
+    const { data } = await register(credentials);
   };
 
   return (
@@ -92,7 +95,7 @@ const SignupForm = () => {
             placeholder="Bekreft ditt passord"
             onChange={(e) => setVerifyPassword(e.target.value)}
           />
-          <button type="submit" className="button centered big">
+          <button type="submit" className="button centered big block">
             Register
           </button>
         </fieldset>
