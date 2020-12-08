@@ -4,10 +4,12 @@ import { list } from '../utils/articleService';
 
 import PageHeader from '../components/PageHeader';
 import PageFooter from '../components/PageFooter';
+import { useAuthContext } from '../context/AuthProvider';
 
 const Fagartikler = () => {
 	const [articles, setArticles] = useState(null);
 	const [error, setError] = useState(null);
+	const {isAdmin, isLoggedIn, setUser} = useAuthContext();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -25,9 +27,12 @@ const Fagartikler = () => {
 		<>
 			<PageHeader title="Fagartikler" />
 			<section id="page_wrapper">
-				<section>
-					<Link to="/nyartikkel/" className="button big bigspace block">Ny artikkel</Link>
-				</section>
+				{isAdmin && (
+					<section>
+						<Link to="/nyartikkel/" className="button big bigspace block">Ny artikkel</Link>
+					</section>
+				)}
+				
 				<section id="articles">
 					{articles && articles.map((article) => (
 						<Link className="" to={`/article/${article._id}`} key={article.id}>

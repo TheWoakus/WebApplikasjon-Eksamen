@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { useAuthContext } from '../context/AuthProvider';
+import { logout } from '../utils/authService';
 
 const StyledNav = styled.nav`
 	display: inline-grid;
@@ -55,7 +57,16 @@ const NavMenuItem = styled.li`
 	}
 `;
 
-const Nav = () => (
+const Nav = () => {
+	
+	const {isLoggedIn,IsAdmin,setUser} = useAuthContext();
+
+	const handleLogout = async () => {
+		await logout();
+		setUser(null);
+	}
+
+	return (
 	<StyledNav>
 		<NavMenu>
 			<NavMenuItem>
@@ -86,12 +97,22 @@ const Nav = () => (
 				<NavLink exact to="/kontakt/" activeClassName="active" className="primary"> 
 					Kontakt
 				</NavLink>
-				<NavLink exact to="/login/" activeClassName="active" className="primary logginn">
-					Logg inn
-				</NavLink>
+				{!isLoggedIn && (
+					<NavLink exact to="/login/" activeClassName="active" className="primary logginn">
+						Logg inn
+					</NavLink>
+				)}
+
+				{isLoggedIn && (
+					<NavLink exact to="/" activeClassName="active" className="primary logginn" onClick={handleLogout}>
+						Logg ut
+					</NavLink>
+				)}
+				
 			</NavMenuItem>
 		</NavMenu>
 	</StyledNav>
-);
+	)
+};
 
 export default Nav;

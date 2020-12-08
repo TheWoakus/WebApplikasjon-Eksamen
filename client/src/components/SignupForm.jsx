@@ -40,7 +40,7 @@ class Form extends React.Component {
 		if (this.password.value == this.verifypassword.value) {
 			const userDetails = {
 				name: this.name.value,
-				mail: this.mail.value,
+				email: this.mail.value,
 				username: this.username.value,
 				password: this.password.value,
 			};
