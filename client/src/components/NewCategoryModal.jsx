@@ -12,13 +12,13 @@ class NewCategoryModal extends React.Component {
   }
 
   closeModal() {
-    const modal = document.getElementById('modal');
+    const modal = this.document.getElementById('modal');
     modal.style.display = 'none';
   }
 
   clickListener() {
-    const modal = document.getElementById('modal');
-    window.onclick = function (event) {
+    const modal = this.document.getElementById('modal');
+    this.window.onclick = function (event) {
       if (event.target === modal) {
         modal.style.display = 'none';
       }
@@ -32,9 +32,7 @@ class NewCategoryModal extends React.Component {
     };
     this.props.addCategory(categoryDetails);
     this.categoryform.reset();
-    {
-      this.closeModal();
-    }
+    this.closeModal();
   }
 
   render() {

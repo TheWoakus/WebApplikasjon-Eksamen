@@ -2,7 +2,7 @@ import React from 'react';
 
 class NewEmployeeButton extends React.Component {
   showEmployeeModal() {
-    const modal = document.getElementById('modal');
+    const modal = this.document.getElementById('modal');
     modal.style.display = 'block';
   }
 

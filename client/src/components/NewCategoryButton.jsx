@@ -2,7 +2,7 @@ import React from 'react';
 
 class NewCategoryButton extends React.Component {
   showCategoryModal() {
-    const modal = document.getElementById('modal');
+    const modal = this.document.getElementById('modal');
     modal.style.display = 'block';
   }
 
