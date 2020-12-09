@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import NoMatch from '../components/NoMatch.jsx';
 
 import Fagartikler from '../pages/Fagartikler.jsx';
@@ -12,8 +17,29 @@ import Logginn from '../pages/Logginn.jsx';
 import Registrer from '../pages/Registrer.jsx';
 import NyArtikkel from '../pages/NyArtikkel.jsx';
 import Artikkel from '../pages/Artikkel.jsx';
+import Dashboard from '../pages/Dashboard.jsx';
 
 import MainHeader from '../components/MainHeader.jsx';
+import { useAuthContext } from '../context/AuthProvider.jsx';
+
+const AuthenticatedRoutes = ({ children, ...rest }) => {
+  const { isLoggedIn } = useAuthContext();
+
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        isLoggedIn ? <div>children</div> : <Redirect to="/login" />
+      }
+    />
+  );
+};
+
+const AdminRoutes = ({ children, ...rest }) => {
+  const { isLoggedIn, isAdmin } = useAuthContext();
+
+  return <AuthenticatedRoutes {...rest} render={() => isAdmin && children} />;
+};
 
 const Routes = () => (
   <Router>
@@ -28,9 +54,9 @@ const Routes = () => (
       <Route path="/kontorer/:id">
         <Kontor />
       </Route>
-      <Route exact path="/nyttkontor/">
+      <AuthenticatedRoutes exact path="/nyttkontor/">
         <NyttKontor />
-      </Route>
+      </AuthenticatedRoutes>
       <Route exact path="/fagartikler/">
         <Fagartikler />
       </Route>
@@ -46,9 +72,12 @@ const Routes = () => (
       <Route exact path="/registrer/">
         <Registrer />
       </Route>
-      <Route exact path="/nyartikkel/">
+      <AuthenticatedRoutes exact path="/nyartikkel/">
         <NyArtikkel />
-      </Route>
+      </AuthenticatedRoutes>
+      <AdminRoutes path="/dashboard">
+        <Dashboard />
+      </AdminRoutes>
       <Route path="*">
         <NoMatch />
       </Route>

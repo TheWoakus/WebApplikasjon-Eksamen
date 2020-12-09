@@ -15,8 +15,8 @@ const NavMenu = styled.ul`
 `;
 
 const NavMenuItem = styled.li`
-  display: grid;
-  grid-template-columns: repeat(5, 175px);
+  display: flex;
+  flex-flow: row nowrap;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -31,7 +31,7 @@ const NavMenuItem = styled.li`
     font-size: 20px;
     font-weight: 700;
     line-height: 60px;
-    width: 100%;
+    width: 175px;
     padding: 5px 0;
     text-decoration: none;
     text-align: center;
@@ -57,7 +57,7 @@ const NavMenuItem = styled.li`
 `;
 
 const Nav = () => {
-  const { isLoggedIn, IsAdmin, setUser } = useAuthContext();
+  const { isLoggedIn, isAdmin, setUser } = useAuthContext();
 
   const handleLogout = async () => {
     await logout();
@@ -117,6 +117,7 @@ const Nav = () => {
           >
             Fagartikler
           </NavLink>
+
           <NavLink
             exact
             to="/kontakt/"
@@ -125,6 +126,17 @@ const Nav = () => {
           >
             Kontakt
           </NavLink>
+
+          {isAdmin && isLoggedIn && (
+            <NavLink
+              to="/dashboard"
+              activeClassName="active"
+              className="primary"
+            >
+              Dashboard
+            </NavLink>
+          )}
+
           {!isLoggedIn && (
             <NavLink
               exact
