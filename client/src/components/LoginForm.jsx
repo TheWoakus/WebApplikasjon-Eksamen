@@ -20,7 +20,7 @@ const LoginForm = () => {
 
   const onSubmit = async () => {
     // eslint-disable-next-line no-restricted-globals, no-undef
-    event.preventDefault();
+    event.preventDefault(); // eslint klager på at denne er deprecated. Den er jo egentlig ikke det...
 
     const credentials = {
       email,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { useAlert } from 'react-alert';
 import { useAuthContext } from '../context/AuthProvider.jsx';
 import { logout } from '../utils/authService.js';
 
@@ -51,17 +52,27 @@ const NavMenuItem = styled.li`
     }
   }
 
+  @media (max-width: 1200px) {
+    & > a {
+      width: 140px;
+    }
+  }
+
   @media (max-width: 1000px) {
-    grid-template-columns: repeat(5, 50px);
+    & > a {
+      width: 50px;
+    }
   }
 `;
 
 const Nav = () => {
   const { isLoggedIn, isAdmin, setUser } = useAuthContext();
+  const alert = useAlert();
 
   const handleLogout = async () => {
     await logout();
     setUser(null);
+    alert.show('Du har nå logget ut', { type: 'info' });
   };
 
   return (
@@ -92,12 +103,26 @@ const Nav = () => {
             activeClassName="active"
             className="secondary kontakt_svg"
           ></NavLink>
-          <NavLink
-            exact
-            to="/logginn"
-            activeClassName="active"
-            className="secondary login_svg"
-          ></NavLink>
+
+          {!isLoggedIn && (
+            <NavLink
+              exact
+              to="/login"
+              activeClassName="active"
+              className="secondary login_svg"
+            ></NavLink>
+          )}
+
+          {isLoggedIn && (
+            <NavLink
+              exact
+              to="/"
+              activeClassName="active"
+              className="secondary login_svg"
+              onClick={handleLogout}
+            />
+          )}
+
           <NavLink exact to="/" activeClassName="active" className="primary">
             Hjem
           </NavLink>
