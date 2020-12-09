@@ -73,5 +73,5 @@ M.E.R.N
   
 ## MAILTRAP
 
-  Log in with gmail credemtials
+  Log in with gmail credentials
   
