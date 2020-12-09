@@ -29,7 +29,7 @@ const AuthenticatedRoutes = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={() =>
-        isLoggedIn ? <div>children</div> : <Redirect to="/login" />
+        isLoggedIn ? <div>{children}</div> : <Redirect to="/login" />
       }
     />
   );
