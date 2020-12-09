@@ -68,9 +68,10 @@ M.E.R.N
 ## GMAIL
 
   username: gruppe1347.webapplikasjoner@gmail.com
+  
   password: drossap8
   
-## Mailtrap
+## MAILTRAP
 
-  Log in with gmail
+  Log in with gmail credemtials
   
