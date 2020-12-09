@@ -44,10 +44,9 @@ class Form extends React.Component {
         userDetails
       )
       .then((res) => {
-        // TODO: insert confirmation message here??
         console.log(res.data);
         this.contactForm.reset();
-        // this.props.history.push('/kontakt'); //TODO: is this needed??
+        this.props.history.push('/kontakt');
       })
       .catch((error) => {
         console.log(error);

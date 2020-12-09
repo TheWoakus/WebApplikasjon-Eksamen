@@ -10,7 +10,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     await sendMail({
       email: user.email,
       subject: 'Velkommen som bruker',
-      message: `Du har fått en ny brukerkonto med epost: ${user.email}`,
+      message: `<h3>Hei</h3><p>velkommen som bruker hos LG Rør!</p><p>Du har fått en ny brukerkonto med epost: ${user.email}</p>`,
     });
   } catch (error) {
     console.log(error);
