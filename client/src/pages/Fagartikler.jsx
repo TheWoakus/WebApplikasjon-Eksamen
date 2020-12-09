@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { list } from '../utils/articleService';
+import { list } from '../utils/articleService.js';
+import { download } from '../utils/imageService.js';
 
 import PageHeader from '../components/PageHeader.jsx';
 import PageFooter from '../components/PageFooter.jsx';
 import { useAuthContext } from '../context/AuthProvider.jsx';
+import article from '../../../server/models/article.js';
 
 const Fagartikler = () => {
   const [articles, setArticles] = useState(null);
   const [error, setError] = useState(null);
   const { isAdmin, isLoggedIn, setUser } = useAuthContext();
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +25,17 @@ const Fagartikler = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (articles !== null) {
+      articles.forEach((articleItem) => {
+        if (articleItem.imgSrc !== undefined) {
+          articleItem.imgSrc = `${process.env.BASE_URL}/${articleItem.imgSrc}`;
+        }
+      });
+      setLoaded(true);
+    }
+  }, [articles]);
 
   return (
     <>
@@ -37,6 +51,7 @@ const Fagartikler = () => {
 
         <section id="articles">
           {articles &&
+            loaded &&
             articles.map((article) => (
               <Link
                 className=""
@@ -44,7 +59,11 @@ const Fagartikler = () => {
                 key={article.id}
               >
                 <section className="article_container">
-                  <img className="article_thumbnail" src="" alt="" />
+                  <img
+                    className="article_thumbnail"
+                    src={article.imgSrc}
+                    alt=""
+                  />
                   <section>
                     <h2 className="articleTitle">{article.title}</h2>
                     <p className="articleCategory">{article.category}</p>

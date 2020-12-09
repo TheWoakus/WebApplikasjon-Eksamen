@@ -51,6 +51,10 @@ const ArticleSchema = new Schema(
       required: [true, 'Noen har vell lagd denne artikkelen?'],
       unique: false,
     },
+    imgSrc: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

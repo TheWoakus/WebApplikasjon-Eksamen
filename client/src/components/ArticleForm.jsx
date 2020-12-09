@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import { withRouter } from 'react-router-dom';
+import { upload, download } from '../utils/imageService';
 
 import NewCategoryButton from './NewCategoryButton.jsx';
 import NewCategoryModal from './NewCategoryModal.jsx';
@@ -62,17 +63,35 @@ class ArticleForm extends React.Component {
     this.setState({ author: event.target.value });
   }
 
-  onSubmit(event) {
+  async onSubmit(event) {
     event.preventDefault();
+
+    let imageID = '';
+
+    const { data } = await upload(this.picture.files[0]);
+    if (!data.success) {
+      console.log(data.message);
+      return;
+    }
+
+    imageID = data.data._id;
+
+    const imgData = await download(imageID);
+
+    if (!imgData.data.success) {
+      console.log(imgData.data.message);
+      return;
+    }
 
     const articleDetails = {
       title: this.title.value,
       ingress: this.ingress.value,
       content: this.content.value,
-      picture: this.picture.value,
+      picture: imageID,
       category: this.category.value,
       role: this.state.role,
       author: this.state.author,
+      imgSrc: imgData.data.data.imagePath,
     };
 
     axios

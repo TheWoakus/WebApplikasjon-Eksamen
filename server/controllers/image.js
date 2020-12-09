@@ -19,6 +19,12 @@ export const get = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(`Finner ikke bilde med ID`, 404));
   }
 
+  // res.set({
+  //  'Content-Type': image.file_mimeType,
+  // });
+
+  // res.sendFile(path.join(__dirname, '..', image.file_path));
+
   const imagePath = image.file_path.replace('public\\', '').replace('\\', '/');
   res.status(200).json({ success: true, data: { image, imagePath } });
 });
