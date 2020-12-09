@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(`${process.env.BASEURL}/nyartikkel`, article);
 app.use(`${process.env.BASEURL}/fagartikler`, article);
 app.use(`${process.env.BASEURL}/kontorer`, office);
-app.use(`${process.env.BASEURL}/hendvendelser`, request);
+app.use(`${process.env.BASEURL}/kontakt`, request);
 app.use(`${process.env.BASEURL}/kategorier`, category);
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/`, auth);

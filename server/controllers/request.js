@@ -1,6 +1,7 @@
 import { requestService } from '../services/index.js';
 import catchAsyncErrors from '../middleware/catchAsync.js';
 import ErrorHandler from '../utils/errorHandler.js';
+import { sendMail } from '../utils/sendEmail.js';
 
 export const get = catchAsyncErrors(async (req, res, next) => {
   const request = await requestService.getRequestById(req.params.id);
@@ -19,6 +20,15 @@ export const list = catchAsyncErrors(async (req, res) => {
 
 export const create = catchAsyncErrors(async (req, res) => {
   const request = await requestService.createRequest(req.body);
+  try {
+    await sendMail({
+      email: request.email,
+      subject: 'Takk for din henvendelse',
+      message: `Du har nylig sendt oss en melding, her er hva du skrev: ${request.content}`,
+    });
+  } catch (error) {
+    console.log(error);
+  }
   res.status(201).json(request);
 });
 

@@ -33,9 +33,9 @@ class Form extends React.Component {
 
     const userDetails = {
       name: this.name.value,
-      mail: this.mail.value,
-      subject: this.subject.value,
-      message: this.message.value,
+      email: this.mail.value,
+      title: this.subject.value,
+      content: this.message.value,
     };
 
     axios
@@ -118,7 +118,7 @@ class Form extends React.Component {
               onChange={this.onChangeMessage}
               // required
             ></textarea>
-            <button type="submit" className="button link" disabled>
+            <button type="submit" className="button link">
               Send meldingen
             </button>
           </fieldset>

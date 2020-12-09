@@ -43,8 +43,7 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
                 <p className="officeAddress">{`${office.address} ${index}`}</p>
                 <p className="officePhone">{office.phone}</p>
                 <p className="officeMail">
-                  {office.location}
-                  {index}@epost.no
+                  {`${office.location} ${index}@epost.no`}
                 </p>
               </section>
             </Link>
