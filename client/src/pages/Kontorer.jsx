@@ -20,7 +20,7 @@ class Kontorer extends React.Component {
     this.state = {
       search: null,
       viewType: true,
-      update: '',
+      officeList: dbOffices,
     };
   }
 
@@ -39,7 +39,7 @@ class Kontorer extends React.Component {
         console.log(error);
       });
     // eslint-disable-next-line no-undef
-    window.location.reload(true); // i know.. deprecated.. but it still works..
+    window.location.reload(true); // i know.. deprecated.. but it still works for this task..
   }
 
   search(keyword) {
@@ -58,9 +58,9 @@ class Kontorer extends React.Component {
         <PageHeader title="Våre kontorer" />
         <section id="page_wrapper">
           <button
-            type="submit"
+            type="button"
             onClick={this.populateDB}
-            className="button big block bigspace"
+            className="button big block giveMeSomeRoom"
           >
             Generer kontorer
           </button>
@@ -81,7 +81,10 @@ class Kontorer extends React.Component {
             </section>
             <section className="branch">
               <section id="officeLocations" className={viewtype}>
-                <FetchOffices viewtype={viewtype} />
+                <FetchOffices
+                  viewtype={viewtype}
+                  searchFilter={this.state.search}
+                />
               </section>
             </section>
           </section>

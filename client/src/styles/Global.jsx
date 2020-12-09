@@ -104,7 +104,9 @@ p:first-letter, span:first-letter, .complete {
 .space {
 	margin-left: 10px;
 }
-
+.giveMeSomeRoom {
+	margin-bottom: 20px;
+}
 .bigspace {
 	margin-bottom: 60px;
 }

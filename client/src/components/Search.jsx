@@ -11,7 +11,7 @@ class Search extends React.Component {
       <input
         type="text"
         className="searchbox"
-        placeholder="Søk etter firmanavn, adresse, telefon eller lokasjon.."
+        placeholder="Søk etter firma basert på geografisk lokasjon.."
         onChange={(e) => this.search(e)}
       />
     );
