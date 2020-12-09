@@ -4,7 +4,7 @@ import PageHeader from '../components/PageHeader.jsx';
 import SignupForm from '../components/SignupForm.jsx';
 import PageFooter from '../components/PageFooter.jsx';
 
-const Logginn = () => (
+const Registrer = () => (
   <>
     <PageHeader title="Registrer deg" />
 
@@ -16,4 +16,4 @@ const Logginn = () => (
   </>
 );
 
-export default Logginn;
+export default Registrer;

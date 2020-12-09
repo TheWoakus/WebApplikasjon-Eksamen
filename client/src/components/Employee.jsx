@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Employee extends React.Component {
   render() {
@@ -20,4 +21,7 @@ class Employee extends React.Component {
   }
 }
 
+Employee.propTypes = {
+  employeeList: PropTypes.array.isRequired,
+};
 export default Employee;

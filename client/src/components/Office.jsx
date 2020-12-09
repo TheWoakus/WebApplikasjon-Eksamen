@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Section = styled.section`
   border: 1px solid black;
@@ -38,7 +39,7 @@ class Office extends React.Component {
           <Address>{this.props.data.address} </Address>
           <Phone>{this.props.data.phone}</Phone>
           <Mail href={`mailto:${this.props.data.location}@epost.no`}>
-            {this.props.details.location}@epost.no
+            {this.props.data.location}@epost.no
           </Mail>
         </Section>
       </>
@@ -46,4 +47,7 @@ class Office extends React.Component {
   }
 }
 
+Office.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 export default Office;

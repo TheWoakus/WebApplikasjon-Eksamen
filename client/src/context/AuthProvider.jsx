@@ -8,7 +8,6 @@ const { Provider } = AuthContext;
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  console.log(user);
   useEffect(() => {
     const fetchUserdata = async () => {
       if (user === null) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   search(event) {
@@ -17,4 +18,8 @@ class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  search: PropTypes.func,
+};
 export default Search;

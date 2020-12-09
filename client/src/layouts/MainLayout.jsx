@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Box } from '@chakra-ui/core';
 import styled from 'styled-components';
 import Nav from '../components/Nav.jsx';
@@ -20,5 +22,13 @@ const MainLayout = ({ children }) => (
     </Box>
   </Box>
 );
+
+MainLayout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.string,
+  ]),
+};
 
 export default MainLayout;

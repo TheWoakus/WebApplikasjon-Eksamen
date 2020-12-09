@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class NewCategoryModal extends React.Component {
   constructor() {
@@ -95,4 +96,7 @@ class NewCategoryModal extends React.Component {
   }
 }
 
+NewCategoryModal.propTypes = {
+  addCategory: PropTypes.func.isRequired,
+};
 export default NewCategoryModal;

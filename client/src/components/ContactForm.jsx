@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+
 import { withRouter } from 'react-router-dom';
 
-class Form extends React.Component {
+class ContactForm extends React.Component {
   constructor() {
     super();
 
@@ -127,4 +129,7 @@ class Form extends React.Component {
   }
 }
 
-export default withRouter(Form);
+ContactForm.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+export default withRouter(ContactForm);

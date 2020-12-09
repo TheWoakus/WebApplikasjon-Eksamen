@@ -1,8 +1,10 @@
 import React from 'react';
 
 class NewEmployeeButton extends React.Component {
+  // eslint-disable-next-line class-methods-use-this
   showEmployeeModal() {
-    const modal = this.document.getElementById('modal');
+    // eslint-disable-next-line no-undef
+    const modal = document.getElementById('modal');
     modal.style.display = 'block';
   }
 

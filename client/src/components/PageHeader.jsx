@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Header = styled.header`
   display: grid;
@@ -24,5 +25,9 @@ class PageHeader extends React.Component {
     );
   }
 }
+
+PageHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default PageHeader;

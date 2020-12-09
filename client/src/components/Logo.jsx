@@ -38,7 +38,7 @@ const NavMenuItem = styled.li`
   }
 `;
 
-const Nav = () => (
+const Logo = () => (
   <StyledNav>
     <NavMenu>
       <NavMenuItem>
@@ -50,4 +50,4 @@ const Nav = () => (
   </StyledNav>
 );
 
-export default Nav;
+export default Logo;

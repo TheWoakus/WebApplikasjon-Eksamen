@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import PageHeader from '../components/PageHeader.jsx';
 import PageFooter from '../components/PageFooter.jsx';
 
-const Fagartikler = () => (
+const Hjem = () => (
   <>
     <PageHeader title="Velkommen til LG Rørleggerservice AS" />
     <section id="page_wrapper">
@@ -30,4 +30,4 @@ const Fagartikler = () => (
   </>
 );
 
-export default Fagartikler;
+export default Hjem;

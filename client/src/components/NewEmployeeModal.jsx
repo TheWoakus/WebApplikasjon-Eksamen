@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class NewEmployeeModal extends React.Component {
   constructor() {
@@ -141,4 +142,7 @@ class NewEmployeeModal extends React.Component {
   }
 }
 
+NewEmployeeModal.propTypes = {
+  addEmployee: PropTypes.object,
+};
 export default NewEmployeeModal;

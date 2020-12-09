@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import { withRouter } from 'react-router-dom';
 
 import NewCategoryButton from './NewCategoryButton.jsx';
 import NewCategoryModal from './NewCategoryModal.jsx';
 
-class Form extends React.Component {
+class ArticleForm extends React.Component {
   constructor() {
     super();
 
@@ -211,4 +212,8 @@ class Form extends React.Component {
   }
 }
 
-export default withRouter(Form);
+ArticleForm.propTypes = {
+  history: PropTypes.object.isRequired,
+  articles: PropTypes.array,
+};
+export default withRouter(ArticleForm);
