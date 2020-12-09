@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 
 class NewEmployeeModal extends React.Component {
@@ -12,13 +14,13 @@ class NewEmployeeModal extends React.Component {
   }
 
   closeModal() {
-    const modal = this.document.getElementById('modal');
+    const modal = document.getElementById('modal');
     modal.style.display = 'none';
   }
 
   clickListener() {
-    const modal = this.document.getElementById('modal');
-    this.window.onclick = function (event) {
+    const modal = document.getElementById('modal');
+    window.onclick = function (event) {
       if (event.target === modal) {
         modal.style.display = 'none';
       }

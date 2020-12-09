@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 
 class NewCategoryButton extends React.Component {
   showCategoryModal() {
-    const modal = this.document.getElementById('modal');
+    const modal = document.getElementById('modal');
     modal.style.display = 'block';
   }
 

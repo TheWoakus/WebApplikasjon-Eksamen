@@ -26,11 +26,22 @@ const OfficeSchema = new Schema(
       unique: false,
       min: ['1', 'Et kontor må ha et telefonnr'],
     },
-    email: {
+    location: {
       type: String,
       required: true,
       unique: false,
-      min: ['1', 'Et kontor må ha en e-post'],
+      min: ['1', 'Et kontor må høre til et sted'],
+    },
+    ingress: {
+      type: String,
+      required: true,
+      unique: false,
+      min: ['1', 'En liten fortelling om avdelingen'],
+    },
+    employees: {
+      type: Array,
+      required: true,
+      unique: false,
     },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }

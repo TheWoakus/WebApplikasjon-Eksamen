@@ -6,6 +6,7 @@ import Fagartikler from '../pages/Fagartikler.jsx';
 import Hjem from '../pages/Hjem.jsx';
 import Kontakt from '../pages/Kontakt.jsx';
 import Kontorer from '../pages/Kontorer.jsx';
+import Kontor from '../pages/Kontor.jsx';
 import NyttKontor from '../pages/NyttKontor.jsx';
 import Logginn from '../pages/Logginn.jsx';
 import Registrer from '../pages/Registrer.jsx';
@@ -23,6 +24,9 @@ const Routes = () => (
       </Route>
       <Route exact path="/kontorer/">
         <Kontorer />
+      </Route>
+      <Route path="/kontorer/:id">
+        <Kontor />
       </Route>
       <Route exact path="/nyttkontor/">
         <NyttKontor />

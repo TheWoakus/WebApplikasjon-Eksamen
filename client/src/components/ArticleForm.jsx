@@ -3,8 +3,8 @@ import axios from 'axios';
 
 import { withRouter } from 'react-router-dom';
 
-import NewCategoryButton from './NewCategoryButton';
-import NewCategoryModal from './NewCategoryModal';
+import NewCategoryButton from './NewCategoryButton.jsx';
+import NewCategoryModal from './NewCategoryModal.jsx';
 
 class Form extends React.Component {
   constructor() {
@@ -20,16 +20,16 @@ class Form extends React.Component {
     this.onChangeAuthor = this.onChangeAuthor.bind(this);
 
     this.state = {
-      categories: {},
       author: 'Lars Larsen',
       role: 'user',
+      categories: '',
     };
   }
 
   addCategory(categoryDetails) {
     const categories = { ...this.state.categories };
     const timestamp = Date.now();
-    categories[`cat-${timestamp}`] = categoryDetails;
+    categories[`category-${timestamp}`] = categoryDetails;
     this.setState({ categories });
   }
 
@@ -76,7 +76,7 @@ class Form extends React.Component {
 
     axios
       .post(
-        `${process.env.BASE_URL}${process.env.API_VERSION}/nyartikel`,
+        `${process.env.BASE_URL}${process.env.API_VERSION}/nyartikkel`,
         articleDetails
       )
       .then((res) => {
@@ -95,6 +95,7 @@ class Form extends React.Component {
         key={new Date()}
         ref={(input) => (this.category = input)}
         name="category"
+        defaultValue={data.title}
       >
         {data.title}
       </option>
@@ -165,7 +166,17 @@ class Form extends React.Component {
               Kategori&#58;
               <span id="category_error">OBS!! Sjekk at denne er riktig</span>
             </label>
-            <select>{allChoices}</select>
+            <select defaultValue="DEFAULT">
+              <option className="default" value="DEFAULT" disabled>
+                Velg en kategori
+              </option>
+              {allChoices}
+              {this.props.articles &&
+                this.props.articles.map((article) => (
+                  <option>{article.category}</option>
+                ))}
+            </select>
+
             <NewCategoryButton />
 
             <label className="formLabel" htmlFor="role">

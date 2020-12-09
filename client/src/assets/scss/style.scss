@@ -194,11 +194,85 @@ body, input, textarea {
 	background: url(../svg/list_hover.svg) no-repeat;
 }
 
+.office_container {
+	border: 1px solid black;
+	padding: 20px;
+}
+.officeName {
+	margin: 0px;
+}
+.officeAddress {
+	margin-top: 4px;
+	margin-bottom: 2px;
+}
+.officePhone, .officeMail {
+	margin: 2px;
+}
+
+.office_container_gridOffices {
+	margin-top: 20px;
+	border: 1px solid black;
+	padding: 20px;
+}
+.office_container_gridOffices > .officeNumber {
+	display: none;
+}
+.office_container_listOffices {
+	display: grid;
+	grid-template-columns: 30px 140px 150px 100px 150px;
+	// grid-template-rows: auto;
+	grid-gap: 20px;
+	margin: 20px 0;
+}
+
+.office_container_listOffices:hover > .officeName,
+.office_container_listOffices:hover > .officeAddress,
+.office_container_listOffices:hover > .officePhone,
+.office_container_listOffices:hover > .officeMail {
+	color: #499eb8;
+}
+
+.office_container_listOffices > h3 {
+	margin: 0;
+}
+
+.office_container_listOffices > .officeNumber {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+}
+
 #ansattliste {
 	width: calc(100% - 100px);
 	display: inline-block;
 	margin-bottom: 50px;
 
+}
+.employee_profile {
+	display: grid;
+	grid-template-columns: repeat(7, 150px);
+	grid-template-rows: auto;
+	grid-gap: 20px;
+	// display: flex;
+	// justify-content: space-between;
+}
+.employee_picture {
+	width: 150px;
+	height: 150px;
+	background: #dbdbdb;
+}
+
+.employee_name {
+	margin-bottom: 0;
+}
+.employee_position {
+	margin-top: 0;
+}
+.officeMail:first-letter {
+	text-transform: lowercase;
+}
+#office_meta_footer {
+	margin-top: 60px;
 }
 /*=============================
 	page - fagartikler
@@ -354,6 +428,9 @@ body, input, textarea {
 	color: #333;
 }
 
+option > .default {
+	color: red;
+}
 /*=============================
 	page - kontakt
 =============================*/
@@ -428,6 +505,13 @@ body, input, textarea {
 	}
 	.true_mode, .false_mode {
 		display: none;
+	}
+}
+@media(max-width: 750px) {
+		.office_container_listOffices {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto;
+		grid-gap: 0px;
 	}
 }
 @media(max-width: 600px) {

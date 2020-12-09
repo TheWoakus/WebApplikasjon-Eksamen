@@ -27,19 +27,24 @@ const ArticleSchema = new Schema(
       unique: false,
       min: [1, 'Det var en gang..'],
     },
+    picture: {
+      type: String,
+      required: false,
+      unique: false,
+    },
     category: {
       type: String,
       required: [true, 'Put it in a box'],
       unique: false,
       min: [1, 'Skal den her eller der mon tro??'],
     },
-    paygrade: {
+    role: {
       type: String,
       enum: {
-        values: ['Standard', 'Registrert', 'Admin', 'SuperAdmin'],
-        message: 'Rolle ikke fylt ut',
+        values: ['super', 'admin', 'user'],
+        message: 'Trenger en brukertype. super, admin eller user',
       },
-      default: 'Standard',
+      default: 'user',
     },
     author: {
       type: String,
