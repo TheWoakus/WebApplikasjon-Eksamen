@@ -36,10 +36,14 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
             }
           })
           .map((office, index) => (
-            <Link className="" to={`/kontorer/${office._id}`} key={office._id}>
+            <Link
+              to={`/kontorer/${office._id}`}
+              key={office._id}
+              officenumber={index + 1}
+            >
               <section className={`office_container_${viewtype}`}>
-                <h3 className="officeNumber">{index}</h3>
-                <h3 className="officeName">{`${office.name} ${index}`}</h3>
+                <h3 className="officeNumber">{index + 1}</h3>
+                <h3 className="officeName">{`${office.name} ${index + 1}`}</h3>
                 <p className="officeAddress">{`${office.address} ${index}`}</p>
                 <p className="officePhone">{office.phone}</p>
                 <p className="officeMail">
