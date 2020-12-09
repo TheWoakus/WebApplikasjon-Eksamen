@@ -24,7 +24,7 @@ export const create = catchAsyncErrors(async (req, res) => {
     await sendMail({
       email: request.email,
       subject: 'Takk for din henvendelse',
-      message: `Hei, ${request.name}! Du har nylig sendt oss en melding, her er hva du skrev: Emne: ${request.title}, Tittel: ${request.content}`,
+      message: `<h3>Hello, ${request.name}</h3><p>Du har nylig sendt oss en melding, her er hva du har skrevet til oss:</p><p>Emne: ${request.title}</br>Din melding: ${request.content}</p><p>Takk for din henvendelse, ha en super dag!</p><p>Mvh, Gruppe 1347</p>`,
     });
   } catch (error) {
     console.log(error);
