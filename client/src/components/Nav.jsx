@@ -118,7 +118,7 @@ const Nav = () => {
               exact
               to="/"
               activeClassName="active"
-              className="secondary login_svg"
+              className="secondary logout_svg"
               onClick={handleLogout}
             />
           )}
