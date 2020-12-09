@@ -38,6 +38,7 @@ class Kontorer extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+    // eslint-disable-next-line no-undef
     window.location.reload(true); // i know.. deprecated.. but it still works..
   }
 
