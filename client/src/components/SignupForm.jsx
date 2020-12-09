@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAlert } from 'react-alert';
-// import { register } from '../utils/authService.jsx';
+import { useHistory } from 'react-router-dom';
+import { register } from '../utils/authService';
+import { useAuthContext } from '../context/AuthProvider.jsx';
 
 const SignupForm = () => {
   const [name, setName] = useState(null);
@@ -8,6 +10,8 @@ const SignupForm = () => {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [verifyPassword, setVerifyPassword] = useState(null);
+  const { setUser } = useAuthContext();
+  const history = useHistory();
 
   const alert = useAlert();
 
@@ -28,6 +32,15 @@ const SignupForm = () => {
     };
 
     const { data } = await register(credentials);
+
+    if (!data.success) {
+      alert.show('Feil', { type: 'error' });
+    } else {
+      const { user } = data;
+      setUser({ ...user });
+      alert.show('Du har nå registrert og logget på!', { type: 'success' });
+      history.push('/');
+    }
   };
 
   return (

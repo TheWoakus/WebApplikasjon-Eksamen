@@ -23,3 +23,11 @@ export const logout = async () => {
     return error.response;
   }
 };
+
+export const register = async (credentials) => {
+  try {
+    return await http.post('/register', { ...credentials });
+  } catch (err) {
+    return err.response;
+  }
+};
