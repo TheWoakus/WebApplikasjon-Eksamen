@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 import 'dotenv/config.js';
 import { SERVER_PORT, CLIENT_PORT } from './constants/index.js';
@@ -13,12 +14,17 @@ import category from './routes/category.js';
 import request from './routes/request.js';
 import user from './routes/user.js';
 import auth from './routes/auth.js';
+import image from './routes/image.js';
 
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
+
 app.use(
   cors({
     origin: `http://localhost:${CLIENT_PORT}`,
@@ -26,8 +32,6 @@ app.use(
     credentials: true,
   })
 );
-
-app.use(express.json());
 
 app.use(cookieParser());
 
@@ -38,6 +42,7 @@ app.use(`${process.env.BASEURL}/kontakt`, request);
 app.use(`${process.env.BASEURL}/kategorier`, category);
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/`, auth);
+app.use(`${process.env.BASEURL}/`, image);
 
 connectDatabase();
 const server = app.listen(
