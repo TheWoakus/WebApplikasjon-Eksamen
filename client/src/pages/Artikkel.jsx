@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useHistory } from 'react-router-dom';
 
-import { get } from '../utils/articleService';
+import { useAlert } from 'react-alert';
+import { get, remove } from '../utils/articleService';
+import { useAuthContext } from '../context/AuthProvider.jsx';
 
 import PageHeader from '../components/PageHeader.jsx';
 import PageFooter from '../components/PageFooter.jsx';
@@ -10,6 +12,9 @@ const Artikkel = () => {
   const [article, setArticle] = useState(null);
   const [error, setError] = useState(null);
   const params = useParams();
+  const { isAdmin } = useAuthContext();
+  const alert = useAlert();
+  const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +26,19 @@ const Artikkel = () => {
       }
     };
     fetchData();
+    console.log(params);
   }, []);
+
+  const handleDelete = async () => {
+    const { data } = await remove(params.id);
+
+    if (!data.success) {
+      alert.show('Greide ikke å slette data', { type: 'error' });
+    } else {
+      alert.show('Artikkel slettet', { type: 'success' });
+      history.push('/fagartikler');
+    }
+  };
 
   const fetchArticle = () => {
     if (article === null) {
@@ -54,18 +71,19 @@ const Artikkel = () => {
               <p className="article_category">Kategori: {result.category}</p>
               <p className="article_slug">Slug: {result.slug}</p>
             </section>
-            <section id="admin_buttons">
-              <NavLink exact to="/registrer/">
-                <button type="submit" className="delete block">
+            {isAdmin && (
+              <section id="admin_buttons">
+                <button onClick={handleDelete} className="delete block">
                   Slett
                 </button>
-              </NavLink>
-              <NavLink exact to="/registrer/">
-                <button type="submit" className="edit block">
-                  Rediger
-                </button>
-              </NavLink>
-            </section>
+
+                <NavLink exact to="/registrer/">
+                  <button type="submit" className="edit block">
+                    Rediger
+                  </button>
+                </NavLink>
+              </section>
+            )}
           </section>
         </section>
         <PageFooter />

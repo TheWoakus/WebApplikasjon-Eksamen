@@ -33,6 +33,15 @@ export const patch = async (data) => {
     return err.response.data;
   }
 };
+
+export const remove = async (id) => {
+  try {
+    return await http.delete(`${API_URL}/${id}`);
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
 export default {
   create,
   list,
