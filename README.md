@@ -64,3 +64,13 @@ M.E.R.N
   run npm start
 
   Kjører på http://localhost:3000
+  
+## GMAIL
+
+  username: gruppe1347.webapplikasjoner@gmail.com
+  password: drossap8
+  
+## Mailtrap
+
+  Log in with gmail
+  
