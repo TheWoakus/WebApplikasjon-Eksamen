@@ -38,7 +38,7 @@ class Kontorer extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-    this.setState({ update: '1' });
+    window.location.reload(true); // i know.. deprecated.. but it still works..
   }
 
   search(keyword) {
@@ -59,10 +59,11 @@ class Kontorer extends React.Component {
           <button
             type="submit"
             onClick={this.populateDB}
-            className="button big block"
+            className="button big block bigspace"
           >
             Generer kontorer
           </button>
+
           <section>
             <Link to="/nyttkontor/" className="button big block">
               Nytt kontor
@@ -79,7 +80,6 @@ class Kontorer extends React.Component {
             </section>
             <section className="branch">
               <section id="officeLocations" className={viewtype}>
-                {/* {allOfficeLocations} */}
                 <FetchOffices viewtype={viewtype} />
               </section>
             </section>
