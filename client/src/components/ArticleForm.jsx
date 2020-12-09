@@ -82,7 +82,7 @@ class Form extends React.Component {
       .then((res) => {
         console.log(res.data);
         this.articleForm.reset();
-        this.props.history.push('/fagartikler');
+        this.props.history.push(`/article/${res.data._id}`);
       })
       .catch((error) => {
         console.log(error);
