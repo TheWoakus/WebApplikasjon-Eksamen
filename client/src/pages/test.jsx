@@ -63,6 +63,13 @@ class Kontorer extends React.Component {
           >
             Generer kontorer
           </button>
+          <button
+            type="button"
+            onClick={this.populateDB}
+            className="button big block giveMeSomeRoom"
+          >
+            Generer kontorer
+          </button>
 
           <section>
             <Link to="/nyttkontor/" className="button big block">
@@ -79,8 +86,7 @@ class Kontorer extends React.Component {
               ></button>
             </section>
             <section className="branch">
-              {/* <section id="officeLocations" className={viewtype}> */}
-              <section id="officeLocations">
+              <section id="officeLocations" className={viewtype}>
                 <FetchOffices
                   viewtype={viewtype}
                   searchFilter={this.state.search}

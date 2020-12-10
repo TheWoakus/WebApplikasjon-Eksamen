@@ -132,6 +132,31 @@ body, input, textarea {
 /*=============================
 	page - kontorer
 =============================*/
+.branchLocation {
+	margin-bottom: 80px;
+}
+.branchName {
+	font-size: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
+.branchName:first-letter{
+	text-transform: capitalize;
+}
+
+.span:first-letter {
+	text-transform: lowercase;
+}
+.antall {
+	color: #333;
+	// padding-left: 20px;
+}
+
+.span {
+	color: #333;
+	padding-left: 20px;
+}
 .officeContent {
 	margin: 0px auto;
 }
@@ -256,7 +281,7 @@ body, input, textarea {
 }
 .employee_profile {
 	display: grid;
-	grid-template-columns: repeat(7, 150px);
+	grid-template-columns: repeat(12, 150px);
 	grid-template-rows: auto;
 	grid-gap: 20px;
 	// display: flex;
@@ -466,6 +491,39 @@ option > .default {
 /*=============================
 	@media
 =============================*/
+@media(max-width: 2530px) {
+	.employee_profile {
+		grid-template-columns: repeat(11, 150px);
+	}
+}
+@media(max-width: 2320px) {
+	.employee_profile {
+		grid-template-columns: repeat(10, 150px);
+	}
+}
+@media(max-width: 2100px) {
+	.employee_profile {
+		grid-template-columns: repeat(9, 150px);
+	}
+}
+
+@media(max-width: 1900px) {
+	.employee_profile {
+		grid-template-columns: repeat(8, 150px);
+	}
+}
+
+@media(max-width: 1680px) {
+	.employee_profile {
+		grid-template-columns: repeat(7, 150px);
+	}
+}
+
+@media(max-width: 1450px) {
+	.employee_profile {
+		grid-template-columns: repeat(6, 150px);
+	}
+}
 @media(max-width: 1400px) {
 	#page_content {
 		grid-template-columns: 1fr 1fr;
@@ -478,11 +536,25 @@ option > .default {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
+
+@media(max-width: 1250px) {
+	.employee_profile {
+		grid-template-columns: repeat(5, 150px);
+	}
+}
+
 @media(max-width: 1200px) {
 	.gridOffices {
 		grid-template-columns: 1fr 1fr;
 	}
 }
+
+@media(max-width: 1050px) {
+	.employee_profile {
+		grid-template-columns: repeat(4, 150px);
+	}
+}
+
 @media(max-width: 1000px) {
 	.primary {
 		display: none;
@@ -492,6 +564,13 @@ option > .default {
 	}
 
 }
+
+@media(max-width: 830px) {
+	.employee_profile {
+		grid-template-columns: repeat(3, 150px);
+	}
+}
+
 @media(max-width: 800px) {
 	#page_content {
 		grid-template-columns: 1fr ;
@@ -534,6 +613,13 @@ option > .default {
 		padding-top: 60px;
 	}
 	
+	.span {
+		display: none;
+	}
+	
+	.employee_profile {
+		grid-template-columns: repeat(2, 150px);
+	}
 }
 @media(max-width: 500px) {
 	.title {
@@ -548,5 +634,12 @@ option > .default {
 		"ingress"
 		"category"
 	}
+
+		.employee_profile {
+		display: block;
+		width: 150px;
+		margin: 0 auto
+	}
+
 
 }
