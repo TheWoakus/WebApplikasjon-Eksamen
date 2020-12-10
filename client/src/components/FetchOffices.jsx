@@ -7,7 +7,9 @@ import { useAuthContext } from '../context/AuthProvider.jsx';
 const FetchOffices = ({ viewtype, searchFilter }) => {
   const [offices, setOffices] = useState(null);
   const [error, setError] = useState(null);
+  const [loaded, setLoaded] = useState(false);
   const { isAdmin, isLoggedIn, setUser } = useAuthContext();
+  const [groupedOffices, setGroupedOffices] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,9 +23,69 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
     fetchData();
   }, []);
 
+  function groupBy(objectArray, property) {
+    return objectArray.reduce(function (acc, obj) {
+      const key = obj[property];
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+      acc[key].push(obj);
+      return acc;
+    }, {});
+  }
+
+  //   useEffect(() => {
+  //     let localbranch = null;
+
+  //     if (loaded === false) {
+  //       if (offices !== null) {
+  //         localbranch = groupBy(offices, 'location');
+  //         setOffices(localbranch);
+  //         setGroupedOffices(localbranch);
+  //         setLoaded(true);
+  //       }
+  //     }
+  //   }, [offices]);
+
+  console.log(groupedOffice);
   return (
     <>
-      {offices &&
+      {loaded && (
+        <section>
+          {Object.keys(groupedOffices).map((key) => (
+            <section key={key} className="branchLocation">
+              <h1 className="branchName">
+                {key} (
+                <span className="antall">{groupedOffices[key].length}</span>
+                <span className="span">kontorer</span>)
+              </h1>
+              <section className={viewtype}>
+                {groupedOffices[key].map((oneOffice, index) => (
+                  <Link
+                    to={`/kontorer/${oneOffice._id}`}
+                    key={oneOffice._id}
+                    key={index}
+                  >
+                    <section className={`office_container_${viewtype}`}>
+                      <h3 className="officeNumber">{index + 1}</h3>
+                      <h3 className="officeName">{oneOffice.name}</h3>
+                      <p className="officeAddress">{`${oneOffice.address} ${
+                        index + 1
+                      }`}</p>
+                      <p className="officePhone">{oneOffice.phone}</p>
+                      <p className="officeMail">
+                        {`${oneOffice.location}${index + 1}@epost.no`}
+                      </p>
+                    </section>
+                  </Link>
+                ))}
+              </section>
+            </section>
+          ))}
+        </section>
+      )}
+
+      {/* {offices &&
         offices
           .filter((office) => {
             if (searchFilter == null) {
@@ -53,7 +115,7 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
                 </p>
               </section>
             </Link>
-          ))}
+          ))} */}
     </>
   );
 };
