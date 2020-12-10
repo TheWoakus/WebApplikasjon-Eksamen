@@ -28,18 +28,12 @@ const Fagartikler = () => {
 
   useEffect(() => {
     if (articles.length !== 0) {
-      // articles.map((articleItem) => {
-      //  if (articleItem.imgSrc !== undefined) {
-      //    articleItem.imgSrc = `${process.env.BASE_URL}/${articleItem.imgSrc}`;
-      //  }
-      // });
-
-      for (let i = 0; i < articles.length; i++) {
-        if (articles[i].imgSrc !== undefined) {
-          articles[i].imgSrc = `${process.env.BASE_URL}/${articles[i].imgSrc}`;
-          articles[i].imgSrc = articles[i].imgSrc.replace('/public', '');
+      articles.forEach((articleItem) => {
+        if (articleItem.imgSrc !== undefined) {
+          articleItem.imgSrc = `${process.env.BASE_URL}/${articleItem.imgSrc}`;
+          articleItem.imgSrc = articleItem.imgSrc.replace('/public', '');
         }
-      }
+      });
 
       setLoaded(true);
     }
