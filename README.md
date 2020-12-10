@@ -75,3 +75,7 @@ M.E.R.N
 
   Log in with gmail credentials
   
+.env
+  -------
+
+Vi har lagt ved en kopi av .env filene både til client og til server. Disse skal jo ligge i .zip-mappen.. men kjedelig om ting ikke fungerer som det skal...
