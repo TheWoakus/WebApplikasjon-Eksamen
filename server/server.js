@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import path from 'path';
+// import path from 'path';
 
 import 'dotenv/config.js';
 import { SERVER_PORT, CLIENT_PORT } from './constants/index.js';
