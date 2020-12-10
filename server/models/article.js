@@ -55,9 +55,18 @@ const ArticleSchema = new Schema(
       type: String,
       required: false,
     },
+    _id: {
+      type: Object,
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
+
+ArticleSchema.index({
+  name: 'text',
+  author: 'text',
+  category: 'text',
+});
 
 ArticleSchema.pre('save', function (next) {
   this.slug = slugify(this.title, { lower: true });
