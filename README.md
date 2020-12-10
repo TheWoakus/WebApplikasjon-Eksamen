@@ -85,11 +85,11 @@ Vi har lagt ved en kopi av .env filene både til client og til server. Disse ska
 
 ```
 {
-	"name": "Mr. Robot",
-	"email": "mr.robot@evilcorp.com",
-	"username": "mr.robot",
-	"password": "drossap8",
-	"role": "super"
+  "name": "Mr. Robot",
+  "email": "mr.robot@evilcorp.com",
+  "username": "mr.robot",
+  "password": "drossap8",
+  "role": "super"
 }
 ```
 
@@ -104,33 +104,32 @@ Vi har lagt ved en kopi av .env filene både til client og til server. Disse ska
   eks:
 
   ```
-    {
-    name: 'Rørlegger',
-    address: 'Rørleggerveien',
-    phone: '69990000',
-    location: 'fredrikstad',
-    ingress:
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
-    employees: [
-      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
-      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
-      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
-      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
-    ],
-  },
+{
+  name: 'Rørlegger',
+  address: 'Rørleggerveien',
+  phone: '69990000',
+  location: 'fredrikstad',
+  ingress: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
+  employees: [
+    { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+    { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+    { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+    { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+  ],
+}
   ```
 
 ## Artikler
 
-  Her må dere dessverre lage deres egne.. ikke noen magisk knapp her.. igjen.. postman, bare husk å legge til en lokal fil 😉
+  Her må dere dessverre lage deres egne ved å bruke vår fine modal 😝 Ikke noen magisk knapp her som fyller databasen..  Om dere bruker postman, bare husk å legge til en lokal fil 😉
 
   ```
-  {
-    "title": "My fourth article",
-    "ingress": "Vi pusser opp små og mellomstore bad for privatkunder og entreprenører.",
-    "content": "Lorem ipsum dolor sit amet",
-    "category": "bad",
-    "role": "user",
-    "author": "Lars Larsen"
+{
+  "title": "My fourth article",
+  "ingress": "Vi pusser opp små og mellomstore bad for privatkunder og entreprenører.",
+  "content": "Lorem ipsum dolor sit amet",
+  "category": "bad",
+  "role": "user",
+  "author": "Lars Larsen"
 }
 ```
