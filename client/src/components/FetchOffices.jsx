@@ -44,10 +44,12 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
               <section className={`office_container_${viewtype}`}>
                 <h3 className="officeNumber">{index + 1}</h3>
                 <h3 className="officeName">{`${office.name} ${index + 1}`}</h3>
-                <p className="officeAddress">{`${office.address} ${index}`}</p>
+                <p className="officeAddress">{`${office.address} ${
+                  index + 1
+                }`}</p>
                 <p className="officePhone">{office.phone}</p>
                 <p className="officeMail">
-                  {`${office.location} ${index}@epost.no`}
+                  {`${office.location}${index + 1}@epost.no`}
                 </p>
               </section>
             </Link>
