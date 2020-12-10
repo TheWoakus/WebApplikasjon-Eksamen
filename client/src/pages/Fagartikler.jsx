@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { list } from '../utils/articleService.js';
+import { list as categoryList } from '../utils/categoryService';
 import { download } from '../utils/imageService.js';
 
 import PageHeader from '../components/PageHeader.jsx';
@@ -13,6 +14,7 @@ const Fagartikler = () => {
   const [error, setError] = useState(null);
   const { isAdmin, isLoggedIn, setUser } = useAuthContext();
   const [loaded, setLoaded] = useState(false);
+  const [categories, setCategories] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +25,18 @@ const Fagartikler = () => {
         setArticles(data.data);
       }
     };
+
+    const fetchCategories = async () => {
+      const { data } = await categoryList();
+      if (!data.success) {
+        setError(error);
+      } else {
+        setCategories(data.data);
+      }
+    };
+
     fetchData();
+    fetchCategories();
   }, []);
 
   useEffect(() => {
@@ -34,10 +47,26 @@ const Fagartikler = () => {
           articleItem.imgSrc = articleItem.imgSrc.replace('/public', '');
         }
       });
+    }
+  }, [articles]);
+
+  useEffect(() => {
+    if (articles !== null && categories !== null) {
+      articles.forEach((articleItem) => {
+        categories.forEach((categoryItem) => {
+          if (categoryItem._id === articleItem.category) {
+            articleItem.dispCategory = categoryItem.name;
+          }
+        });
+
+        if (articleItem.dispCategory === undefined) {
+          articleItem.dispCategory = 'Could not find category';
+        }
+      });
 
       setLoaded(true);
     }
-  }, [articles]);
+  }, [articles, categories]);
 
   return (
     <>
@@ -69,7 +98,7 @@ const Fagartikler = () => {
                   <section>
                     <h2 className="articleTitle">{articleDisplayItem.title}</h2>
                     <p className="articleCategory">
-                      {articleDisplayItem.category}
+                      {articleDisplayItem.dispCategory}
                     </p>
                     <p className="articleIngress">
                       {articleDisplayItem.ingress}
