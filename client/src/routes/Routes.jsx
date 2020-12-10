@@ -38,7 +38,7 @@ const AuthenticatedRoutes = ({ children, ...rest }) => {
 const AdminRoutes = ({ children, ...rest }) => {
   const { isLoggedIn, isAdmin } = useAuthContext();
 
-  return <AuthenticatedRoutes {...rest} render={() => isAdmin && children} />;
+  return <Route {...rest} render={() => isAdmin && isLoggedIn && children} />;
 };
 
 const Routes = () => (

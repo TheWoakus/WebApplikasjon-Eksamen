@@ -16,7 +16,6 @@ export const createOrUpdate = catchAsyncErrors(async (req, res, next) => {
   let newStat = null;
 
   if (!fetchedStat) {
-    console.log('Eksiterer ikke');
     newStat = await statsService.createNewStats(req.body);
     res.status(200).json({ success: true, data: newStat });
   } else {

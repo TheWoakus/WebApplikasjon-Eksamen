@@ -43,11 +43,6 @@ const ArticleForm = () => {
     setCategories([...categories, data.data]);
   };
 
-  const addCategory = () => {
-    console.log('Wat');
-    // TBA
-  };
-
   useEffect(() => {
     if (error) {
       alert.show(error, { type: 'error' });
@@ -78,7 +73,6 @@ const ArticleForm = () => {
       information.author === null
     ) {
       setError('Ikke alle felt er fylt ut');
-      console.log(error);
       return;
     }
 
