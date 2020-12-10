@@ -5,3 +5,4 @@ export * as categoryController from './category.js';
 export * as requestController from './request.js';
 export * as authController from './auth.js';
 export * as imageController from './image.js';
+export * as StatController from './stats.js';

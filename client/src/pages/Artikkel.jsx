@@ -4,6 +4,7 @@ import { NavLink, useParams, useHistory } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import { get, remove } from '../utils/articleService';
 import { useAuthContext } from '../context/AuthProvider.jsx';
+import { getUserInfo } from '../utils/authService.js';
 import { list } from '../utils/categoryService.js';
 
 import PageHeader from '../components/PageHeader.jsx';
@@ -16,9 +17,26 @@ const Artikkel = () => {
   const [categories, setCategories] = useState(null);
 
   const params = useParams();
-  const { isAdmin } = useAuthContext();
+  const { isAdmin, isLoggedIn } = useAuthContext();
   const alert = useAlert();
   const history = useHistory();
+
+  useEffect(() => {
+    const logStatistics = async () => {
+      const { data } = await getUserInfo();
+
+      if (!data.success) {
+        return;
+      }
+
+      console.log(data);
+      console.log(article);
+    };
+
+    if (isLoggedIn && article !== null) {
+      logStatistics();
+    }
+  }, [isLoggedIn, article]);
 
   useEffect(() => {
     const fetchData = async () => {
