@@ -1,238 +1,223 @@
-import React from 'react';
-import axios from 'axios';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import { useAlert } from 'react-alert';
+import { useHistory } from 'react-router-dom';
 
-import { withRouter } from 'react-router-dom';
 import { upload, download } from '../utils/imageService';
+import { list, create } from '../utils/categoryService';
+import { create as articleCreate } from '../utils/articleService';
 
 import NewCategoryButton from './NewCategoryButton.jsx';
 import NewCategoryModal from './NewCategoryModal.jsx';
 
-class ArticleForm extends React.Component {
-  constructor() {
-    super();
+const ArticleForm = () => {
+  const [loaded, setLoaded] = useState(false);
 
-    this.addCategory = this.addCategory.bind(this);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeIngress = this.onChangeIngress.bind(this);
-    this.onChangeContent = this.onChangeContent.bind(this);
-    this.onChangePicture = this.onChangePicture.bind(this);
-    this.onChangeCategory = this.onChangeCategory.bind(this);
-    this.onChangeRole = this.onChangeRole.bind(this);
-    this.onChangeAuthor = this.onChangeAuthor.bind(this);
+  const [title, setTitle] = useState(null);
+  const [ingress, setIngress] = useState(null);
+  const [content, setContent] = useState(null);
+  const [picture, setPicture] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [role, setRole] = useState('user');
+  const [author, setAuthor] = useState('Lars Larsen');
 
-    this.state = {
-      author: 'Lars Larsen',
-      role: 'user',
-      categories: '',
-    };
-  }
+  const [categories, setCategories] = useState([]);
 
-  addCategory(categoryDetails) {
-    const categories = { ...this.state.categories };
-    const timestamp = Date.now();
-    categories[`category-${timestamp}`] = categoryDetails;
-    this.setState({ categories });
-  }
+  const [error, setError] = useState(null);
 
-  onChangeTitle(event) {
-    this.setState({ title: event.target.value });
-  }
+  const alert = useAlert();
+  const history = useHistory();
 
-  onChangeIngress(event) {
-    this.setState({ ingress: event.target.value });
-  }
+  useEffect(async () => {
+    const { data } = await list();
 
-  onChangeContent(event) {
-    this.setState({ content: event.target.value });
-  }
+    setCategories(data.data);
+    setLoaded(true);
+  }, []);
 
-  onChangePicture(event) {
-    this.setState({ picture: event.target.value });
-  }
+  const createCategory = async (inputCategory) => {
+    const { data } = await create(inputCategory);
+    if (!data.success) {
+      setError('Kunne ikke opprette kategori');
+    }
 
-  onChangeCategory(event) {
-    this.setState({ category: event.target.value });
-  }
+    setCategories([...categories, data.data]);
+  };
 
-  onChangeRole(event) {
-    this.setState({ role: event.target.value });
-  }
+  const addCategory = () => {
+    console.log('Wat');
+    // TBA
+  };
 
-  onChangeAuthor(event) {
-    this.setState({ author: event.target.value });
-  }
+  useEffect(() => {
+    if (error) {
+      alert.show(error, { type: 'error' });
+      setError(null);
+    }
+  }, [error]);
 
-  async onSubmit(event) {
+  const onSubmit = async () => {
     event.preventDefault();
 
-    let imageID = '';
-
-    const { data } = await upload(this.picture.files[0]);
-    if (!data.success) {
-      console.log(data.message);
-      return;
-    }
-
-    imageID = data.data._id;
-
-    const imgData = await download(imageID);
-
-    if (!imgData.data.success) {
-      console.log(imgData.data.message);
-      return;
-    }
-
-    const articleDetails = {
-      title: this.title.value,
-      ingress: this.ingress.value,
-      content: this.content.value,
-      picture: imageID,
-      category: this.category.value,
-      role: this.state.role,
-      author: this.state.author,
-      imgSrc: imgData.data.data.imagePath,
+    const information = {
+      title,
+      ingress,
+      content,
+      picture,
+      category,
+      role,
+      author,
     };
 
-    axios
-      .post(
-        `${process.env.BASE_URL}${process.env.API_VERSION}/nyartikkel`,
-        articleDetails
-      )
-      .then((res) => {
-        console.log(res.data);
-        this.articleForm.reset();
-        this.props.history.push(`/article/${res.data._id}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    if (
+      information.title === null ||
+      information.ingress === null ||
+      information.content === null ||
+      information.picture === null ||
+      information.category === null ||
+      information.role === null ||
+      information.author === null
+    ) {
+      setError('Ikke alle felt er fylt ut');
+      console.log(error);
+      return;
+    }
 
-  render() {
-    const allChoices = Object.values(this.state.categories).map((data) => (
-      <option
-        key={new Date()}
-        ref={(input) => (this.category = input)}
-        name="category"
-        defaultValue={data.title}
-      >
-        {data.title}
-      </option>
-    ));
+    if (!error) {
+      let imageID = '';
 
-    return (
-      <>
-        <NewCategoryModal addCategory={this.addCategory} />
-        <form
-          ref={(input) => (this.articleForm = input)}
-          onSubmit={(event) => this.onSubmit(event)}
-        >
-          <fieldset>
-            <label className="formLabel" htmlFor="title">
-              Tittel&#58;
-              <span id="title_error">OBS!! Sjekk at denne er riktig</span>
-            </label>
-            <input
-              ref={(input) => (this.title = input)}
-              type="text"
-              name="title"
-              className="input"
-              placeholder="Skriv en passende tittel"
-              onChange={this.onChangeTitle}
-            />
+      const { data } = await upload(picture);
+      if (!data.success) {
+        setError(data.message);
+        return;
+      }
 
-            <label className="formLabel" htmlFor="ingress">
-              Ingress&#58;
-              <span id="ingress_error">OBS!! Sjekk at denne er riktig</span>
-            </label>
-            <textarea
-              ref={(input) => (this.ingress = input)}
-              name="ingress"
-              cols="30"
-              rows="5"
-              className="input"
-              placeholder="En liten ingress"
-              onChange={this.onChangeIngress}
-            ></textarea>
+      imageID = data.data._id;
 
-            <label className="formLabel" htmlFor="content">
-              Innhold&#58;
-              <span id="content_error">OBS!! Sjekk at denne er riktig</span>
-            </label>
-            <textarea
-              ref={(input) => (this.content = input)}
-              name="content"
-              cols="30"
-              rows="5"
-              className="input"
-              placeholder="Fortell en historie"
-              onChange={this.onChangeContent}
-            ></textarea>
+      const imgData = await download(imageID);
 
-            <label className="formLabel" htmlFor="category">
-              Bilde&#58;
-              <span id="category_error">OBS!! Sjekk at denne er riktig</span>
-            </label>
-            <input
-              ref={(input) => (this.picture = input)}
-              type="file"
-              name="picture"
-              className="input"
-              onChange={this.onChangePicture}
-            />
+      if (!imgData.data.success) {
+        setError(imgData.data.message);
+        return;
+      }
 
-            <label className="formLabel" htmlFor="category">
-              Kategori&#58;
-              <span id="category_error">OBS!! Sjekk at denne er riktig</span>
-            </label>
-            <select defaultValue="DEFAULT">
-              <option className="default" value="DEFAULT" disabled>
-                Velg en kategori
-              </option>
-              {allChoices}
-              {this.props.articles &&
-                this.props.articles.map((article) => (
-                  <option>{article.category}</option>
+      const articleDetails = {
+        title,
+        ingress,
+        content,
+        picture: imageID,
+        category,
+        role,
+        author,
+        imgSrc: imgData.data.data.imagePath,
+      };
+
+      const articleData = await articleCreate(articleDetails);
+      if (!articleData.data.success) {
+        setError(articleData.data.message);
+        return;
+      }
+
+      history.push(`/article/${articleData.data.data._id}`);
+    }
+  };
+
+  return (
+    <>
+      {loaded && (
+        <div>
+          <NewCategoryModal addCategory={createCategory} />
+          <form onSubmit={onSubmit}>
+            <fieldset>
+              <label className="formLabel" htmlFor="title">
+                Tittel
+              </label>
+              <input
+                type="text"
+                name="title"
+                className="input"
+                placeholder="Skriv en passende tittel"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+
+              <label className="formLabel" htmlFor="ingress">
+                Ingress
+              </label>
+              <textarea
+                name="ingress"
+                cols="30"
+                rows="5"
+                className="input"
+                placeholder="En liten ingress"
+                onChange={(e) => setIngress(e.target.value)}
+              ></textarea>
+
+              <label className="formLabel" htmlFor="content">
+                Innhold
+              </label>
+              <textarea
+                name="content"
+                cols="30"
+                rows="5"
+                className="input"
+                placeholder="Fortell en historie"
+                onChange={(e) => setContent(e.target.value)}
+              ></textarea>
+
+              <label className="formLabel" htmlFor="category">
+                Bilde
+              </label>
+              <input
+                type="file"
+                name="picture"
+                className="input"
+                onChange={(e) => setPicture(e.target.files[0])}
+              />
+
+              <label className="formLabel" htmlFor="category">
+                Kategori
+              </label>
+              <select
+                defaultValue="DEFAULT"
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option className="default" value="DEFAULT" disabled>
+                  Velg en kategori
+                </option>
+                {categories.map((categoryItem) => (
+                  <option key={categoryItem._id} value={categoryItem._id}>
+                    {categoryItem.name}
+                  </option>
                 ))}
-            </select>
+              </select>
 
-            <NewCategoryButton />
+              <NewCategoryButton />
 
-            <label className="formLabel" htmlFor="role">
-              Klarering&#58;
-              <span id="role_error">OBS!! Sjekk at denne er riktig</span>
-            </label>
-            <select onChange={this.onChangeRole} defaultValue={this.state.role}>
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-              <option value="super">Super</option>
-            </select>
-            <label className="formLabel" htmlFor="author">
-              Forfatter&#58;
-              <span id="author_error">OBS!! Sjekk at denne er riktig</span>
-            </label>
-            <select
-              onChange={this.onChangeAuthor}
-              defaultValue={this.state.author}
-            >
-              <option value="Lars Larsen">Lars Larsen</option>
-              <option value="Gunn Gundersen">Gunn Gundersen</option>
-              <option value="Simen Simensen">Simen Simensen</option>
-            </select>
+              <label className="formLabel" htmlFor="role">
+                Klarering
+              </label>
+              <select onChange={(e) => setRole(e.target.value)}>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="super">Super</option>
+              </select>
+              <label className="formLabel" htmlFor="author">
+                Forfatter
+              </label>
+              <select onChange={(e) => setAuthor(e.target.value)}>
+                <option value="Lars Larsen">Lars Larsen</option>
+                <option value="Gunn Gundersen">Gunn Gundersen</option>
+                <option value="Simen Simensen">Simen Simensen</option>
+              </select>
 
-            <button type="submit" className="button centered big">
-              Publiser
-            </button>
-          </fieldset>
-        </form>
-      </>
-    );
-  }
-}
-
-ArticleForm.propTypes = {
-  history: PropTypes.object.isRequired,
-  articles: PropTypes.array,
+              <button type="submit" className="button centered big">
+                Publiser
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      )}
+    </>
+  );
 };
-export default withRouter(ArticleForm);
+
+export default ArticleForm;
