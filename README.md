@@ -29,24 +29,6 @@ M.E.R.N
   
   Dessverre får du ikke se databasen før vi legger til en collection.. Fyr opp server og app, så fikser vi dette.
 
-## Super og admin
-
-  For å kunne lage en super eller admin bruker så må dette gjøres igjennom postman
- 
-  Dette blir en POST forespørsel til adresse: http://localhost:7777/api/v1/register
-
-  Det tar imot formatet json og krever: 
-  - name
-  - email
-  - username
-  - password
-  - role
-
-  Role er default til user, men om man spesifiserer dette så kan man også sette til admin eller super.
-
-  Dersom man skal være admin så skriver man inn "admin"
-
-  Dersom man skal være super så skriver man inn "super"
 
 ## SERVER
 
@@ -75,7 +57,80 @@ M.E.R.N
 
   Log in with gmail credentials
   
-.env
-  -------
+## .env
 
 Vi har lagt ved en kopi av .env filene både til client og til server. Disse skal jo ligge i .zip-mappen.. men kjedelig om ting ikke fungerer som det skal...
+
+  ----
+## Super og admin
+
+  For å kunne lage en super eller admin bruker så må dette gjøres igjennom postman
+ 
+  Dette blir en POST forespørsel til adresse: http://localhost:7777/api/v1/register
+
+  Det tar imot formatet json og krever: 
+  - name
+  - email
+  - username
+  - password
+  - role
+
+  Role er default til user, men om man spesifiserer dette så kan man også sette til admin eller super.
+
+  Dersom man skal være admin så skriver man inn "admin"
+
+  Dersom man skal være super så skriver man inn "super"
+
+  eks: 
+
+```
+{
+	"name": "Mr. Robot",
+	"email": "mr.robot@evilcorp.com",
+	"username": "mr.robot",
+	"password": "drossap8",
+	"role": "super"
+}
+```
+
+
+## Kontorer
+
+  Her har vi laget en liten knapp til der.. trykk på den og databasen blir fylt med noen kontorer.. 
+  De magiske tallene skal være 8, 5, 4, 4.. om dette ikke dukker opp, gi nettsiden en liten refresh 😉
+
+  Vil du lage ditt eget kontor, så kan du det også. Implementeringen av modalen her er ikke helt på plass.. Men gode Postman kommer til unsetning nok en gang.
+
+  eks:
+
+  ```
+    {
+    name: 'Rørlegger',
+    address: 'Rørleggerveien',
+    phone: '69990000',
+    location: 'fredrikstad',
+    ingress:
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
+    employees: [
+      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+      { first: 'Ansatt', last: 'Ansatnavn', position: 'Stilling' },
+    ],
+  },
+  ```
+
+## Artikler
+
+  Her må dere dessverre lage deres egne.. ikke noen magisk knapp her.. igjen.. postman, bare husk å legge til en lokal fil 😉
+
+  ```
+  {
+    "title": "My fourth article",
+    "ingress": "Vi pusser opp små og mellomstore bad for privatkunder og entreprenører.",
+    "content": "Lorem ipsum dolor sit amet",
+    "category": "bad",
+    "role": "user",
+    "author": "Lars Larsen"
+}
+```
