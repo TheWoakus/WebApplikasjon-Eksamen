@@ -34,20 +34,20 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
     }, {});
   }
 
-  //   useEffect(() => {
-  //     let localbranch = null;
+  useEffect(() => {
+    let localbranch = null;
 
-  //     if (loaded === false) {
-  //       if (offices !== null) {
-  //         localbranch = groupBy(offices, 'location');
-  //         setOffices(localbranch);
-  //         setGroupedOffices(localbranch);
-  //         setLoaded(true);
-  //       }
-  //     }
-  //   }, [offices]);
+    if (loaded === false) {
+      if (offices !== null) {
+        localbranch = groupBy(offices, 'location');
+        setOffices(localbranch);
+        setGroupedOffices(localbranch);
+        setLoaded(true);
+      }
+    }
+  }, [offices]);
 
-  console.log(groupedOffice);
+  //   console.log(groupedOffice);
   return (
     <>
       {loaded && (
