@@ -16,7 +16,7 @@ export const createNewStats = async (data) => {
 export const updateStats = async (id, data) => {
   Stats.findOneAndUpdate(
     { _id: id },
-    { $set: { viewCount: data.viewCount }, $addToSet: { u_refs: data.u_ref } },
+    { $set: { viewCount: data.viewCount }, $addToSet: { u_refs: data.u_refs } },
     { useFindAndModify: false }
   ).then((docs) => {
     if (docs) {
@@ -24,7 +24,4 @@ export const updateStats = async (id, data) => {
     }
     return { success: false, data: 'no such user exist' };
   });
-
-  console.log(id);
-  console.log(data);
 };

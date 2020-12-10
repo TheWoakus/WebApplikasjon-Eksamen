@@ -6,6 +6,7 @@ import { get, remove } from '../utils/articleService';
 import { useAuthContext } from '../context/AuthProvider.jsx';
 import { getUserInfo } from '../utils/authService.js';
 import { list } from '../utils/categoryService.js';
+import { report } from '../utils/statsService.js';
 
 import PageHeader from '../components/PageHeader.jsx';
 import PageFooter from '../components/PageFooter.jsx';
@@ -29,8 +30,16 @@ const Artikkel = () => {
         return;
       }
 
-      console.log(data);
-      console.log(article);
+      const statsToReport = {
+        a_ref: article.id,
+        u_refs: data.data.id,
+      };
+
+      const reportData = await report(statsToReport);
+
+      if (!reportData) {
+        setError('Failed to report data');
+      }
     };
 
     if (isLoggedIn && article !== null) {

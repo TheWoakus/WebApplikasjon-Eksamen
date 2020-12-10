@@ -7,8 +7,8 @@ export const createOrUpdate = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(`Krever a_ref`, 400));
   }
 
-  if (!req.body.u_ref) {
-    return next(new ErrorHandler(`Krever u_ref`, 400));
+  if (!req.body.u_refs) {
+    return next(new ErrorHandler(`Krever u_refs`, 400));
   }
 
   const fetchedStat = await statsService.getStatsByArticleId(req.body.a_ref);
