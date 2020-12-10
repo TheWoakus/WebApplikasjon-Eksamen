@@ -19,9 +19,9 @@ const Hjem = () => (
             <h2>Kontakt</h2>
           </section>
         </NavLink>
-        <NavLink exact to="/fagartikler?q=bad" id="fagartikler">
+        <NavLink exact to="/fagartikler/" id="fagartikler">
           <section className="title">
-            <h2>Se våre fagartikler om oppussing av bad</h2>
+            <h2>Se våre fagartikler om oppussing av bad (todo: fiks link)</h2>
           </section>
         </NavLink>
       </section>

@@ -25,7 +25,6 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
     <>
       {offices &&
         offices
-          // eslint-disable-next-line array-callback-return
           .filter((office) => {
             if (searchFilter == null) {
               return office;
