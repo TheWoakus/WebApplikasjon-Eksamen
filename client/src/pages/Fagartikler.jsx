@@ -17,10 +17,10 @@ const Fagartikler = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await list();
-      if (error) {
+      if (!data.success) {
         setError(error);
       } else {
-        setArticles(data);
+        setArticles(data.data);
       }
     };
     fetchData();

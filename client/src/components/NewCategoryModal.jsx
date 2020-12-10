@@ -31,7 +31,7 @@ class NewCategoryModal extends React.Component {
   createCategory(event) {
     event.preventDefault();
     const categoryDetails = {
-      title: this.title.value,
+      name: this.title.value,
     };
     this.props.addCategory(categoryDetails);
     this.categoryform.reset();

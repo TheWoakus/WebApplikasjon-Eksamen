@@ -19,7 +19,7 @@ const CategorySchema = new Schema(
 );
 
 CategorySchema.pre('save', function (next) {
-  this.slug = slugify(this.title, { lower: true });
+  this.slug = slugify(this.name, { lower: true });
   next();
 });
 

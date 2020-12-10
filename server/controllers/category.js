@@ -13,13 +13,13 @@ export const get = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const list = catchAsyncErrors(async (req, res) => {
-  const result = await categoryService.listCategories();
-  res.status(200).json(result);
+  const category = await categoryService.listCategories();
+  res.status(200).json({ success: true, data: category });
 });
 
 export const create = catchAsyncErrors(async (req, res) => {
   const category = await categoryService.createCategory(req.body);
-  res.status(201).json(category);
+  res.status(201).json({ success: true, data: category });
 });
 
 export const update = catchAsyncErrors(async (req, res, next) => {
@@ -30,7 +30,7 @@ export const update = catchAsyncErrors(async (req, res, next) => {
     );
   }
   category = await categoryService.updateCategory(req.params.id, req.body);
-  res.status(200).json(category);
+  res.status(200).json({ success: true, data: category });
 });
 
 export const remove = catchAsyncErrors(async (req, res, next) => {
@@ -41,5 +41,5 @@ export const remove = catchAsyncErrors(async (req, res, next) => {
     );
   }
   category = await categoryService.removeCategory(req.params.id);
-  res.status(204).json({});
+  res.status(201).json({ success: true });
 });

@@ -14,12 +14,12 @@ export const get = catchAsyncErrors(async (req, res, next) => {
 
 export const list = catchAsyncErrors(async (req, res) => {
   const result = await articleService.listArticles();
-  res.status(200).json(result);
+  res.status(200).json({ success: true, data: result });
 });
 
 export const create = catchAsyncErrors(async (req, res) => {
   const article = await articleService.createArticle(req.body);
-  res.status(201).json(article);
+  res.status(201).json({ success: true, data: article });
 });
 
 export const update = catchAsyncErrors(async (req, res, next) => {
@@ -30,7 +30,7 @@ export const update = catchAsyncErrors(async (req, res, next) => {
     );
   }
   article = await articleService.updateArticle(req.params.id, req.body);
-  res.status(200).json(article);
+  res.status(200).json({ success: true, data: article });
 });
 
 export const remove = catchAsyncErrors(async (req, res, next) => {

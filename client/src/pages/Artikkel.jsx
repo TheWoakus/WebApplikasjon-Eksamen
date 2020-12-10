@@ -26,7 +26,6 @@ const Artikkel = () => {
       }
     };
     fetchData();
-    console.log(params);
   }, []);
 
   const handleDelete = async () => {
