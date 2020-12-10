@@ -52,22 +52,26 @@ const Fagartikler = () => {
         <section id="articles">
           {articles &&
             loaded &&
-            articles.map((article) => (
+            articles.map((articleDisplayItem) => (
               <Link
                 className=""
-                to={`/article/${article._id}`}
-                key={article.id}
+                to={`/article/${articleDisplayItem._id}`}
+                key={articleDisplayItem.id}
               >
                 <section className="article_container">
                   <img
                     className="article_thumbnail"
-                    src={article.imgSrc}
+                    src={articleDisplayItem.imgSrc}
                     alt=""
                   />
                   <section>
-                    <h2 className="articleTitle">{article.title}</h2>
-                    <p className="articleCategory">{article.category}</p>
-                    <p className="articleIngress">{article.ingress}</p>
+                    <h2 className="articleTitle">{articleDisplayItem.title}</h2>
+                    <p className="articleCategory">
+                      {articleDisplayItem.category}
+                    </p>
+                    <p className="articleIngress">
+                      {articleDisplayItem.ingress}
+                    </p>
                   </section>
                 </section>
               </Link>
