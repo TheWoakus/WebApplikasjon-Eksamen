@@ -9,7 +9,7 @@ import { useAuthContext } from '../context/AuthProvider.jsx';
 import article from '../../../server/models/article.js';
 
 const Fagartikler = () => {
-  const [articles, setArticles] = useState(null);
+  const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
   const { isAdmin, isLoggedIn, setUser } = useAuthContext();
   const [loaded, setLoaded] = useState(false);
@@ -27,12 +27,19 @@ const Fagartikler = () => {
   }, []);
 
   useEffect(() => {
-    if (articles !== null) {
-      articles.forEach((articleItem) => {
-        if (articleItem.imgSrc !== undefined) {
-          articleItem.imgSrc = `${process.env.BASE_URL}/${articleItem.imgSrc}`;
+    if (articles.length !== 0) {
+      // articles.map((articleItem) => {
+      //  if (articleItem.imgSrc !== undefined) {
+      //    articleItem.imgSrc = `${process.env.BASE_URL}/${articleItem.imgSrc}`;
+      //  }
+      // });
+
+      for (let i = 0; i < articles.length; i++) {
+        if (articles[i].imgSrc !== undefined) {
+          articles[i].imgSrc = `${process.env.BASE_URL}/${articles[i].imgSrc}`;
         }
-      });
+      }
+
       setLoaded(true);
     }
   }, [articles]);
