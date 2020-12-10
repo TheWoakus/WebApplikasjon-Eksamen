@@ -37,6 +37,7 @@ const Fagartikler = () => {
       for (let i = 0; i < articles.length; i++) {
         if (articles[i].imgSrc !== undefined) {
           articles[i].imgSrc = `${process.env.BASE_URL}/${articles[i].imgSrc}`;
+          articles[i].imgSrc = articles[i].imgSrc.replace('/public', '');
         }
       }
 
