@@ -23,6 +23,10 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
     fetchData();
   }, []);
 
+  // kommenter ut function groupBy og useEffect som ligger rett under samt øverste del i return
+  // deretter uncomment nederste del i return, så vil filtrering fungere på kontor.
+  // Dette innebærer at man mister grupperingsmuligheter (samt litt av design.. ).
+
   function groupBy(objectArray, property) {
     return objectArray.reduce(function (acc, obj) {
       const key = obj[property];
@@ -47,7 +51,6 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
     }
   }, [offices]);
 
-  //   console.log(groupedOffice);
   return (
     <>
       {loaded && (
@@ -85,7 +88,9 @@ const FetchOffices = ({ viewtype, searchFilter }) => {
         </section>
       )}
 
-      {/* {offices &&
+      {/* 
+	 	DENNE DELEN MÅ UNCOMMENTES OM MAN SKAL HA MULIGHET TIL FILTRERING PÅ LOKASJON 
+	  {offices &&
         offices
           .filter((office) => {
             if (searchFilter == null) {
