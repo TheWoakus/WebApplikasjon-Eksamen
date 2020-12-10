@@ -20,7 +20,7 @@ const Fagartikler = () => {
       if (error) {
         setError(error);
       } else {
-        setArticles(data.data);
+        setArticles(data);
       }
     };
     fetchData();
@@ -28,11 +28,17 @@ const Fagartikler = () => {
 
   useEffect(() => {
     if (articles.length !== 0) {
-      articles.forEach((articleItem) => {
-        if (articleItem.imgSrc !== undefined) {
-          articleItem.imgSrc = `${process.env.BASE_URL}/${articleItem.imgSrc}`;
+      // articles.map((articleItem) => {
+      //  if (articleItem.imgSrc !== undefined) {
+      //    articleItem.imgSrc = `${process.env.BASE_URL}/${articleItem.imgSrc}`;
+      //  }
+      // });
+
+      for (let i = 0; i < articles.length; i++) {
+        if (articles[i].imgSrc !== undefined) {
+          articles[i].imgSrc = `${process.env.BASE_URL}/${articles[i].imgSrc}`;
         }
-      });
+      }
 
       setLoaded(true);
     }
