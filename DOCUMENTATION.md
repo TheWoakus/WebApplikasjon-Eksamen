@@ -23,7 +23,9 @@ Samarbeidet har fungert utmerket. Vi har benyttet GitHub til versjonskontroll, t
 
 Det dukker alltid opp situasjoner som man ikke hadde sett for seg. Vi opplevde spesielt to slike hendelser. 
 - gruppering / filtrering av kontorer. 
- Her hadde vi en fin løsning som kunne filtrere, men den var ikke gruppert slik den gjerne skulle være. Og når vi endelig fikk grupert, så fungerte ikke filtreringen.. jobber fortsatt med saken og håper å bli ferdig før frist. 
+ Her hadde vi en fin løsning som kunne filtrere, men den var ikke gruppert slik den gjerne skulle være. Og når vi endelig fikk grupert, så fungerte ikke filtreringen.. jobber fortsatt med saken og håper å bli ferdig før frist.
+ Se i client/components/FetchOffices.jsx - Vi har valgt å la den være på gruppering, uten mulighet for filtrering. Se kommentarer i koden som gjør det mulig å bytte til filtrering og da miste gruppering. 
 
 - url-query
  løsningen fungerte perfekt i postman. Men endte opp med å ta ned hele siden vår. Vi forsøkte å implementere det så godt vi kunne, men endte opp med å revert hele saken. Det er derfor vi hadde så masse reverts (skulle kanskje ha brukt en branch her 😝)
+ Se server/utils/apiFilters.js , server/services/article.js. Her er det kommentert ut kode som gjorde det mulig for oss å bruke postman. Det er ikke denne koden som ordrett ble brukt da vi måtte fjerne masse. Skal også egentlig være kommentert ut kode i server/model/article.js også, men her tryner ting om man har kommentarer.. all kode som ble brukt til dette er så og si copy/paste fra forelesning med bare litt tilpassing til vårt prosjekt..
