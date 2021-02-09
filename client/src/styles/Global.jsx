@@ -1,9 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+
+:root {
+	--global-font: 'Open Sans';
+	--global-font-color: #333;
+	--global-borders: #818181;
+	--global-link-font-color: #2b5197;
+	--global-link-font-hover-color: #fff;
+	--global-link-background-color: #fff;
+	--global-link-hover-background-color: #2b5197;
+}
+
 * {
 	box-sizing: border-box;
-	color: #333;
+	color: var(--global-font-color);
 }
 
 body {
@@ -13,18 +24,31 @@ body {
 
 html {
 	font-size: 14px;
-	font-family: "Nunito Sans";
 }
 
-h2 {
-	font-size: 30px;
+body, .button, .input {
+	font-family: var(---global-font);
 }
 
-a {
-	text-decoration: none;
+#page_wrapper {
+	max-width: 80%;
+	padding-bottom: 60px;
+	margin: 60px auto;
+}
+
+#page_content {
+	padding-bottom: 60px;
+}
+
+.footer {
+	padding-top: 10px;
 }
 .mail, .phone {
 	margin: 14px 0;
+}
+a {
+	color: var(--global-link-font-color);
+	text-decoration: none;
 }
 
 fieldset {
@@ -43,7 +67,7 @@ form {
 	padding: 10px 10px;
 	width: 100%;
 	border-radius: 5px;
-	border: 1px solid grey;
+	border: 1px solid var(--global-borders);
 	box-sizing: border-box;
 	font-size: 16px;
 	margin-bottom: 20px;
@@ -51,9 +75,9 @@ form {
 
 select {
 	padding: 10px 10px;
-	width: calc(100% - 70px);
+	width: calc(100% - 72px);
 	border-radius: 5px;
-	border: 1px solid grey;
+	border: 1px solid var(--global-borders);
 	box-sizing: border-box;
 	font-size: 16px;
 	margin-bottom: 20px;
@@ -64,19 +88,15 @@ label, input {
 
 span {
 	display: inline-block;
-	color: white;
-}
-
-p:first-letter, span:first-letter, .complete {
-	text-transform: capitalize;
+	color: var(--global-link-font-hover-color);
 }
 
 .button, .link {
-	color: #fff;
-	background-color: #499eb8; 
+	color: var(--global-link-font-color);
+	background-color: var(--global-link-background-color); 
 	border-radius: 5px;
 	padding: 4px 20px;
-	border: none;
+	border: 1px solid var(--global-borders);
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
@@ -85,15 +105,17 @@ p:first-letter, span:first-letter, .complete {
 	height: 50px;
 }
 
+.button:hover, .link:hover {
+	color: var(--global-link-font-hover-color);
+	background-color: var(--global-link-hover-background-color);
+	cursor: pointer;
+}
 .block {
 	display: block;
 }
 
-.left {
-	margin-left: 0;
-	margin-bottom: 20px
-}
 .centered {
+	display: block;
 	margin: 0 auto;
 }
 
@@ -104,19 +126,23 @@ p:first-letter, span:first-letter, .complete {
 .space {
 	margin-left: 10px;
 }
-.giveMeSomeRoom {
-	margin-bottom: 20px;
-}
-.bigspace {
-	margin-bottom: 60px;
-}
-.button:hover, .link:hover, .button:focus, .link:focus {
-	color: #333;
-	cursor: pointer;
+
+#register {
+text-align: center;
 }
 
-.button:disabled {
-	opacity: .2;
-	cursor: not-allowed;
+#register > p {
+	margin: 0;
+	padding-bottom: 20px;
+}
+#register > p::before {
+	content: "- ";
+}
+#register > p::after {
+	content: " -";
+}
+
+.showPassword {
+	display: inline-block;
 }
 `;

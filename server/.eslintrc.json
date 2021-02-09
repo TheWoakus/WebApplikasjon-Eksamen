@@ -5,6 +5,7 @@
 		"sourceType": "module"
 	},
 	"extends": ["airbnb-base", "prettier"],
+	"parser": "babel-eslint",
 	"plugins": ["prettier"],
 	"rules": {
 		"import/no-extraneous-dependencies": [
@@ -23,14 +24,7 @@
 			"LabeledStatement",
 			"WithStatement"
 		],
-		"no-unused-vars": [
-			"error",
-			{
-				"vars": "all",
-				"args": "after-used",
-				"ignoreRestSiblings": false
-			}
-		],
+		"no-unused-vars": "off",
 		"prefer-const": [
 			"error",
 			{
@@ -76,13 +70,14 @@
 				"allowTemplateLiterals": true
 			}
 		],
+		"indent": ["0", 2],
 		"prettier/prettier": [
 			"error",
 			{
 				"trailingComma": "es5",
 				"singleQuote": true,
 				"printWidth": 80,
-				"endOfLine": "auto"
+				"endOfLine":"auto"
 			}
 		]
 	},

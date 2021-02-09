@@ -1,53 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-const StyledNav = styled.nav``;
+import logo from '../assets/svg/logo.svg';
 
-const NavMenu = styled.ul`
-  margin: 0;
-  padding: 0;
-`;
+const Img = styled.img`
+  height: 80px;
+  width: 80px;
 
-const NavMenuItem = styled.li`
-  display: grid;
-  grid-template-columns: repeat(5, 175px);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  align-items: center;
-  &:first-child {
-    padding-left: 0;
-  }
-
-  & > a {
-    color: #333;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 60px;
-    width: 100%;
-    padding: 5px 0;
-    text-decoration: none;
-    text-align: center;
-    &.active {
-      color: #333;
-    }
-    &:hover {
-      color: #499eb8;
-    }
-  }
+  margin-left: 20px;
+  margin-top: 10px;
 `;
 
 const Logo = () => (
-  <StyledNav>
-    <NavMenu>
-      <NavMenuItem>
-        <NavLink exact to="/">
-          {process.env.COMPANY_LOGO}
-        </NavLink>
-      </NavMenuItem>
-    </NavMenu>
-  </StyledNav>
+	<NavLink exact to="/">
+		<Img src={logo} alt="Til forsiden" />
+	</NavLink>
 );
 
 export default Logo;

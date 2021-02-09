@@ -7,9 +7,9 @@ const CategorySchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, 'Whooops!! Må da ha et navn'],
+      required: true,
       unique: false,
-      min: [1, 'Én bokstav bør vi klare her'],
+      min: 1,
     },
     slug: {
       type: String,

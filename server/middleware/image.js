@@ -14,11 +14,13 @@ const storage = multer.diskStorage({
     cb(null, './public/img');
   },
   filename(req, file, cb) {
-    const time = new Date();
-    const someRandomValue = time.getMilliseconds.toString();
-    // This does not work for some reason....
+		/// TODO: Test this a bit.. Can most likely keep the last bit and remove all the commented code
+    // const time = new Date();
+    // const someRandomValue = time.getMilliseconds.toString();
+    // // This does not work for some reason....
 
-    cb(null, `someRandomValue_${file.originalname}`);
+		// cb(null, `someRandomValue_${file.originalname}`);
+		cb(null, `${Date.now()}_${file.originalname}`);
   },
 });
 

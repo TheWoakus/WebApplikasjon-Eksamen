@@ -1,33 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+
+import Logo from './Logo.jsx';
+import Nav from './Nav.jsx';
 
 const Header = styled.header`
   display: grid;
-  background-color: #dbdbdb;
-  height: 300px;
-  margin-bottom: 100px;
+  grid-template-columns: 100px auto;
+  grid-gap: 20px;
+
+  height: 100px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
 `;
 
-const Title = styled.h1`
-  font-size: 30px;
-  text-align: center;
-  place-self: center;
-  margin: 5px;
-`;
-
-class PageHeader extends React.Component {
-  render() {
-    return (
-      <Header>
-        <Title>{this.props.title}</Title>
-      </Header>
-    );
-  }
-}
-
-PageHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-};
+const PageHeader = () => (
+	<Header className="main_header">
+		<Logo />
+		<Nav />
+	</Header>
+);
 
 export default PageHeader;

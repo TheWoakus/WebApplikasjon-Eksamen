@@ -1,120 +1,72 @@
 import React, { useState } from 'react';
-import { useAlert } from 'react-alert';
 import { useHistory } from 'react-router-dom';
-import { register } from '../utils/authService';
-import { useAuthContext } from '../context/AuthProvider.jsx';
+import { registrer } from '../utils/authService';
+
+import PasswordViewer from '../components/PasswordViewer.jsx';
+
+import styled from 'styled-components';
+
+const StyledForm = styled.form`
+	max-width: 300px;
+`;
+
 
 const SignupForm = () => {
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [verifyPassword, setVerifyPassword] = useState(null);
-  const { setUser } = useAuthContext();
-  const history = useHistory();
+	const [email, setEmail] = useState(null);
+	const [password, setPassword] = useState(null);
+	const history = useHistory();
 
-  const alert = useAlert();
 
-  const onSubmit = async () => {
-    // eslint-disable-next-line no-restricted-globals, no-undef
-    event.preventDefault();
+	const onSubmit = async (event) => {
+		event.preventDefault();
 
-    if (password !== verifyPassword) {
-      alert.show('Passord samvsarer ikke', { type: 'error' });
-      return;
-    }
+		const credentials = {
+			email,
+			password,
+		};
 
-    const credentials = {
-      name,
-      email,
-      username,
-      password,
-    };
+		const { data } = await registrer(credentials);
 
-    const { data } = await register(credentials);
+		history.push('/Bruker');
+	};
 
-    if (!data.success) {
-      alert.show('Feil', { type: 'error' });
-    } else {
-      const { user } = data;
-      setUser({ ...user });
-      alert.show('Du har nå registrert og logget på!', { type: 'success' });
-      history.push('/');
-    }
-  };
-
-  return (
-    <>
-      <form onSubmit={onSubmit}>
-        <fieldset>
-          <label className="registerLabel" htmlFor="name">
-            Navn&#58;
-            <span id="name_error">OBS!! Sjekk at denne er riktig</span>
-          </label>
-          <input
-            type="text"
-            name="name"
-            className="input"
-            placeholder="Vennligst oppgi ditt navn"
-            onChange={(e) => setName(e.target.value)}
-          />
-
-          <label className="registerLabel" htmlFor="mail">
-            Epost&#58;
+	return (
+		<>
+			<StyledForm onSubmit={onSubmit}>
+				<fieldset>
+					<label className="registerLabel" htmlFor="mail">
+						Epost&#58;
             <span id="mail_error">OBS!! Sjekk at denne er riktig</span>
-          </label>
-          <input
-            type="text"
-            name="mail"
-            className="input"
-            placeholder="Vennligst oppgi din epost"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+					</label>
+					<input
+						type="text"
+						name="mail"
+						className="input"
+						placeholder="Vennligst oppgi din epost"
+						onChange={(e) => setEmail(e.target.value)}
+					/>
 
-          <label className="registerLabel" htmlFor="username">
-            Brukernavn&#58;
-            <span id="username_error">OBS!! Sjekk at denne er riktig</span>
-          </label>
-          <input
-            type="text"
-            name="username"
-            className="input"
-            placeholder="Hva ønsker du å ha som ditt brukernavn?"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
-          <label className="registerLabel" htmlFor="password">
-            Passord&#58;
+					<label className="registerLabel" htmlFor="password">
+						Passord&#58;
             <span id="password_error">OBS!! Sjekk at denne er riktig</span>
-          </label>
-          <input
-            type="password"
-            name="password"
-            className="input"
-            placeholder="Skriv inn ditt ønskede passord"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+					</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						className="input"
+						placeholder="Skriv inn ditt ønskede passord"
+						onChange={(e) => setPassword(e.target.value)}
+					/>
+					<PasswordViewer />
 
-          <label className="registerLabel" htmlFor="verifypassword">
-            Bekreft passord&#58;
-            <span id="verifypassword_error">
-              OBS!! Sjekk at denne er riktig
-            </span>
-          </label>
-          <input
-            type="password"
-            name="verifypassword"
-            className="input"
-            placeholder="Bekreft ditt passord"
-            onChange={(e) => setVerifyPassword(e.target.value)}
-          />
-          <button type="submit" className="button centered big block">
-            Register
+					<button type="submit" className="button centered big block">
+						Register deg
           </button>
-        </fieldset>
-      </form>
-    </>
-  );
+				</fieldset>
+			</StyledForm>
+		</>
+	);
 };
 
 export default SignupForm;

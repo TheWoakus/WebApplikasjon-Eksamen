@@ -1,11 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAlert } from 'react-alert';
-import { useAuthContext } from '../context/AuthProvider.jsx';
-import { logout } from '../utils/authService.js';
+import { NavLink } from 'react-router-dom';
 
-const StyledNav = styled.nav`
+const NavGroup = styled.nav`
   display: inline-grid;
   justify-self: end;
 `;
@@ -13,181 +10,68 @@ const StyledNav = styled.nav`
 const NavMenu = styled.ul`
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 0;
 `;
 
 const NavMenuItem = styled.li`
-  display: flex;
-  flex-flow: row nowrap;
   margin: 0;
-  padding: 0;
+  text-align: center;
   list-style: none;
-  align-items: center;
   font-variant: small-caps;
-  &:first-child {
-    padding-left: 0;
-  }
 
   & > a {
-    color: #333;
+    display: block;
     font-size: 20px;
     font-weight: 700;
-    line-height: 60px;
-    width: 175px;
-    padding: 5px 0;
-    text-decoration: none;
+    line-height: 100px;
+    width: 120px;
     text-align: center;
-    &.active {
-      color: #499eb8;
-    }
-    &.logginn {
-      color: #fff;
-      background-color: #499eb8;
-      text-transform: uppercase;
-    }
+    margin: 0;
+
     &:hover {
-      color: #499eb8;
-    }
-    &.logginn:hover {
-      color: #333;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    & > a {
-      width: 140px;
-    }
-  }
-
-  @media (max-width: 1000px) {
-    & > a {
-      width: 50px;
+      color: #fff;
+      background-color: #2b5197;
     }
   }
 `;
 
-const Nav = () => {
-  const { isLoggedIn, isAdmin, setUser } = useAuthContext();
-  const alert = useAlert();
-
-  const handleLogout = async () => {
-    await logout();
-    setUser(null);
-    alert.show('Du har nå logget ut', { type: 'info' });
-  };
-
-  return (
-    <StyledNav>
-      <NavMenu>
-        <NavMenuItem>
-          <NavLink
-            exact
-            to="/"
-            activeClassName="active"
-            className="secondary hjem_svg"
-          ></NavLink>
-          <NavLink
-            exact
-            to="/kontorer"
-            activeClassName="active"
-            className="secondary kontorer_svg"
-          ></NavLink>
-          <NavLink
-            exact
-            to="/fagartikler"
-            activeClassName="active"
-            className="secondary fagartikler_svg"
-          ></NavLink>
-          <NavLink
-            exact
-            to="/kontakt"
-            activeClassName="active"
-            className="secondary kontakt_svg"
-          ></NavLink>
-
-          {!isLoggedIn && (
-            <NavLink
-              exact
-              to="/login"
-              activeClassName="active"
-              className="secondary login_svg"
-            ></NavLink>
-          )}
-
-          {isLoggedIn && (
-            <NavLink
-              exact
-              to="/"
-              activeClassName="active"
-              className="secondary logout_svg"
-              onClick={handleLogout}
-            />
-          )}
-
-          <NavLink exact to="/" activeClassName="active" className="primary">
-            Hjem
-          </NavLink>
-          <NavLink
-            exact
-            to="/kontorer/"
-            activeClassName="active"
-            className="primary"
-          >
-            Kontorer
-          </NavLink>
-          <NavLink
-            exact
-            to="/fagartikler/"
-            activeClassName="active"
-            className="primary"
-          >
-            Fagartikler
-          </NavLink>
-
-          <NavLink
-            exact
-            to="/kontakt/"
-            activeClassName="active"
-            className="primary"
-          >
-            Kontakt
-          </NavLink>
-
-          {isAdmin && isLoggedIn && (
-            <NavLink
-              to="/dashboard"
-              activeClassName="active"
-              className="primary"
-            >
-              Dashboard
-            </NavLink>
-          )}
-
-          {!isLoggedIn && (
-            <NavLink
-              exact
-              to="/login/"
-              activeClassName="active"
-              className="primary logginn"
-            >
-              Logg inn
-            </NavLink>
-          )}
-
-          {isLoggedIn && (
-            <NavLink
-              exact
-              to="/"
-              activeClassName="active"
-              className="primary logginn"
-              onClick={handleLogout}
-            >
-              Logg ut
-            </NavLink>
-          )}
-        </NavMenuItem>
-      </NavMenu>
-    </StyledNav>
-  );
-};
+const Nav = () => (
+  <NavGroup>
+    <NavMenu>
+      <NavMenuItem>
+        <NavLink exact to="/" activeClassName="home">
+          Hjem
+        </NavLink>
+      </NavMenuItem>
+      <NavMenuItem>
+        <NavLink exact to="/produkter" activeClassName="products">
+          Produkter
+        </NavLink>
+      </NavMenuItem>
+      <NavMenuItem>
+        <NavLink exact to="/kunstnere" activeClassName="artists">
+          Kunstnere
+        </NavLink>
+      </NavMenuItem>
+      <NavMenuItem>
+        <NavLink exact to="/om" activeClassName="about">
+          Om oss
+        </NavLink>
+      </NavMenuItem>
+			<NavMenuItem>
+				<NavLink exact to="/kontakt" activeClassName="contact">
+					Kontakt
+        </NavLink>
+			</NavMenuItem>
+      <NavMenuItem>
+        <NavLink exact to="/logginn" activeClassName="login">
+          Logg inn
+        </NavLink>
+      </NavMenuItem>
+    </NavMenu>
+  </NavGroup>
+);
 
 export default Nav;

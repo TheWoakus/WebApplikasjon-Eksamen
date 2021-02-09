@@ -1,7 +1,7 @@
 {
-	"name": "eksamen_2020_webapp",
+	"name": "lions",
 	"version": "1.0.0",
-	"author": "Kandidatnr: 181356 & 181350",
+	"author": "B021-G30",
 	"license": "ISC",
 	"main": "server.js",
 	"scripts": {

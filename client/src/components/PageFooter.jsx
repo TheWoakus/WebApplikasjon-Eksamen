@@ -19,15 +19,15 @@ const Footer = styled.footer`
 `;
 
 const PageFooter = () => (
-  <Footer className="footer">
-    <p>Orgnr: 007 007 007</p>
-    <a href="mailto:lg@lgror.no" className="mail">
-      lg@lgror.no
+	<Footer className="footer">
+		<p>Orgnr: 007 007 007</p>
+		<a href="mailto:post@lions.no" className="mail">
+			post@lions.no
     </a>
-    <a href="callto:99000000" className="phone">
-      99 00 00 00
+		<a href="callto:99000000" className="phone">
+			99 00 00 00
     </a>
-  </Footer>
+	</Footer>
 );
 
 export default PageFooter;

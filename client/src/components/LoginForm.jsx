@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import PasswordViewer from '../components/PasswordViewer.jsx';
+
 import styled from 'styled-components';
-import { useAlert } from 'react-alert';
-import { useAuthContext } from '../context/AuthProvider.jsx';
-import { login } from '../utils/authService';
 
 const StyledForm = styled.form`
   max-width: 300px;
@@ -15,12 +15,9 @@ const LoginForm = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const history = useHistory();
-  const { setUser } = useAuthContext();
-  const alert = useAlert();
 
-  const onSubmit = async () => {
-    // eslint-disable-next-line no-restricted-globals, no-undef
-    event.preventDefault(); // eslint klager på at denne er deprecated. Den er jo egentlig ikke det...
+  const onSubmit = async (event) => {
+    event.preventDefault();
 
     const credentials = {
       email,
@@ -65,11 +62,13 @@ const LoginForm = () => {
           </label>
           <input
             type="password"
-            name="password"
+						name="password"
+						id="password"
             className="input"
             placeholder="Skriv inn ditt passord"
             onChange={(e) => setPassword(e.target.value)}
           />
+					<PasswordViewer />
           <button type="submit" className="button centered big">
             Logg inn
           </button>

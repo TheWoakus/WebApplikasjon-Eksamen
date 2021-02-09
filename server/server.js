@@ -1,20 +1,15 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import cookieParser from 'cookie-parser';
 
 import 'dotenv/config.js';
 import { SERVER_PORT, CLIENT_PORT } from './constants/index.js';
 import connectDatabase from './config/db.js';
 
-import article from './routes/article.js';
-import office from './routes/office.js';
-import category from './routes/category.js';
-import request from './routes/request.js';
 import user from './routes/user.js';
-import auth from './routes/auth.js';
+import artwork from './routes/artwork.js';
+import category from './routes/category.js';
 import image from './routes/image.js';
-import stats from './routes/stats.js';
 
 const app = express();
 
@@ -33,17 +28,11 @@ app.use(
   })
 );
 
-app.use(cookieParser());
 
-app.use(`${process.env.BASEURL}/nyartikkel`, article);
-app.use(`${process.env.BASEURL}/fagartikler`, article);
-app.use(`${process.env.BASEURL}/kontorer`, office);
-app.use(`${process.env.BASEURL}/kontakt`, request);
+app.use(`${process.env.BASEURL}/registrer`, user);
+app.use(`${process.env.BASEURL}/verk`, artwork);
 app.use(`${process.env.BASEURL}/kategorier`, category);
-app.use(`${process.env.BASEURL}/users`, user);
-app.use(`${process.env.BASEURL}/`, auth);
 app.use(`${process.env.BASEURL}/`, image);
-app.use(`${process.env.BASEURL}/`, stats);
 
 connectDatabase();
 const server = app.listen(
